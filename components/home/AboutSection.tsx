@@ -20,8 +20,17 @@ export default function AboutSection() {
     }
   ];
 
+  const brandHooks = [
+    "CONTEMPORARY MENSWEAR, ROOTED IN KUMBAKONAM",
+    "STREETWEAR ENERGY FOR EVERYDAY STYLE",
+    "PREMIUM FOOTWEAR, CURATED FOR THE NEXT GENERATION",
+    "ESSENTIALS CHOSEN WITH INTENTION",
+    "GLOBAL STYLE, LOCALLY CURATED",
+    "ACCESSORIES THAT COMPLETE THE LOOK"
+  ];
+
   return (
-    <section className="bg-[#111111] text-[#F7F5F0] py-20 md:py-28 w-full relative" id="about" aria-labelledby="about-heading">
+    <section className="bg-[#111111] text-[#F7F5F0] pt-20 md:pt-28 pb-0 w-full relative" id="about" aria-labelledby="about-heading">
       <div className="max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 w-full flex flex-col items-center">
         
         {/* COMPACT TWO-TONE EDITORIAL CARD */}
@@ -100,12 +109,30 @@ export default function AboutSection() {
           ))}
         </div>
 
-        {/* BOTTOM METADATA */}
-        <div className="w-full max-w-[1300px] pt-8 border-t border-[rgba(247,245,240,0.14)] flex justify-between items-center text-[10px] md:text-xs tracking-[0.2em] uppercase font-bold text-[#F7F5F0]/40">
-          <span>Next Generation.</span>
-          <span>Est. 2024</span>
-        </div>
+      </div>
 
+      {/* BRAND HOOK MARQUEE (FULL WIDTH) */}
+      <div className="w-full bg-[#E5E3DB] py-6 md:py-8 overflow-hidden flex group">
+        <div className="flex animate-marquee whitespace-nowrap items-center group-hover:[animation-play-state:paused]">
+          {brandHooks.map((hook, i) => (
+            <div key={`hook-1-${i}`} className="flex items-center">
+              <span className="text-[#111111] font-bold text-sm md:text-base lg:text-lg tracking-[0.15em] uppercase mx-8 md:mx-12">
+                {hook}
+              </span>
+              <span className="w-2 h-2 rounded-full bg-[#FF4E1F]"></span>
+            </div>
+          ))}
+        </div>
+        <div className="flex animate-marquee whitespace-nowrap items-center group-hover:[animation-play-state:paused]" aria-hidden="true">
+          {brandHooks.map((hook, i) => (
+            <div key={`hook-2-${i}`} className="flex items-center">
+              <span className="text-[#111111] font-bold text-sm md:text-base lg:text-lg tracking-[0.15em] uppercase mx-8 md:mx-12">
+                {hook}
+              </span>
+              <span className="w-2 h-2 rounded-full bg-[#FF4E1F]"></span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
