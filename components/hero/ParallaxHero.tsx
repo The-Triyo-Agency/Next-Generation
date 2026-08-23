@@ -16,6 +16,7 @@ export default function ParallaxHero() {
   const characterRef = useRef<HTMLDivElement>(null);
   const mobileTextRef = useRef<HTMLDivElement>(null);
   const mobileCharacterRef = useRef<HTMLDivElement>(null);
+  const mobileGraphicRef = useRef<HTMLDivElement>(null);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -78,9 +79,21 @@ export default function ParallaxHero() {
         },
       });
 
-      // Character moves significantly faster (upward) to create depth and visibly cross typography
+      // Graphic moves slightly slower than model
+      gsap.to(mobileGraphicRef.current, {
+        y: -30, 
+        ease: "none",
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+
+      // Character moves significantly faster (upward) to create foreground depth
       gsap.to(mobileCharacterRef.current, {
-        y: -110, 
+        y: -80, 
         ease: "none",
         scrollTrigger: {
           trigger: container.current,
@@ -104,68 +117,130 @@ export default function ParallaxHero() {
     <div ref={container} id="hero" data-navbar-theme="light" className="relative w-full bg-[#F7F5F0] overflow-hidden selection:bg-[#FF2400] selection:text-[#F7F5F0]">
 
       {/* MOBILE HERO (< 768px) */}
-      <div className="flex md:hidden flex-col w-full min-h-[100svh] pt-[100px] pb-8 relative z-20 justify-between">
+      {/* 
+        High-Fashion Inspiration Rebuild: 
+        Strict 7-layer absolute coordinate system.
+        Content hierarchy flows down the left side.
+        Model right-biased, standing ON the dark ground plane.
+      */}
+      <div className="flex md:hidden flex-col w-full min-h-[max(100svh,620px)] relative z-20 overflow-hidden bg-[#F7F5F0]">
         
-        {/* Mobile Headline Zone */}
-        <div ref={mobileTextRef} className="px-5 w-full relative z-10 mb-0">
-          <h1 className="font-black leading-[0.85] tracking-tighter text-[#111111] flex flex-col uppercase" style={{ fontSize: "clamp(2.2rem, 11.5vw, 4.5rem)" }}>
-            <span>NEXT</span>
-            <span>GENERATION<span className="text-[#FF2400]">.</span></span>
-          </h1>
-        </div>
-
-        {/* Mobile Character Zone */}
-        {/* Adjusted to 45-50% height with subtle ambient atmosphere and contact grounding shadow */}
-        <div ref={mobileCharacterRef} className="relative w-[95vw] max-w-[440px] h-[50vh] min-h-[300px] max-h-[420px] self-end -mr-2 -mt-[3vh] z-20 pointer-events-none mb-4">
-          
-          {/* Extremely Subtle Ambient Radial Lighting */}
-          <div className="absolute inset-0 top-[5%] left-[5%] w-[90%] h-[90%] bg-[radial-gradient(ellipse_at_center,_#FF2400_0%,_transparent_60%)] opacity-[0.05] blur-3xl z-[-1] rounded-full" />
-          
-          <Image 
-            src="/images/hero/hero1.png" 
-            alt="Next Generation Men's Fashion Model" 
-            fill
-            priority
-            className="object-contain object-bottom"
-            sizes="90vw"
-          />
-          
-          {/* Grounding Contact Shadow */}
-          <div className="absolute bottom-[1.5%] left-[25%] w-[50%] h-[12px] bg-black/15 blur-[8px] rounded-[100%] z-[-1]" />
-        </div>
-
-        {/* Mobile Content Zone (Description & CTAs) */}
-        {/* Grouped cohesively as a single conversion block */}
-        <div className="flex flex-col px-5 z-30 relative mt-auto w-full">
-          <div className="flex flex-col gap-6 w-full">
-            <p className="text-[12px] sm:text-[13px] font-semibold leading-relaxed text-[#111111]/85 max-w-[240px]">
-              Men's fashion,<br />footwear & accessories<br /><span className="text-[#FF2400]">— Kumbakonam.</span>
-            </p>
+        {/* LAYER z-20: Left-to-Right Slanting Orange Graphic */}
+        <div 
+          ref={mobileGraphicRef} 
+          className="absolute right-0 top-0 bottom-0 w-full max-w-[420px] z-20 pointer-events-none overflow-hidden"
+        >
+          <svg 
+            viewBox="0 0 390 844" 
+            preserveAspectRatio="xMaxYMid slice" 
+            className="w-full h-full absolute right-0"
+          >
+            {/* The Solid 3-Legged X Shape (Top-Right, Bottom-Right, Bottom-Left) */}
+            <polygon 
+              points="
+                240,385
+                390,198
+                390,278
+                272,425
+                350,523
+                350,603
+                240,465
+                140,590
+                140,510
+                208,425
+              " 
+              fill="#FF2400" 
+              opacity="0.95"
+              style={{ mixBlendMode: 'multiply' }}
+            />
             
-            <div className="flex flex-row items-center justify-between gap-3 w-full pointer-events-auto">
+            {/* 1px Editorial Construction Lines */}
+            <g stroke="#FF2400" strokeWidth="1" fill="none" opacity="0.4" vectorEffect="non-scaling-stroke">
+              {/* Missing Top-Left Leg Outline */}
+              <polygon points="240,385 208,425 140,340 140,260" />
+              
+              {/* Intersection Lines spanning the entire geometric X */}
+              <line x1="140" y1="260" x2="350" y2="523" />
+              <line x1="140" y1="340" x2="350" y2="603" />
+              <line x1="140" y1="510" x2="390" y2="198" />
+              <line x1="140" y1="590" x2="390" y2="278" />
+              
+              {/* Architectural Grid */}
+              <line x1="0" y1="425" x2="390" y2="425" strokeDasharray="4 4" opacity="0.15" />
+              <line x1="240" y1="0" x2="240" y2="844" strokeDasharray="4 4" opacity="0.15" />
+            </g>
+          </svg>
+        </div>
+
+        {/* LAYER z-30: Dark Ground Plane */}
+        {/* Massive #111111 block anchored to absolute bottom, slanted top edge */}
+        <div 
+          className="absolute -bottom-[2px] left-0 w-full h-[22%] bg-[#111111] z-30 origin-bottom pointer-events-none"
+          style={{ clipPath: 'polygon(0 15%, 100% 0, 100% 100%, 0% 100%)' }}
+        >
+        </div>
+
+        {/* LAYER z-60: Model (Foreground Element) */}
+        {/* Anchored to right with max-width to prevent drifting on wider screens */}
+        <div 
+          ref={mobileCharacterRef}
+          className="absolute bottom-[12%] right-[-5vw] w-[90vw] max-w-[400px] h-[75%] z-60 pointer-events-none"
+        >
+          <Image
+            src="/images/hero/hero1.png"
+            alt="Next Generation Men's Fashion Model"
+            fill
+            className="object-contain object-right-bottom"
+            priority
+            sizes="(max-width: 768px) 90vw, 400px"
+          />
+          {/* Shadow explicitly at the intersection of shoes and ground plane */}
+          <div className="absolute bottom-[2%] left-[30%] w-[45%] h-[12px] bg-[#000000]/70 blur-[8px] rounded-[100%] z-[-1]" />
+        </div>
+
+        {/* LAYER z-50: Content Overlay */}
+        <div className="absolute inset-0 z-[50] flex flex-col px-6 pb-5 pointer-events-none">
+          {/* Metadata + Headline */}
+          {/* Using mt-32 (128px) to safely push below the fixed Navbar on all screens */}
+          <div ref={mobileTextRef} className="flex flex-col mt-32">
+            <p className="text-[#FF2400] font-bold text-[8px] tracking-[0.2em] uppercase mb-4 pointer-events-auto">
+              Men's Fashion <span className="text-[#111111]/40">•</span> Kumbakonam
+            </p>
+            {/* The Text 'UNBOUND.' */}
+            <h1 className="text-[clamp(50px,15vw,80px)] leading-[0.9] font-black text-[#111111] uppercase tracking-tighter mix-blend-normal z-[5]">
+              UNBOUND<span className="text-[#FF2400]">.</span>
+            </h1>
+          </div>
+
+          {/* Thin Horizontal Line Separator */}
+          <div className="w-[40vw] h-[1px] bg-[#111111]/20 mt-5 mb-5" />
+
+          {/* Description (directly below the line) */}
+          <p className="text-[11px] sm:text-[12px] font-semibold leading-[1.6] text-[#111111]/85 max-w-[180px] pointer-events-auto">
+            Men's fashion,<br />footwear & accessories<br /><span className="text-[#FF2400]">— Kumbakonam.</span>
+          </p>
+
+          {/* CTAs pushed into the black layer */}
+          <div className="flex flex-col mt-auto mb-2">
+            {/* CTA Row - Restored to parallel row, pushed safely underneath the sneaker's vertical position */}
+            <div className="flex flex-row flex-wrap items-center gap-4 pointer-events-auto">
               <Link 
                 href="/collections" 
-                className="flex-1 text-center bg-[#111111] text-[#F7F5F0] border border-[#111111]/20 rounded-[8px] px-2 py-4 font-bold text-[10px] tracking-widest uppercase hover:bg-[#FF2400] hover:border-[#FF2400] transition-colors shadow-[0_8px_16px_rgba(0,0,0,0.08)] flex items-center justify-center min-h-[48px]"
+                className="bg-[#F7F5F0] text-[#111111] rounded-full px-8 py-3.5 font-bold text-[10px] sm:text-[11px] tracking-widest uppercase hover:bg-[#FF2400] hover:text-[#F7F5F0] transition-colors flex items-center justify-center min-w-[140px] shadow-lg shadow-black/40"
               >
-                Explore
+                Explore →
               </Link>
               <Link 
                 href={generateWhatsAppLink("Hi Next Generation!")} 
-                className="blob-btn flex-1 text-center px-2 py-4 font-bold text-[10px] tracking-widest uppercase text-[#FF2400] shadow-[0_8px_16px_rgba(255,36,0,0.12)] flex items-center justify-center min-h-[48px]"
+                className="text-[#FF2400] border border-[#FF2400] rounded-full px-6 py-3 font-bold text-[10px] sm:text-[11px] tracking-widest uppercase flex items-center justify-center gap-2 hover:bg-[#FF2400]/10 transition-colors shadow-lg shadow-[#FF2400]/15"
               >
-                <span className="relative z-10">WhatsApp</span>
-                <span className="blob-btn__inner">
-                <span className="blob-btn__blobs">
-                  <span className="blob-btn__blob"></span>
-                  <span className="blob-btn__blob"></span>
-                  <span className="blob-btn__blob"></span>
-                  <span className="blob-btn__blob"></span>
-                </span>
-              </span>
-            </Link>
+                WhatsApp <span className="font-black text-[13px]">↗</span>
+              </Link>
+            </div>
           </div>
-          </div>
+
         </div>
+
       </div>
 
       {/* DESKTOP HERO (>= 768px) */}
@@ -176,9 +251,11 @@ export default function ParallaxHero() {
           <h1 ref={textRef} className="text-[#111111] font-black tracking-tighter uppercase leading-[0.85] w-full max-w-[1600px] h-full flex flex-col justify-center">
             
             {/* Desktop / Tablet Typography */}
-            <div className="flex flex-col justify-center h-full w-full relative">
-              <span className="text-[min(14vw,230px)] self-start ml-[2vw]">NEXT</span>
-              <span className="text-[min(11vw,180px)] self-end mr-[2vw] mt-2">GENERATION<span className="text-[#FF2400]">.</span></span>
+            <div className="flex flex-col justify-center items-center h-full w-full relative">
+              {/* Added a slight negative margin-left on the text block to offset the 'O' from the dead center of the model */}
+              <span className="text-[min(17vw,280px)] text-center ml-[-2vw]">
+                UNBOUND<span className="text-[#FF2400]">.</span>
+              </span>
             </div>
             
           </h1>
@@ -195,7 +272,7 @@ export default function ParallaxHero() {
             src="/images/hero/hero1.png" 
             alt="Next Generation Men's Fashion Model" 
             fill
-            priority
+            loading="eager"
             className="object-contain object-bottom drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)]"
             sizes="(max-width: 1024px) 60vw, 40vw"
           />

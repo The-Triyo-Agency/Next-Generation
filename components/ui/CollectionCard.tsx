@@ -19,7 +19,7 @@ export default function CollectionCard({ category }: CollectionCardProps) {
           src={category.image}
           alt={`Men's ${category.name.toLowerCase()} collection at Next Generation`}
           fill
-          className={`object-cover ${category.imagePosition} grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-[700ms] ease-out`}
+          className={`object-cover ${category.imagePosition} md:grayscale md:group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-[700ms] ease-out`}
           sizes="(max-width: 768px) 100vw, 50vw"
           priority
         />

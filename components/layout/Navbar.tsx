@@ -40,8 +40,8 @@ export default function Navbar() {
         }
       },
       {
-        // A thin horizontal strip near the top of the viewport (approx where the navbar is)
-        rootMargin: "-80px 0px -80% 0px",
+        // A safe horizontal strip in the top half of the viewport
+        rootMargin: "-50px 0px -50% 0px",
         threshold: 0
       }
     );
@@ -75,30 +75,30 @@ export default function Navbar() {
   
   return (
     <>
-      <nav className={`fixed top-0 left-0 w-full z-[100] flex items-center justify-between px-4 md:px-12 pointer-events-auto transition-all duration-300 ease-in-out ${navBgClass}`}>
+      <nav className={`fixed top-0 left-0 w-full z-[100] flex items-center justify-between px-4 md:px-6 lg:px-12 pointer-events-auto transition-all duration-300 ease-in-out ${navBgClass}`}>
         
         {/* Mobile Logo */}
-        <Link href="/" className="md:hidden flex items-center gap-2 group">
-          <div className={`w-8 h-8 rounded-[8px] border-[1.5px] ${borderColorClass} flex items-center justify-center group-hover:border-[#FF2400] transition-colors ${menuBgClass}`}>
-            <UsersRound className={`w-4 h-4 ${textColorClass} group-hover:text-[#FF2400] transition-colors`} strokeWidth={2.5} />
+        <Link href="/" className="md:hidden flex items-center gap-2 group flex-shrink-0">
+          <div className={`w-8 h-8 flex-shrink-0 rounded-[8px] border-[1.5px] ${borderColorClass} flex items-center justify-center group-hover:border-[#FF2400] transition-colors ${menuBgClass}`}>
+            <UsersRound className={`w-4 h-4 flex-shrink-0 ${textColorClass} group-hover:text-[#FF2400] transition-colors`} strokeWidth={2.5} />
           </div>
-          <span className={`font-black text-lg tracking-tighter uppercase leading-none ${textColorClass} transition-colors`}>
+          <span className={`font-black text-lg tracking-tighter uppercase leading-none whitespace-nowrap ${textColorClass} transition-colors`}>
             Next Gen<span className="text-[#FF2400]">era</span>tion<span className="text-[#FF2400]">.</span>
           </span>
         </Link>
 
         {/* Desktop Logo */}
-        <Link href="/" className="hidden md:flex items-center gap-3 group">
-          <div className={`w-10 h-10 rounded-[10px] border-[1.5px] ${borderColorClass} flex items-center justify-center group-hover:border-[#FF2400] transition-colors ${menuBgClass}`}>
-            <UsersRound className={`w-5 h-5 ${textColorClass} group-hover:text-[#FF2400] transition-colors`} strokeWidth={2.5} />
+        <Link href="/" className="hidden md:flex items-center gap-2 lg:gap-3 group flex-shrink-0">
+          <div className={`w-8 lg:w-10 h-8 lg:h-10 rounded-[10px] border-[1.5px] ${borderColorClass} flex items-center justify-center group-hover:border-[#FF2400] transition-colors ${menuBgClass}`}>
+            <UsersRound className={`w-4 lg:w-5 h-4 lg:h-5 ${textColorClass} group-hover:text-[#FF2400] transition-colors`} strokeWidth={2.5} />
           </div>
-          <span className={`font-black text-xl tracking-tighter uppercase leading-none ${textColorClass} transition-colors`}>
+          <span className={`font-black text-lg lg:text-xl tracking-tighter uppercase leading-none whitespace-nowrap ${textColorClass} transition-colors`}>
             Next Gen<span className="text-[#FF2400]">era</span>tion<span className="text-[#FF2400]">.</span>
           </span>
         </Link>
         
         {/* Desktop Links */}
-        <div className={`hidden md:flex gap-10 text-[11px] lg:text-xs font-bold tracking-widest uppercase ${textColorClass} transition-colors`}>
+        <div className={`hidden md:flex gap-4 lg:gap-10 text-[10px] lg:text-xs font-bold tracking-widest uppercase whitespace-nowrap flex-shrink-0 ${textColorClass} transition-colors`}>
           <Link href="#hero" className="hover:text-[#FF2400] transition-colors relative group py-1">
             Home
             <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#FF2400] transition-transform duration-300 origin-left ${activeSection === 'hero' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
@@ -122,10 +122,10 @@ export default function Navbar() {
         </div>
         
         {/* Desktop WhatsApp */}
-        <div className="hidden md:block">
+        <div className="hidden md:block flex-shrink-0">
           <Link 
             href={generateWhatsAppLink("Hi Next Generation, I'd like to know more about the latest men's fashion collections available at your Kumbakonam store.")} 
-            className={`blob-btn px-6 py-2.5 font-bold text-[11px] lg:text-xs tracking-widest uppercase text-[#FF2400] ${isDark ? 'blob-btn-dark-hover' : ''}`}
+            className={`blob-btn inline-block whitespace-nowrap px-4 lg:px-6 py-2 lg:py-2.5 font-bold text-[10px] lg:text-xs tracking-widest uppercase text-[#FF2400] ${isDark ? 'blob-btn-dark-hover' : ''}`}
           >
             <span className="relative z-10">WhatsApp</span>
             <span className="blob-btn__inner">
