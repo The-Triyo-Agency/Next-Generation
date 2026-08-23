@@ -73,9 +73,9 @@ export default async function SubcategoryPage({ params }: Props) {
         
         {/* Breadcrumbs */}
         <nav className="flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase mb-12">
-          <Link href="/collections" className="text-[#111111]/50 hover:text-[#FF4E1F] transition-colors">Collections</Link>
+          <Link href="/collections" className="text-[#111111]/50 hover:text-[#FF2400] transition-colors">Collections</Link>
           <ChevronRight className="w-3 h-3 text-[#111111]/30" />
-          <Link href={`/collections/${category.slug}`} className="text-[#111111]/50 hover:text-[#FF4E1F] transition-colors">{category.name}</Link>
+          <Link href={`/collections/${category.slug}`} className="text-[#111111]/50 hover:text-[#FF2400] transition-colors">{category.name}</Link>
           <ChevronRight className="w-3 h-3 text-[#111111]/30" />
           <span className="text-[#111111]">{subcategory.name}</span>
         </nav>
@@ -85,7 +85,7 @@ export default async function SubcategoryPage({ params }: Props) {
           <div className="flex-1">
             <header className="mb-12">
               <h1 className="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-[0.9] text-[#111111] mb-6">
-                {subcategory.name}<span className="text-[#FF4E1F]">.</span>
+                {subcategory.name}<span className="text-[#FF2400]">.</span>
               </h1>
               <p className="text-sm md:text-base font-semibold leading-relaxed max-w-xl text-[#111111]/70">
                 {subcategory.description}
@@ -93,14 +93,14 @@ export default async function SubcategoryPage({ params }: Props) {
             </header>
 
             <div className="bg-[#111111] text-[#F7F5F0] p-8 md:p-12 mb-12 max-w-xl">
-              <h3 className="font-black tracking-widest text-xs uppercase mb-4 text-[#FF4E1F]">Interested in this style?</h3>
+              <h3 className="font-black tracking-widest text-xs uppercase mb-4 text-[#FF2400]">Interested in this style?</h3>
               <p className="text-sm font-semibold leading-relaxed text-[#F7F5F0]/80 mb-8">
                 Send us a message on WhatsApp to check availability, sizes, and pricing for our {subcategory.name.toLowerCase()}.
               </p>
               <WhatsAppButton 
                 context={subcategory.name}
                 label="Enquire on WhatsApp"
-                className="bg-[#FF4E1F] text-[#F7F5F0] px-8 py-4 font-bold text-xs tracking-widest uppercase hover:bg-[#F7F5F0] hover:text-[#111111] transition-colors inline-flex"
+                className="bg-[#FF2400] text-[#F7F5F0] px-8 py-4 font-bold text-xs tracking-widest uppercase hover:bg-[#F7F5F0] hover:text-[#111111] transition-colors inline-flex"
               />
             </div>
           </div>

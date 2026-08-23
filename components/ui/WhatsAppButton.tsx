@@ -22,7 +22,7 @@ export default function WhatsAppButton({
     message = `Hi Next Generation, I'm interested in the ${context}. Could you please let me know about availability?`;
   }
 
-  const defaultStyles = "bg-[#111111] text-[#F7F5F0] px-8 py-4 rounded-[10px] font-bold text-xs tracking-widest uppercase hover:bg-[#FF4E1F] transition-colors shadow-lg inline-flex items-center justify-center";
+  const defaultStyles = "bg-[#111111] text-[#F7F5F0] px-8 py-4 rounded-[10px] font-bold text-xs tracking-widest uppercase hover:bg-[#FF2400] transition-colors shadow-lg inline-flex items-center justify-center";
   
   return (
     <Link 

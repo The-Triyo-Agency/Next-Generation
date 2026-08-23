@@ -38,14 +38,14 @@ export default async function CategoryPage({ params }: Props) {
         
         {/* Breadcrumbs */}
         <nav className="flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase mb-12">
-          <Link href="/collections" className="text-[#111111]/50 hover:text-[#FF4E1F] transition-colors">Collections</Link>
+          <Link href="/collections" className="text-[#111111]/50 hover:text-[#FF2400] transition-colors">Collections</Link>
           <ChevronRight className="w-3 h-3 text-[#111111]/30" />
           <span className="text-[#111111]">{category.name}</span>
         </nav>
 
         <header className="mb-16">
           <h1 className="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-[0.9] text-[#111111] mb-6">
-            {category.name}<span className="text-[#FF4E1F]">.</span>
+            {category.name}<span className="text-[#FF2400]">.</span>
           </h1>
           <p className="text-sm md:text-base font-semibold leading-relaxed max-w-xl text-[#111111]/70">
             {category.description}
@@ -69,14 +69,14 @@ export default async function CategoryPage({ params }: Props) {
                 <div className="absolute inset-0 p-8 flex flex-col justify-end bg-gradient-to-t from-[#F7F5F0] via-[#F7F5F0]/80 to-transparent">
                   <div className="flex justify-between items-end">
                     <div className="flex flex-col gap-2">
-                      <h2 className="font-black text-3xl tracking-tighter uppercase group-hover:text-[#FF4E1F] transition-colors text-[#111111]">
+                      <h2 className="font-black text-3xl tracking-tighter uppercase group-hover:text-[#FF2400] transition-colors text-[#111111]">
                         {sub.name}
                       </h2>
                       <p className="text-sm font-semibold text-[#111111]/60 max-w-[200px]">
                         {sub.description}
                       </p>
                     </div>
-                    <div className="w-12 h-12 rounded-full border border-[#111111]/20 flex items-center justify-center bg-[#F7F5F0] group-hover:border-[#FF4E1F] group-hover:bg-[#FF4E1F] transition-all shrink-0">
+                    <div className="w-12 h-12 rounded-full border border-[#111111]/20 flex items-center justify-center bg-[#F7F5F0] group-hover:border-[#FF2400] group-hover:bg-[#FF2400] transition-all shrink-0">
                       <ArrowRight className="w-5 h-5 text-[#111111] group-hover:text-[#F7F5F0]" />
                     </div>
                   </div>

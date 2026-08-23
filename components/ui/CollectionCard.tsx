@@ -35,7 +35,7 @@ export default function CollectionCard({ category }: CollectionCardProps) {
         
         {/* Hover Arrow Indicator */}
         <div className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2">
-          <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-[#F7F5F0] group-hover:text-[#FF4E1F] transition-colors duration-500" />
+          <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-[#F7F5F0] group-hover:text-[#FF2400] transition-colors duration-500" />
         </div>
       </div>
     </Link>

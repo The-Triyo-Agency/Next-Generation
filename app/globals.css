@@ -113,6 +113,10 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+
   ::selection {
     background-color: var(--accent);
     color: var(--accent-foreground);
@@ -147,4 +151,100 @@
     animation: none !important;
     transform: none !important;
   }
+}
+
+/* Blob Button Effects */
+.blob-btn {
+  z-index: 1;
+  position: relative;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  transition: color 0.5s;
+  cursor: pointer;
+}
+
+.blob-btn:before {
+  content: "";
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: 1.5px solid #FF2400;
+  border-radius: 8px;
+  transition: border-color 0.5s;
+}
+
+.blob-btn:hover {
+  color: #F7F5F0 !important;
+}
+
+.blob-btn:hover:before {
+  border-color: #111111;
+}
+
+.blob-btn__inner {
+  z-index: -1;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background: transparent;
+}
+
+.blob-btn__blobs {
+  position: relative;
+  display: block;
+  height: 100%;
+  filter: url('#goo');
+}
+
+.blob-btn__blob {
+  position: absolute;
+  top: 2px;
+  width: 25%;
+  height: 100%;
+  background: #111111;
+  border-radius: 100%;
+  transform: translate3d(0, 150%, 0) scale(1.7);
+  transition: transform 0.45s;
+}
+
+@supports(filter: url('#goo')) {
+  .blob-btn__blob {
+    transform: translate3d(0, 150%, 0) scale(1.4);
+  }
+}
+
+.blob-btn__blob:nth-child(1) { left: 0%; transition-delay: 0s; }
+.blob-btn__blob:nth-child(2) { left: 30%; transition-delay: 0.08s; }
+.blob-btn__blob:nth-child(3) { left: 60%; transition-delay: 0.16s; }
+.blob-btn__blob:nth-child(4) { left: 90%; transition-delay: 0.24s; }
+
+.blob-btn:hover .blob-btn__blob {
+  transform: translateZ(0) scale(1.7);
+}
+
+@supports(filter: url('#goo')) {
+  .blob-btn:hover .blob-btn__blob {
+    transform: translateZ(0) scale(1.4);
+  }
+}
+
+/* Dark variant hover for Navbar over dark backgrounds */
+.blob-btn-dark-hover:hover {
+  color: #111111 !important;
+}
+
+.blob-btn-dark-hover:hover:before {
+  border-color: #F7F5F0;
+}
+
+.blob-btn-dark-hover .blob-btn__blob {
+  background: #F7F5F0;
 }
