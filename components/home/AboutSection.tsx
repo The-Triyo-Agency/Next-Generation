@@ -119,7 +119,7 @@ export default function AboutSection() {
               <span className="text-[#111111] font-bold text-sm md:text-base lg:text-lg tracking-[0.15em] uppercase mx-8 md:mx-12">
                 {hook}
               </span>
-              <span className="w-2 h-2 rounded-full bg-[#FF2400]"></span>
+              <span className="w-2 h-2 rotate-45 bg-[#FF2400]"></span>
             </div>
           ))}
         </div>
@@ -129,7 +129,7 @@ export default function AboutSection() {
               <span className="text-[#111111] font-bold text-sm md:text-base lg:text-lg tracking-[0.15em] uppercase mx-8 md:mx-12">
                 {hook}
               </span>
-              <span className="w-2 h-2 rounded-full bg-[#FF2400]"></span>
+              <span className="w-2 h-2 rotate-45 bg-[#FF2400]"></span>
             </div>
           ))}
         </div>
