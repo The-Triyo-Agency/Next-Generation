@@ -187,10 +187,11 @@ export default function ParallaxHero() {
           className="absolute bottom-[12%] right-[-5vw] w-[90vw] max-w-[400px] h-[75%] z-60 pointer-events-none"
         >
           <Image
+            id="hero-image-mobile"
             src="/images/hero/hero1.png"
             alt="Next Generation Men's Fashion Model"
             fill
-            className="object-contain object-right-bottom"
+            className="object-contain object-right-bottom scale-[0.8]"
             priority
             sizes="(max-width: 768px) 90vw, 400px"
           />
@@ -269,11 +270,12 @@ export default function ParallaxHero() {
           h-[75vh] lg:h-[80vh] pointer-events-none"
         >
           <Image 
+            id="hero-image-desktop"
             src="/images/hero/hero1.png" 
             alt="Next Generation Men's Fashion Model" 
             fill
             loading="eager"
-            className="object-contain object-bottom drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)]"
+            className="object-contain object-bottom drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)] scale-[0.8]"
             sizes="(max-width: 1024px) 60vw, 40vw"
           />
         </div>

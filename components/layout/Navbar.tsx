@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { Menu, UsersRound, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { generateWhatsAppLink } from "@/lib/whatsapp";
 
 export default function Navbar() {
@@ -10,6 +11,15 @@ export default function Navbar() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("hero");
+  const isNavigating = useRef(false);
+
+  const handleNavClick = (section: string) => {
+    setActiveSection(section);
+    isNavigating.current = true;
+    setTimeout(() => {
+      isNavigating.current = false;
+    }, 1000);
+  };
 
   useEffect(() => {
     // Handle scroll state for navbar background
@@ -36,7 +46,9 @@ export default function Navbar() {
         if (currentSection) {
           const newTheme = currentSection.getAttribute("data-navbar-theme") as "light" | "dark";
           if (newTheme) setTheme(newTheme);
-          if (currentSection.id) setActiveSection(currentSection.id);
+          if (currentSection.id && !isNavigating.current) {
+            setActiveSection(currentSection.id);
+          }
         }
       },
       {
@@ -79,43 +91,35 @@ export default function Navbar() {
         
         {/* Mobile Logo */}
         <Link href="/" className="md:hidden flex items-center gap-2 group flex-shrink-0">
-          <div className={`w-8 h-8 flex-shrink-0 rounded-[8px] border-[1.5px] ${borderColorClass} flex items-center justify-center group-hover:border-[#FF2400] transition-colors ${menuBgClass}`}>
-            <UsersRound className={`w-4 h-4 flex-shrink-0 ${textColorClass} group-hover:text-[#FF2400] transition-colors`} strokeWidth={2.5} />
-          </div>
-          <span className={`font-black text-lg tracking-tighter uppercase leading-none whitespace-nowrap ${textColorClass} transition-colors`}>
-            Next Gen<span className="text-[#FF2400]">era</span>tion<span className="text-[#FF2400]">.</span>
-          </span>
+          <Image src="/images/logo.svg" alt="Next Generation Logo" width={60} height={60} className="w-[60px] h-[60px] object-contain flex-shrink-0" />
+          <Image src="/images/text-logo.svg" alt="Next Generation" width={150} height={60} className={`w-auto h-[30px] object-contain transition-[filter] duration-300 ${isDark ? 'invert' : ''}`} />
         </Link>
 
         {/* Desktop Logo */}
         <Link href="/" className="hidden md:flex items-center gap-2 lg:gap-3 group flex-shrink-0">
-          <div className={`w-8 lg:w-10 h-8 lg:h-10 rounded-[10px] border-[1.5px] ${borderColorClass} flex items-center justify-center group-hover:border-[#FF2400] transition-colors ${menuBgClass}`}>
-            <UsersRound className={`w-4 lg:w-5 h-4 lg:h-5 ${textColorClass} group-hover:text-[#FF2400] transition-colors`} strokeWidth={2.5} />
-          </div>
-          <span className={`font-black text-lg lg:text-xl tracking-tighter uppercase leading-none whitespace-nowrap ${textColorClass} transition-colors`}>
-            Next Gen<span className="text-[#FF2400]">era</span>tion<span className="text-[#FF2400]">.</span>
-          </span>
+          <Image src="/images/logo.svg" alt="Next Generation Logo" width={76} height={76} className="w-[60px] lg:w-[76px] h-[60px] lg:h-[76px] object-contain flex-shrink-0" />
+          <Image src="/images/text-logo.svg" alt="Next Generation" width={230} height={76} className={`w-auto h-[38px] lg:h-[46px] object-contain transition-[filter] duration-300 ${isDark ? 'invert' : ''}`} />
         </Link>
         
         {/* Desktop Links */}
         <div className={`hidden md:flex gap-4 lg:gap-10 text-[10px] lg:text-xs font-bold tracking-widest uppercase whitespace-nowrap flex-shrink-0 ${textColorClass} transition-colors`}>
-          <Link href="#hero" className="hover:text-[#FF2400] transition-colors relative group py-1">
+          <Link href="#hero" onClick={() => handleNavClick('hero')} className="hover:text-[#FF2400] transition-colors relative group py-1">
             Home
             <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#FF2400] transition-transform duration-300 origin-left ${activeSection === 'hero' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
           </Link>
-          <Link href="#about" className="hover:text-[#FF2400] transition-colors relative group py-1">
+          <Link href="#about" onClick={() => handleNavClick('about')} className="hover:text-[#FF2400] transition-colors relative group py-1">
             About
             <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#FF2400] transition-transform duration-300 origin-left ${activeSection === 'about' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
           </Link>
-          <Link href="#collections" className="hover:text-[#FF2400] transition-colors relative group py-1">
+          <Link href="#collections" onClick={() => handleNavClick('collections')} className="hover:text-[#FF2400] transition-colors relative group py-1">
             Collections
             <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#FF2400] transition-transform duration-300 origin-left ${activeSection === 'collections' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
           </Link>
-          <Link href="#store" className="hover:text-[#FF2400] transition-colors relative group py-1">
+          <Link href="#store" onClick={() => handleNavClick('store')} className="hover:text-[#FF2400] transition-colors relative group py-1">
             Store
             <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#FF2400] transition-transform duration-300 origin-left ${activeSection === 'store' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
           </Link>
-          <Link href="#contact" className="hover:text-[#FF2400] transition-colors relative group py-1">
+          <Link href="#contact" onClick={() => handleNavClick('contact')} className="hover:text-[#FF2400] transition-colors relative group py-1">
             Contact
             <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#FF2400] transition-transform duration-300 origin-left ${activeSection === 'contact' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
           </Link>
@@ -154,12 +158,8 @@ export default function Navbar() {
         <div className="fixed inset-0 z-[100] bg-[#F7F5F0] flex flex-col pointer-events-auto">
           <div className="flex items-center justify-between pt-5 px-4 w-full">
             <Link href="#hero" className="flex items-center gap-2 group" onClick={() => setMobileMenuOpen(false)}>
-              <div className="w-8 h-8 rounded-[8px] border-[1.5px] border-[#111111] flex items-center justify-center group-hover:border-[#FF2400] transition-colors">
-                <UsersRound className="w-4 h-4 text-[#111111] group-hover:text-[#FF2400] transition-colors" strokeWidth={2.5} />
-              </div>
-              <span className="font-black text-lg tracking-tighter uppercase leading-none text-[#111111]">
-                Next Gen<span className="text-[#FF2400]">era</span>tion<span className="text-[#FF2400]">.</span>
-              </span>
+              <Image src="/images/logo.svg" alt="Next Generation Logo" width={60} height={60} className="w-[60px] h-[60px] object-contain flex-shrink-0" />
+              <Image src="/images/text-logo.svg" alt="Next Generation" width={150} height={60} className="w-auto h-[30px] object-contain" />
             </Link>
             <button 
               className="p-2 -mr-2 text-[#111111] hover:text-[#FF2400] transition-colors"
@@ -171,23 +171,23 @@ export default function Navbar() {
           </div>
           
           <div className="flex flex-col items-start px-6 pt-16 gap-8 text-2xl font-black tracking-tighter uppercase text-[#111111]">
-            <Link href="#hero" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#FF2400] transition-colors flex items-center gap-4">
+            <Link href="#hero" onClick={() => { setMobileMenuOpen(false); handleNavClick('hero'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4">
               Home
               {activeSection === 'hero' && <span className="w-2 h-2 rounded-full bg-[#FF2400]"></span>}
             </Link>
-            <Link href="#about" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#FF2400] transition-colors flex items-center gap-4">
+            <Link href="#about" onClick={() => { setMobileMenuOpen(false); handleNavClick('about'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4">
               About
               {activeSection === 'about' && <span className="w-2 h-2 rounded-full bg-[#FF2400]"></span>}
             </Link>
-            <Link href="#collections" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#FF2400] transition-colors flex items-center gap-4">
+            <Link href="#collections" onClick={() => { setMobileMenuOpen(false); handleNavClick('collections'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4">
               Collections
               {activeSection === 'collections' && <span className="w-2 h-2 rounded-full bg-[#FF2400]"></span>}
             </Link>
-            <Link href="#store" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#FF2400] transition-colors flex items-center gap-4">
+            <Link href="#store" onClick={() => { setMobileMenuOpen(false); handleNavClick('store'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4">
               Store
               {activeSection === 'store' && <span className="w-2 h-2 rounded-full bg-[#FF2400]"></span>}
             </Link>
-            <Link href="#contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#FF2400] transition-colors flex items-center gap-4">
+            <Link href="#contact" onClick={() => { setMobileMenuOpen(false); handleNavClick('contact'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4">
               Contact
               {activeSection === 'contact' && <span className="w-2 h-2 rounded-full bg-[#FF2400]"></span>}
             </Link>
