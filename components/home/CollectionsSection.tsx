@@ -93,7 +93,7 @@ export default function CollectionsSection() {
             subtitle="SNEAKERS • CASUAL • EVERYDAY" 
             imageSrc="/images/collections/foot-wear.png"
             className="md:col-span-1 xl:col-span-2 relative h-[450px] md:h-[500px] bg-[#EBE8E0]"
-            imageClass="w-[85%] xl:w-full h-[65%] xl:h-full object-contain object-right-bottom xl:object-right bottom-[-5%] xl:bottom-auto xl:top-0 right-0 pointer-events-none xl:scale-[1.1] origin-right" 
+            imageClass="w-[85%] xl:w-full h-[65%] xl:h-full object-contain object-right-bottom xl:object-right bottom-[-5%] xl:bottom-auto xl:top-0 right-0 pointer-events-none xl:scale-[1.1] group-hover:scale-[1.05] xl:group-hover:scale-[1.15] origin-right" 
           />
           
           {/* 05 ACCESSORIES & 06 BAGS - Stacked inside two columns on desktop to fill the row */}
