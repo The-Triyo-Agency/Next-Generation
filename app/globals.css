@@ -9,6 +9,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
+  --font-oswald: var(--font-oswald);
   
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
