@@ -13,7 +13,7 @@ export default function CollectionsSection() {
           <div className="md:col-span-2 xl:col-span-2 relative h-[450px] md:h-[500px] flex flex-col justify-center lg:justify-start lg:pt-10 group z-10 border border-transparent">
             
             {/* Using scale-y to achieve the exact 'squeezed' tall font look of the reference */}
-            <h1 className="font-oswald font-bold text-[65px] md:text-[85px] lg:text-[90px] xl:text-[105px] leading-[0.85] uppercase tracking-[-0.02em] relative z-20 mt-4 text-[#111111] scale-y-[1.25] origin-left">
+            <h1 className="font-oswald font-bold text-[55px] md:text-[85px] lg:text-[90px] xl:text-[105px] leading-[0.85] uppercase tracking-[-0.02em] relative z-20 mt-4 text-[#111111] scale-y-[1.25] origin-left w-2/3 md:w-full">
               <div className="block">CURATED</div>
               <div className="flex items-end">
                 <span>FOR <span className="text-[#C8321F]">YOU</span></span>
@@ -21,12 +21,11 @@ export default function CollectionsSection() {
               </div>
             </h1>
             
-            <div className="mt-12 md:mt-16 max-w-[280px] relative z-20">
-              <p className="text-[14px] md:text-[15px] font-medium text-black/80 mb-8 leading-relaxed">
+            <div className="mt-12 md:mt-16 max-w-[200px] md:max-w-[280px] relative z-20">
+              <p className="text-[13px] md:text-[15px] font-medium text-black/80 mb-8 leading-relaxed">
                 Timeless pieces. Modern attitude.<br/>Explore our categories.
               </p>
-              <Link
-                href="/collections"
+              <div
                 className="inline-flex items-center gap-4 text-[11px] md:text-xs font-bold tracking-[0.15em] uppercase group/link text-[#111111]"
               >
                 EXPLORE ALL
@@ -36,15 +35,18 @@ export default function CollectionsSection() {
                     <path d="m13 5 7 7-7 7" />
                   </svg>
                 </span>
-              </Link>
+              </div>
             </div>
 
+            {/* Gradient Overlay for Text Readability */}
+            <div className="absolute left-0 top-0 h-full w-[85%] md:w-[75%] lg:w-[60%] xl:w-[55%] bg-gradient-to-r from-[#F4F1EB] via-[#F4F1EB]/80 to-transparent z-[15] pointer-events-none" />
+
             {/* Hero Image - Curated.png */}
-            <div className="absolute right-[-6%] xl:right-[-8%] bottom-0 h-[75%] xl:h-[115%] w-[85%] lg:w-[50%] pointer-events-none z-0 flex justify-end">
+            <div className="absolute right-[-15%] sm:right-[-10%] md:right-[2%] lg:right-[15%] xl:right-[-3%] top-0 md:top-[5%] lg:top-[-2%] xl:top-[-2%] h-full md:h-[85%] lg:h-[85%] xl:h-[85%] w-[85%] md:w-[85%] lg:w-[50%] pointer-events-none z-10 flex justify-end">
               <img 
                 src="/images/collections/curated.png" 
                 alt="Curated For You" 
-                className="h-full w-auto max-w-none object-contain object-right-bottom transition-transform duration-700 ease-out group-hover:scale-[1.01]"
+                className="h-full w-auto max-w-none object-contain object-right md:object-right-bottom transition-transform duration-700 ease-out group-hover:scale-[1.01]"
               />
             </div>
             
@@ -61,7 +63,8 @@ export default function CollectionsSection() {
             subtitle="OVERSIZED • ESSENTIAL • GRAPHIC" 
             imageSrc="/images/collections/tshirt.png"
             className="md:col-span-1 xl:col-span-2 relative h-[450px] md:h-[500px] bg-[linear-gradient(to_right,#FFFFFF_45%,#EBE8E0_45%)]"
-            imageClass="w-[90%] md:w-[100%] xl:w-[65%] h-[80%] xl:h-full object-cover object-right-bottom xl:object-right bottom-0 xl:top-0 right-[-4%] pointer-events-none"
+            textOverlayGradient="from-white via-white/75 to-transparent"
+            imageClass="w-[95%] sm:w-[85%] md:w-[100%] xl:w-[65%] h-full object-cover object-right bottom-0 right-[-15%] sm:right-[-10%] md:right-[-10%] pointer-events-none"
           />
           
           {/* 02 SHIRTS */}
@@ -72,7 +75,7 @@ export default function CollectionsSection() {
             imageSrc="/images/collections/shirt.png"
             dark={true}
             className="md:col-span-1 xl:col-span-2 relative h-[450px] md:h-[500px]"
-            imageClass="w-[90%] xl:w-[65%] h-[75%] xl:h-full object-cover object-right-bottom xl:object-right bottom-0 xl:top-0 right-0 pointer-events-none"
+            imageClass="w-[90%] sm:w-[80%] md:w-[100%] xl:w-[65%] h-full object-cover object-right bottom-0 right-[-15%] sm:right-[-10%] md:right-0 pointer-events-none"
           />
           
           {/* 03 TROUSERS */}
@@ -83,7 +86,7 @@ export default function CollectionsSection() {
             imageSrc="/images/collections/bottom-wear.png"
             alignRight={true}
             className="md:col-span-2 xl:col-span-2 relative h-[450px] md:h-[500px] bg-[#F4F1EB]"
-            imageClass="w-[90%] xl:w-[60%] h-[75%] xl:h-[110%] object-contain object-right-bottom xl:object-left-bottom right-[-5%] xl:right-auto xl:left-0 bottom-[-5%] pointer-events-none" 
+            imageClass="w-[90%] sm:w-[80%] xl:w-[60%] h-full xl:h-[110%] object-cover object-left md:object-left-bottom xl:object-left-bottom left-[-15%] sm:left-[-10%] md:left-[-5%] xl:left-0 pointer-events-none" 
           />
 
           {/* 04 FOOTWEAR */}
@@ -93,7 +96,8 @@ export default function CollectionsSection() {
             subtitle="SNEAKERS • CASUAL • EVERYDAY" 
             imageSrc="/images/collections/foot-wear.png"
             className="md:col-span-1 xl:col-span-2 relative h-[450px] md:h-[500px] bg-[#EBE8E0]"
-            imageClass="w-[85%] xl:w-full h-[65%] xl:h-full object-contain object-right-bottom xl:object-right bottom-[-5%] xl:bottom-auto xl:top-0 right-0 pointer-events-none xl:scale-[1.1] group-hover:scale-[1.05] xl:group-hover:scale-[1.15] origin-right" 
+            textOverlayGradient="none"
+            imageClass="w-full h-full object-cover object-center bottom-0 md:bottom-[-5%] xl:bottom-auto xl:top-0 right-0 pointer-events-none xl:scale-[1.1] group-hover:scale-[1.05] xl:group-hover:scale-[1.15] origin-center" 
           />
           
           {/* 05 ACCESSORIES & 06 BAGS - Stacked inside two columns on desktop to fill the row */}
@@ -105,7 +109,8 @@ export default function CollectionsSection() {
               subtitle="STYLISH • MINIMAL • BOLD" 
               imageSrc="/images/collections/accessories.png"
               className="flex-1 min-h-[250px] bg-[#EBE8E0]"
-              imageClass="w-[90%] xl:w-[60%] h-[90%] xl:h-[130%] object-cover object-right-bottom xl:object-right bottom-[-5%] xl:bottom-auto xl:top-[-10%] right-[-5%] pointer-events-none"
+              gradientWidthClass="w-[95%] md:w-[90%] xl:w-[85%]"
+              imageClass="w-[90%] xl:w-[70%] h-full object-cover object-right bottom-0 right-0 pointer-events-none"
             />
             {/* 06 BAGS */}
             <CollectionCard 
@@ -114,7 +119,7 @@ export default function CollectionsSection() {
               subtitle="BACKPACKS • SLING • TOTES" 
               imageSrc="/images/collections/bags.png"
               className="flex-1 min-h-[250px] bg-[#F4F1EB]"
-              imageClass="w-[90%] xl:w-[60%] h-[90%] xl:h-[130%] object-cover object-right-bottom xl:object-right-bottom bottom-[-5%] xl:bottom-auto xl:top-[-10%] right-[-5%] pointer-events-none"
+              imageClass="w-[90%] xl:w-[70%] h-full object-cover object-right bottom-0 right-0 pointer-events-none"
             />
           </div>
 

@@ -76,7 +76,7 @@ export default function Navbar() {
     ? isDark
       ? "bg-[#111111]/85 backdrop-blur-md border-b border-[#F7F5F0]/10 py-4"
       : "bg-[#F7F5F0]/85 backdrop-blur-md border-b border-[#111111]/10 py-4"
-    : "bg-transparent py-5 md:py-10 border-b-transparent";
+    : "bg-transparent py-5 md:py-6 lg:py-8 border-b-transparent";
 
   const textColorClass = isDark ? "text-[#F7F5F0]" : "text-[#111111]";
   const borderColorClass = isDark ? "border-[#F7F5F0]" : "border-[#111111]";
@@ -87,22 +87,22 @@ export default function Navbar() {
   
   return (
     <>
-      <nav className={`fixed top-0 left-0 w-full z-[100] flex items-center justify-between px-4 md:px-6 lg:px-12 pointer-events-auto transition-all duration-300 ease-in-out ${navBgClass}`}>
+      <nav className={`fixed top-0 left-0 w-full z-[100] flex items-center justify-between px-4 md:px-6 lg:px-8 xl:px-12 pointer-events-auto transition-all duration-300 ease-in-out ${navBgClass}`}>
         
         {/* Mobile Logo */}
-        <Link href="/" className="md:hidden flex items-center gap-2 group flex-shrink-0">
-          <Image src="/images/logo.svg" alt="Next Generation Logo" width={60} height={60} className="w-[60px] h-[60px] object-contain flex-shrink-0" />
-          <Image src="/images/text-logo.svg" alt="Next Generation" width={150} height={60} className={`w-auto h-[30px] object-contain transition-[filter] duration-300 ${isDark ? 'invert' : ''}`} />
+        <Link href="/" className="min-[1400px]:hidden flex items-center gap-3 group flex-shrink-0">
+          <Image src="/images/logo.svg" alt="Next Generation Logo" width={80} height={80} className="w-[40px] min-[400px]:w-[50px] md:w-[60px] lg:w-[80px] h-[40px] min-[400px]:h-[50px] md:h-[60px] lg:h-[80px] object-contain flex-shrink-0" />
+          <Image src="/images/text-logo.svg" alt="Next Generation" width={240} height={80} className={`w-auto h-[24px] min-[400px]:h-[30px] md:h-[36px] lg:h-[48px] object-contain transition-[filter] duration-300 ${isDark ? 'invert' : ''}`} />
         </Link>
 
         {/* Desktop Logo */}
-        <Link href="/" className="hidden md:flex items-center gap-2 lg:gap-3 group flex-shrink-0">
-          <Image src="/images/logo.svg" alt="Next Generation Logo" width={76} height={76} className="w-[60px] lg:w-[76px] h-[60px] lg:h-[76px] object-contain flex-shrink-0" />
-          <Image src="/images/text-logo.svg" alt="Next Generation" width={230} height={76} className={`w-auto h-[38px] lg:h-[46px] object-contain transition-[filter] duration-300 ${isDark ? 'invert' : ''}`} />
+        <Link href="/" className="hidden min-[1400px]:flex items-center gap-2 2xl:gap-3 group flex-shrink-0">
+          <Image src="/images/logo.svg" alt="Next Generation Logo" width={76} height={76} className="w-[65px] 2xl:w-[76px] h-[65px] 2xl:h-[76px] object-contain flex-shrink-0" />
+          <Image src="/images/text-logo.svg" alt="Next Generation" width={230} height={76} className={`w-auto h-[38px] 2xl:h-[46px] object-contain transition-[filter] duration-300 ${isDark ? 'invert' : ''}`} />
         </Link>
         
         {/* Desktop Links */}
-        <div className={`hidden md:flex gap-4 lg:gap-10 text-[10px] lg:text-xs font-bold tracking-widest uppercase whitespace-nowrap flex-shrink-0 ${textColorClass} transition-colors`}>
+        <div className={`hidden min-[1400px]:flex gap-12 2xl:gap-16 text-[15px] 2xl:text-[18px] font-bold tracking-widest uppercase whitespace-nowrap flex-shrink-0 ${textColorClass} transition-colors`}>
           <Link href="#hero" onClick={() => handleNavClick('hero')} className="hover:text-[#FF2400] transition-colors relative group py-1">
             Home
             <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#FF2400] transition-transform duration-300 origin-left ${activeSection === 'hero' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
@@ -126,10 +126,10 @@ export default function Navbar() {
         </div>
         
         {/* Desktop WhatsApp */}
-        <div className="hidden md:block flex-shrink-0">
+        <div className="hidden min-[1400px]:block flex-shrink-0">
           <Link 
             href={generateWhatsAppLink("Hi Next Generation, I'd like to know more about the latest men's fashion collections available at your Kumbakonam store.")} 
-            className={`blob-btn inline-block whitespace-nowrap px-4 lg:px-6 py-2 lg:py-2.5 font-bold text-[10px] lg:text-xs tracking-widest uppercase text-[#FF2400] ${isDark ? 'blob-btn-dark-hover' : ''}`}
+            className={`blob-btn inline-block whitespace-nowrap px-6 2xl:px-8 py-2.5 2xl:py-3 font-bold text-[13px] 2xl:text-[15px] tracking-widest uppercase text-[#FF2400] ${isDark ? 'blob-btn-dark-hover' : ''}`}
           >
             <span className="relative z-10">WhatsApp</span>
             <span className="blob-btn__inner">
@@ -145,54 +145,55 @@ export default function Navbar() {
 
         {/* Mobile Hamburger */}
         <button 
-          className={`md:hidden p-2 -mr-2 ${textColorClass} hover:text-[#FF2400] transition-colors`}
+          className={`min-[1400px]:hidden p-2 -mr-2 ${textColorClass} hover:text-[#FF2400] transition-colors`}
           onClick={() => setMobileMenuOpen(true)}
           aria-label="Open menu"
         >
-          <Menu className="w-6 h-6" />
+          <Menu className="w-6 h-6 md:w-10 md:h-10 lg:w-12 lg:h-12" />
         </button>
       </nav>
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-[100] bg-[#F7F5F0] flex flex-col pointer-events-auto">
-          <div className="flex items-center justify-between pt-5 px-4 w-full">
-            <Link href="#hero" className="flex items-center gap-2 group" onClick={() => setMobileMenuOpen(false)}>
-              <Image src="/images/logo.svg" alt="Next Generation Logo" width={60} height={60} className="w-[60px] h-[60px] object-contain flex-shrink-0" />
-              <Image src="/images/text-logo.svg" alt="Next Generation" width={150} height={60} className="w-auto h-[30px] object-contain" />
+        <div className="fixed inset-0 z-[110] bg-[#F7F5F0] overflow-y-auto pointer-events-auto">
+          <div className="flex flex-col min-h-full w-full">
+            <div className="flex items-center justify-between pt-5 lg:pt-8 px-4 md:px-8 lg:px-12 w-full flex-shrink-0">
+              <Link href="#hero" className="flex items-center gap-2 md:gap-3 group" onClick={() => setMobileMenuOpen(false)}>
+              <Image src="/images/logo.svg" alt="Next Generation Logo" width={90} height={90} className="w-[40px] min-[400px]:w-[55px] md:w-[75px] lg:w-[90px] h-[40px] min-[400px]:h-[55px] md:h-[75px] lg:h-[90px] object-contain flex-shrink-0" />
+              <Image src="/images/text-logo.svg" alt="Next Generation" width={220} height={90} className="w-auto max-w-[140px] min-[400px]:max-w-[180px] sm:max-w-none h-[24px] min-[400px]:h-[30px] md:h-[40px] lg:h-[50px] object-contain" />
             </Link>
             <button 
               className="p-2 -mr-2 text-[#111111] hover:text-[#FF2400] transition-colors"
               onClick={() => setMobileMenuOpen(false)}
               aria-label="Close menu"
             >
-              <X className="w-6 h-6" />
+              <X className="w-7 h-7 min-[400px]:w-9 min-[400px]:h-9 md:w-12 md:h-12 lg:w-16 lg:h-16" />
             </button>
           </div>
           
-          <div className="flex flex-col items-start px-6 pt-16 gap-8 text-2xl font-black tracking-tighter uppercase text-[#111111]">
-            <Link href="#hero" onClick={() => { setMobileMenuOpen(false); handleNavClick('hero'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4">
+          <div className="flex flex-col flex-grow w-full items-start px-6 md:px-12 lg:px-20 pt-10 md:pt-16 lg:pt-20 pb-20 gap-8 md:gap-12 lg:gap-16 text-2xl md:text-5xl lg:text-7xl font-black tracking-tighter uppercase text-[#111111]">
+            <Link href="#hero" onClick={() => { setMobileMenuOpen(false); handleNavClick('hero'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4 flex-shrink-0">
               Home
               {activeSection === 'hero' && <span className="w-2 h-2 rounded-full bg-[#FF2400]"></span>}
             </Link>
-            <Link href="#about" onClick={() => { setMobileMenuOpen(false); handleNavClick('about'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4">
+            <Link href="#about" onClick={() => { setMobileMenuOpen(false); handleNavClick('about'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4 flex-shrink-0">
               About
               {activeSection === 'about' && <span className="w-2 h-2 rounded-full bg-[#FF2400]"></span>}
             </Link>
-            <Link href="#collections" onClick={() => { setMobileMenuOpen(false); handleNavClick('collections'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4">
+            <Link href="#collections" onClick={() => { setMobileMenuOpen(false); handleNavClick('collections'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4 flex-shrink-0">
               Collections
               {activeSection === 'collections' && <span className="w-2 h-2 rounded-full bg-[#FF2400]"></span>}
             </Link>
-            <Link href="#store" onClick={() => { setMobileMenuOpen(false); handleNavClick('store'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4">
+            <Link href="#store" onClick={() => { setMobileMenuOpen(false); handleNavClick('store'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4 flex-shrink-0">
               Store
               {activeSection === 'store' && <span className="w-2 h-2 rounded-full bg-[#FF2400]"></span>}
             </Link>
-            <Link href="#contact" onClick={() => { setMobileMenuOpen(false); handleNavClick('contact'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4">
+            <Link href="#contact" onClick={() => { setMobileMenuOpen(false); handleNavClick('contact'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4 flex-shrink-0">
               Contact
               {activeSection === 'contact' && <span className="w-2 h-2 rounded-full bg-[#FF2400]"></span>}
             </Link>
             
-            <div className="mt-8 pt-8 border-t border-[#111111]/10 w-full">
+            <div className="mt-4 md:mt-8 pt-6 md:pt-8 border-t border-[#111111]/10 w-full flex-shrink-0">
               <Link 
                 href={generateWhatsAppLink("Hi Next Generation, I'd like to know more about the latest men's fashion collections available at your Kumbakonam store.")} 
                 onClick={() => setMobileMenuOpen(false)}
@@ -201,6 +202,7 @@ export default function Navbar() {
                 WhatsApp
               </Link>
             </div>
+          </div>
           </div>
         </div>
       )}

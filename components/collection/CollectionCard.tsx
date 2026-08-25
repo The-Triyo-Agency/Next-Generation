@@ -11,6 +11,8 @@ interface CollectionCardProps {
   dark?: boolean;
   alignRight?: boolean;
   overflowVisible?: boolean;
+  textOverlayGradient?: string;
+  gradientWidthClass?: string;
 }
 
 export default function CollectionCard({
@@ -23,23 +25,55 @@ export default function CollectionCard({
   dark = false,
   alignRight = false,
   overflowVisible = false,
+  textOverlayGradient,
+  gradientWidthClass,
 }: CollectionCardProps) {
+  // Determine default gradient if not provided
+  const defaultGradient = dark 
+    ? "from-[#111111] via-[#111111]/70 to-transparent" 
+    : "from-[#F4F1EB] via-[#F4F1EB]/70 to-transparent";
+    
+  const gradientClass = textOverlayGradient || defaultGradient;
   return (
-    <div
+    <Link
+      href="/collections"
       className={cn(
-        "relative rounded-[14px] md:rounded-[18px] bg-[#F4F1EB] border border-black/5 group",
-        "transition-all duration-500 hover:shadow-sm",
+        "relative block rounded-[14px] md:rounded-[18px] bg-[#F4F1EB] border border-black/5 group",
+        "transition-all duration-500 hover:shadow-sm cursor-pointer",
         dark && "bg-[#111111] border-white/10",
         !overflowVisible && "overflow-hidden",
         className
       )}
     >
+      {/* Image Container */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <img
+          src={imageSrc}
+          alt={title}
+          className={cn(
+            "absolute transition-transform duration-700 ease-out group-hover:scale-[1.03]",
+            imageClass
+          )}
+        />
+      </div>
+      
+      {/* Text Protection Gradient */}
+      {gradientClass !== "none" && (
+        <div className={cn(
+          "absolute inset-y-0 pointer-events-none z-[5]",
+          alignRight 
+            ? `right-0 bg-gradient-to-l ${dark ? 'from-[#111111] via-[#111111]/70' : 'from-[#F4F1EB] via-[#F4F1EB]/70'} to-transparent` 
+            : `left-0 bg-gradient-to-r ${gradientClass}`,
+          gradientWidthClass || "w-[80%] md:w-[65%] xl:w-[50%]"
+        )} />
+      )}
+
       {/* Content */}
       <div className={cn(
         "relative z-10 p-6 md:p-8 flex flex-col h-full pointer-events-none",
-        alignRight && "md:w-1/2 md:ml-auto"
+        alignRight ? "w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] xl:w-[75%] ml-auto items-end text-right" : "items-start text-left"
       )}>
-        <div className="flex items-center gap-3 mb-3 md:mb-4">
+        <div className={cn("flex items-center gap-3 mb-3 md:mb-4", alignRight && "flex-row-reverse")}>
           <span className="text-[#C8321F] font-oswald text-xl md:text-2xl font-bold tracking-wide">
             {number}
           </span>
@@ -61,8 +95,7 @@ export default function CollectionCard({
         </p>
 
         <div className="mt-auto">
-          <Link
-            href="/collections"
+          <div
             className={cn(
               "inline-flex items-center gap-4 text-[10px] md:text-[11px] font-bold tracking-[0.15em] uppercase pointer-events-auto group/link",
               dark ? "text-[#F4F1EB]" : "text-[#111111]"
@@ -75,22 +108,9 @@ export default function CollectionCard({
                 <path d="m13 5 7 7-7 7" />
               </svg>
             </span>
-          </Link>
+          </div>
         </div>
       </div>
-
-      {/* Image Container */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <img
-          src={imageSrc}
-          alt={title}
-          className={cn(
-            "absolute transition-transform duration-700 ease-out group-hover:scale-[1.03]",
-            imageClass
-          )}
-        />
-      </div>
-    </div>
+    </Link>
   );
 }
-

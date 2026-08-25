@@ -43,13 +43,13 @@ export default function AboutSection() {
           </div>
 
           {/* Character Image (Outside overflow-hidden so it can cross boundaries) */}
-          <div className="absolute top-0 left-0 w-full h-[420px] md:h-full md:w-[48%] pointer-events-none z-10">
+          <div className="absolute top-0 left-0 w-full h-[420px] md:h-full md:w-[50%] lg:w-[52%] xl:w-[48%] pointer-events-none z-10">
             <div className="relative w-full h-full">
               <Image 
                 src="/images/hero/about-hero2.png" 
                 alt="Next Generation menswear model wearing contemporary streetwear in Kumbakonam"
                 fill
-                className="object-contain object-bottom md:object-right-bottom scale-[1.05] md:scale-[1.0] origin-bottom md:translate-x-8 md:translate-y-8 lg:translate-y-10"
+                className="object-contain object-bottom md:object-right-bottom scale-[1.05] md:scale-[1.15] lg:scale-[1.10] xl:scale-[1.05] origin-bottom md:-translate-x-6 lg:-translate-x-6 xl:translate-x-3 md:translate-y-8 lg:translate-y-10"
                 sizes="(max-width: 768px) 100vw, 50vw"
                 priority
               />

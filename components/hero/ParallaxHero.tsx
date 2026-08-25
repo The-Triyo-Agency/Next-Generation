@@ -204,9 +204,7 @@ export default function ParallaxHero() {
           {/* Metadata + Headline */}
           {/* Using mt-32 (128px) to safely push below the fixed Navbar on all screens */}
           <div ref={mobileTextRef} className="flex flex-col mt-32">
-            <p className="text-[#FF2400] font-bold text-[8px] tracking-[0.2em] uppercase mb-4 pointer-events-auto">
-              Men's Fashion <span className="text-[#111111]/40">•</span> Kumbakonam
-            </p>
+
             {/* The Text 'UNBOUND.' */}
             <h1 className="text-[clamp(50px,15vw,80px)] leading-[0.9] font-black text-[#111111] uppercase tracking-tighter mix-blend-normal z-[5]">
               UNBOUND<span className="text-[#FF2400]">.</span>
@@ -245,11 +243,11 @@ export default function ParallaxHero() {
       </div>
 
       {/* DESKTOP HERO (>= 768px) */}
-      <div className="hidden md:flex relative w-full h-[100svh] min-h-[700px] flex-col justify-between">
+      <div className="hidden md:flex relative w-full h-[100svh] min-h-[500px] max-h-[850px] lg:max-h-[900px] xl:max-h-[950px] flex-col justify-between">
         
         {/* LAYER 2: Typography Safe Zone */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 w-full px-4 overflow-hidden">
-          <h1 ref={textRef} className="text-[#111111] font-black tracking-tighter uppercase leading-[0.85] w-full max-w-[1600px] h-full flex flex-col justify-center">
+        <div className="absolute inset-0 flex items-start pt-[clamp(110px,20vh,250px)] md:pt-[clamp(120px,18vh,250px)] lg:pt-[clamp(130px,22vh,300px)] xl:pt-[clamp(140px,25vh,350px)] justify-center pointer-events-none z-10 w-full px-4 overflow-hidden">
+          <h1 ref={textRef} className="text-[#111111] font-black tracking-tighter uppercase leading-[0.85] w-full max-w-[1600px] flex flex-col justify-start">
             
             {/* Desktop / Tablet Typography */}
             <div className="flex flex-col justify-center items-center h-full w-full relative">
@@ -267,7 +265,7 @@ export default function ParallaxHero() {
           ref={characterRef}
           className="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-20 
           w-[60vw] lg:w-[45vw] xl:w-[40vw] max-w-[700px] 
-          h-[75vh] lg:h-[80vh] pointer-events-none"
+          h-[80%] min-h-[400px] lg:h-[85%] lg:min-h-[500px] pointer-events-none"
         >
           <Image 
             id="hero-image-desktop"

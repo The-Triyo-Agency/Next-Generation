@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { generateWhatsAppLink } from "@/lib/whatsapp";
 
 export default function Footer() {
@@ -8,8 +9,14 @@ export default function Footer() {
         
         {/* Brand & Description */}
         <div className="flex flex-col gap-6 max-w-sm">
-          <Link href="/" className="font-black text-2xl tracking-tighter uppercase leading-none">
-            Next Generation<span className="text-[#FF2400]">.</span>
+          <Link href="/" className="inline-block relative">
+            <Image 
+              src="/images/text-logo.svg" 
+              alt="Next Generation" 
+              width={240} 
+              height={80} 
+              className="w-auto h-[24px] md:h-[32px] lg:h-[40px] object-contain invert" 
+            />
           </Link>
           <p className="text-sm text-[#F7F5F0]/70 font-semibold leading-relaxed">
             Everyday men's fashion, streetwear-inspired styles, footwear and accessories for the next generation of Kumbakonam.
