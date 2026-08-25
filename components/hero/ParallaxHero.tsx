@@ -44,9 +44,11 @@ export default function ParallaxHero() {
 
     lenis.on("scroll", ScrollTrigger.update);
 
-    gsap.ticker.add((time) => {
+    const updateLenis = (time: number) => {
       lenis.raf(time * 1000);
-    });
+    };
+
+    gsap.ticker.add(updateLenis);
     gsap.ticker.lagSmoothing(0);
 
     const mm = gsap.matchMedia();
@@ -65,10 +67,8 @@ export default function ParallaxHero() {
 
     return () => {
       mm.revert();
+      gsap.ticker.remove(updateLenis);
       lenis.destroy();
-      gsap.ticker.remove((time) => {
-        lenis.raf(time * 1000);
-      });
     };
   }, [prefersReducedMotion]);
 

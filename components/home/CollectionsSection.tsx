@@ -71,6 +71,7 @@ export default function CollectionsSection() {
             title="T-SHIRTS" 
             subtitle="OVERSIZED • ESSENTIAL • GRAPHIC" 
             imageSrc="/images/collections/tshirt.png"
+            href="/collections/tshirts"
             className="md:col-span-1 xl:col-span-2 relative h-[450px] md:h-[500px] bg-[linear-gradient(to_right,#FFFFFF_45%,#EBE8E0_45%)]"
             textOverlayGradient="from-white via-white/75 to-transparent"
             imageClass="w-[95%] sm:w-[85%] md:w-[100%] xl:w-[65%] h-full object-cover object-right bottom-0 right-[-15%] sm:right-[-10%] md:right-[-10%] pointer-events-none"
@@ -82,6 +83,7 @@ export default function CollectionsSection() {
             title="SHIRTS" 
             subtitle="CASUAL • FORMAL • TEXTURED" 
             imageSrc="/images/collections/shirt.png"
+            href="/collections/shirts"
             dark={true}
             className="md:col-span-1 xl:col-span-2 relative h-[450px] md:h-[500px]"
             imageClass="w-[90%] sm:w-[80%] md:w-[100%] xl:w-[65%] h-full object-cover object-right bottom-0 right-[-15%] sm:right-[-10%] md:right-0 pointer-events-none"
@@ -93,6 +95,7 @@ export default function CollectionsSection() {
             title="TROUSERS" 
             subtitle="CARGO • RELAXED • STRAIGHT" 
             imageSrc="/images/collections/bottom-wear.png"
+            href="/collections/trousers"
             alignRight={true}
             className="md:col-span-2 xl:col-span-2 relative h-[450px] md:h-[500px] bg-[#F4F1EB]"
             imageClass="w-[90%] sm:w-[80%] xl:w-[60%] h-full xl:h-[110%] object-cover object-left md:object-left-bottom xl:object-left-bottom left-[-15%] sm:left-[-10%] md:left-[-5%] xl:left-0 pointer-events-none" 
@@ -104,6 +107,7 @@ export default function CollectionsSection() {
             title="FOOTWEAR" 
             subtitle="SNEAKERS • CASUAL • EVERYDAY" 
             imageSrc="/images/collections/foot-wear.png"
+            href="/collections/shoes"
             className="md:col-span-1 xl:col-span-2 relative h-[450px] md:h-[500px] bg-[#EBE8E0]"
             textOverlayGradient="none"
             imageClass="w-full h-full object-cover object-center bottom-0 md:bottom-[-5%] xl:bottom-auto xl:top-0 right-0 pointer-events-none xl:scale-[1.1] group-hover:scale-[1.05] xl:group-hover:scale-[1.15] origin-center" 
@@ -117,6 +121,7 @@ export default function CollectionsSection() {
               title="ACCESSORIES" 
               subtitle="STYLISH • MINIMAL • BOLD" 
               imageSrc="/images/collections/accessories.png"
+              href="/collections/accessories"
               className="flex-1 min-h-[250px] bg-[#EBE8E0]"
               gradientWidthClass="w-[95%] md:w-[90%] xl:w-[85%]"
               imageClass="w-[90%] xl:w-[70%] h-full object-cover object-right bottom-0 right-0 pointer-events-none"
@@ -127,6 +132,7 @@ export default function CollectionsSection() {
               title="BAGS" 
               subtitle="BACKPACKS • SLING • TOTES" 
               imageSrc="/images/collections/bags.png"
+              href="/collections/bags"
               className="flex-1 min-h-[250px] bg-[#F4F1EB]"
               imageClass="w-[90%] xl:w-[70%] h-full object-cover object-right bottom-0 right-0 pointer-events-none"
             />

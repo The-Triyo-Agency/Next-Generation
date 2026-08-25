@@ -13,6 +13,7 @@ interface CollectionCardProps {
   overflowVisible?: boolean;
   textOverlayGradient?: string;
   gradientWidthClass?: string;
+  href?: string;
 }
 
 export default function CollectionCard({
@@ -27,6 +28,7 @@ export default function CollectionCard({
   overflowVisible = false,
   textOverlayGradient,
   gradientWidthClass,
+  href = "/#collections",
 }: CollectionCardProps) {
   // Determine default gradient if not provided
   const defaultGradient = dark 
@@ -36,7 +38,7 @@ export default function CollectionCard({
   const gradientClass = textOverlayGradient || defaultGradient;
   return (
     <Link
-      href="/collections"
+      href={href}
       className={cn(
         "relative block rounded-[14px] md:rounded-[18px] bg-[#F4F1EB] border border-black/5 group",
         "transition-all duration-500 hover:shadow-sm cursor-pointer",

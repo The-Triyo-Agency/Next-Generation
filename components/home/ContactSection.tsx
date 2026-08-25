@@ -51,7 +51,7 @@ export default function ContactSection() {
             alt="Next Generation model showcasing apparel"
             fill
             priority
-            className="object-contain object-bottom origin-bottom scale-100 md:scale-[0.95] lg:scale-[0.90] md:translate-x-4 lg:translate-x-8"
+            className="object-contain object-bottom origin-bottom scale-100 md:scale-[0.95] lg:scale-[0.90] md:translate-x-4 lg:translate-x-8 drop-shadow-[-20px_0_25px_rgba(0,0,0,0.15)]"
             sizes="(max-width: 768px) 100vw, 50vw"
           />
         </div>

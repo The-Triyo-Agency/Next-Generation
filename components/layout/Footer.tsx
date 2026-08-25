@@ -28,10 +28,10 @@ export default function Footer() {
           
           <div className="flex flex-col gap-4">
             <span className="text-[10px] font-bold tracking-widest uppercase text-[#F7F5F0]/50 mb-2">Navigation</span>
-            <Link href="/about" className="text-xs font-bold tracking-widest uppercase hover:text-[#FF2400] transition-colors">About</Link>
-            <Link href="/collections" className="text-xs font-bold tracking-widest uppercase hover:text-[#FF2400] transition-colors">Collections</Link>
-            <Link href="/store" className="text-xs font-bold tracking-widest uppercase hover:text-[#FF2400] transition-colors">Store</Link>
-            <Link href="/contact" className="text-xs font-bold tracking-widest uppercase hover:text-[#FF2400] transition-colors">Contact</Link>
+            <Link href="/#about" className="text-xs font-bold tracking-widest uppercase hover:text-[#FF2400] transition-colors">About</Link>
+            <Link href="/#collections" className="text-xs font-bold tracking-widest uppercase hover:text-[#FF2400] transition-colors">Collections</Link>
+            <Link href="/#store" className="text-xs font-bold tracking-widest uppercase hover:text-[#FF2400] transition-colors">Store</Link>
+            <Link href="/#contact" className="text-xs font-bold tracking-widest uppercase hover:text-[#FF2400] transition-colors">Contact</Link>
           </div>
 
           <div className="flex flex-col gap-4">
