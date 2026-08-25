@@ -6,6 +6,15 @@ export default function CollectionsSection() {
     <section className="bg-[#F4F1EB] text-[#111111] pt-16 md:pt-24 lg:pt-36 xl:pt-48 pb-16 md:pb-24 px-4 md:px-8 lg:px-10 w-full overflow-hidden" id="collections" data-navbar-theme="light">
       <div className="max-w-[1500px] mx-auto">
         
+        {/* Section Header */}
+        <div className="flex items-center gap-4 mb-10 md:mb-16">
+          <span className="text-[#FF2400] font-black text-xs md:text-sm tracking-[0.2em]">02</span>
+          <span className="w-8 md:w-12 h-[1px] bg-gradient-to-r from-[#FF2400] to-[#111111]/10"></span>
+          <h2 className="font-bold text-[10px] md:text-xs lg:text-sm tracking-[0.2em] uppercase text-[#111111]/70 m-0">
+            Collections
+          </h2>
+        </div>
+
         {/* Main Grid Layout - Ultra Flexible & Spaced for Premium Feel */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8 xl:gap-10">
           

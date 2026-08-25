@@ -53,55 +53,14 @@ export default function ParallaxHero() {
 
     // Apply desktop parallax
     mm.add("(min-width: 768px)", () => {
-      gsap.to(textRef.current, {
-        yPercent: 30, 
-        ease: "none",
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
+      // Currently no active parallax animations on desktop
+      // (Text and character are static as requested)
     });
 
     // Apply mobile cinematic depth parallax
     mm.add("(max-width: 767px)", () => {
-      // Typography moves slightly slower (upward)
-      gsap.to(mobileTextRef.current, {
-        y: -25, 
-        ease: "none",
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-
-      // Graphic moves slightly slower than model
-      gsap.to(mobileGraphicRef.current, {
-        y: -30, 
-        ease: "none",
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-
-      // Character moves significantly faster (upward) to create foreground depth
-      gsap.to(mobileCharacterRef.current, {
-        y: -80, 
-        ease: "none",
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
+      // Currently no active parallax animations on mobile
+      // (Text and character are static as requested)
     });
 
     return () => {
@@ -246,8 +205,8 @@ export default function ParallaxHero() {
       <div className="hidden md:flex relative w-full h-[100svh] min-h-[500px] max-h-[850px] lg:max-h-[900px] xl:max-h-[950px] flex-col justify-between">
         
         {/* LAYER 2: Typography Safe Zone */}
-        <div className="absolute inset-0 flex items-start pt-[clamp(110px,20vh,250px)] md:pt-[clamp(120px,18vh,250px)] lg:pt-[clamp(130px,22vh,300px)] xl:pt-[clamp(140px,25vh,350px)] justify-center pointer-events-none z-10 w-full px-4 overflow-hidden">
-          <h1 ref={textRef} className="text-[#111111] font-black tracking-tighter uppercase leading-[0.85] w-full max-w-[1600px] flex flex-col justify-start">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 w-full px-4 overflow-hidden">
+          <h1 ref={textRef} className="text-[#111111] font-black tracking-tighter uppercase leading-[0.85] w-full max-w-[1600px] flex flex-col justify-center">
             
             {/* Desktop / Tablet Typography */}
             <div className="flex flex-col justify-center items-center h-full w-full relative">
@@ -292,7 +251,7 @@ export default function ParallaxHero() {
           <div className="flex pointer-events-auto">
             <Link 
               href="/collections" 
-              className="blob-btn px-9 py-4 font-bold text-xs tracking-widest uppercase text-[#FF2400] shadow-xl"
+              className="blob-btn px-9 py-4 rounded-xl font-bold text-xs tracking-widest uppercase text-[#FF2400] shadow-xl"
             >
               <span className="relative z-10">Explore Collections</span>
               <span className="blob-btn__inner">

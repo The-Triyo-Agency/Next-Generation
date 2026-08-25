@@ -13,9 +13,24 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState<string>("hero");
   const isNavigating = useRef(false);
 
-  const handleNavClick = (section: string) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, section: string) => {
+    e.preventDefault();
     setActiveSection(section);
     isNavigating.current = true;
+    
+    // Custom smooth scroll logic to ensure fast, reliable navigation with offset for fixed navbar
+    const element = document.getElementById(section);
+    if (element) {
+      const navHeight = 100; // Offset for fixed navbar
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - navHeight;
+  
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+
     setTimeout(() => {
       isNavigating.current = false;
     }, 1000);
@@ -103,33 +118,33 @@ export default function Navbar() {
         
         {/* Desktop Links */}
         <div className={`hidden min-[1400px]:flex gap-12 2xl:gap-16 text-[15px] 2xl:text-[18px] font-bold tracking-widest uppercase whitespace-nowrap flex-shrink-0 ${textColorClass} transition-colors`}>
-          <Link href="#hero" onClick={() => handleNavClick('hero')} className="hover:text-[#FF2400] transition-colors relative group py-1">
+          <a href="#hero" onClick={(e) => handleNavClick(e, 'hero')} className="hover:text-[#FF2400] transition-colors relative group py-1 cursor-pointer">
             Home
             <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#FF2400] transition-transform duration-300 origin-left ${activeSection === 'hero' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
-          </Link>
-          <Link href="#about" onClick={() => handleNavClick('about')} className="hover:text-[#FF2400] transition-colors relative group py-1">
+          </a>
+          <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="hover:text-[#FF2400] transition-colors relative group py-1 cursor-pointer">
             About
             <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#FF2400] transition-transform duration-300 origin-left ${activeSection === 'about' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
-          </Link>
-          <Link href="#collections" onClick={() => handleNavClick('collections')} className="hover:text-[#FF2400] transition-colors relative group py-1">
+          </a>
+          <a href="#collections" onClick={(e) => handleNavClick(e, 'collections')} className="hover:text-[#FF2400] transition-colors relative group py-1 cursor-pointer">
             Collections
             <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#FF2400] transition-transform duration-300 origin-left ${activeSection === 'collections' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
-          </Link>
-          <Link href="#store" onClick={() => handleNavClick('store')} className="hover:text-[#FF2400] transition-colors relative group py-1">
+          </a>
+          <a href="#store" onClick={(e) => handleNavClick(e, 'store')} className="hover:text-[#FF2400] transition-colors relative group py-1 cursor-pointer">
             Store
             <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#FF2400] transition-transform duration-300 origin-left ${activeSection === 'store' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
-          </Link>
-          <Link href="#contact" onClick={() => handleNavClick('contact')} className="hover:text-[#FF2400] transition-colors relative group py-1">
+          </a>
+          <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="hover:text-[#FF2400] transition-colors relative group py-1 cursor-pointer">
             Contact
             <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#FF2400] transition-transform duration-300 origin-left ${activeSection === 'contact' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
-          </Link>
+          </a>
         </div>
         
         {/* Desktop WhatsApp */}
         <div className="hidden min-[1400px]:block flex-shrink-0">
           <Link 
             href={generateWhatsAppLink("Hi Next Generation, I'd like to know more about the latest men's fashion collections available at your Kumbakonam store.")} 
-            className={`blob-btn inline-block whitespace-nowrap px-6 2xl:px-8 py-2.5 2xl:py-3 font-bold text-[13px] 2xl:text-[15px] tracking-widest uppercase text-[#FF2400] ${isDark ? 'blob-btn-dark-hover' : ''}`}
+            className={`blob-btn inline-block whitespace-nowrap px-6 2xl:px-8 py-2.5 2xl:py-3 rounded-xl font-bold text-[13px] 2xl:text-[15px] tracking-widest uppercase text-[#FF2400] ${isDark ? 'blob-btn-dark-hover' : ''}`}
           >
             <span className="relative z-10">WhatsApp</span>
             <span className="blob-btn__inner">
@@ -172,26 +187,26 @@ export default function Navbar() {
           </div>
           
           <div className="flex flex-col flex-grow w-full items-start px-6 md:px-12 lg:px-20 pt-10 md:pt-16 lg:pt-20 pb-20 gap-8 md:gap-12 lg:gap-16 text-2xl md:text-5xl lg:text-7xl font-black tracking-tighter uppercase text-[#111111]">
-            <Link href="#hero" onClick={() => { setMobileMenuOpen(false); handleNavClick('hero'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4 flex-shrink-0">
+            <a href="#hero" onClick={(e) => { setMobileMenuOpen(false); handleNavClick(e, 'hero'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4 flex-shrink-0 cursor-pointer">
               Home
               {activeSection === 'hero' && <span className="w-2 h-2 rounded-full bg-[#FF2400]"></span>}
-            </Link>
-            <Link href="#about" onClick={() => { setMobileMenuOpen(false); handleNavClick('about'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4 flex-shrink-0">
+            </a>
+            <a href="#about" onClick={(e) => { setMobileMenuOpen(false); handleNavClick(e, 'about'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4 flex-shrink-0 cursor-pointer">
               About
               {activeSection === 'about' && <span className="w-2 h-2 rounded-full bg-[#FF2400]"></span>}
-            </Link>
-            <Link href="#collections" onClick={() => { setMobileMenuOpen(false); handleNavClick('collections'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4 flex-shrink-0">
+            </a>
+            <a href="#collections" onClick={(e) => { setMobileMenuOpen(false); handleNavClick(e, 'collections'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4 flex-shrink-0 cursor-pointer">
               Collections
               {activeSection === 'collections' && <span className="w-2 h-2 rounded-full bg-[#FF2400]"></span>}
-            </Link>
-            <Link href="#store" onClick={() => { setMobileMenuOpen(false); handleNavClick('store'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4 flex-shrink-0">
+            </a>
+            <a href="#store" onClick={(e) => { setMobileMenuOpen(false); handleNavClick(e, 'store'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4 flex-shrink-0 cursor-pointer">
               Store
               {activeSection === 'store' && <span className="w-2 h-2 rounded-full bg-[#FF2400]"></span>}
-            </Link>
-            <Link href="#contact" onClick={() => { setMobileMenuOpen(false); handleNavClick('contact'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4 flex-shrink-0">
+            </a>
+            <a href="#contact" onClick={(e) => { setMobileMenuOpen(false); handleNavClick(e, 'contact'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4 flex-shrink-0 cursor-pointer">
               Contact
               {activeSection === 'contact' && <span className="w-2 h-2 rounded-full bg-[#FF2400]"></span>}
-            </Link>
+            </a>
             
             <div className="mt-4 md:mt-8 pt-6 md:pt-8 border-t border-[#111111]/10 w-full flex-shrink-0">
               <Link 

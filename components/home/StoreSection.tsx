@@ -1,95 +1,192 @@
-import WhatsAppButton from "@/components/ui/WhatsAppButton";
-import { MapPin, Clock, Phone } from "lucide-react";
+import { MapPin, Clock, Phone, ArrowUpRight } from "lucide-react";
 
 export default function StoreSection() {
   return (
-    <section className="bg-[#111111] text-[#F7F5F0] py-24 md:py-40 px-6 md:px-12 w-full border-t border-[#F7F5F0]/10" id="store" data-navbar-theme="dark">
-      <div className="max-w-[1600px] mx-auto flex flex-col lg:flex-row gap-16 lg:gap-32">
+    <section className="bg-[#111111] text-[#F7F5F0] w-full py-24 md:py-32 relative overflow-hidden" id="store" data-navbar-theme="dark">
+      <div className="w-[92%] md:w-[94%] max-w-[1700px] mx-auto bg-[#F7F5F0] text-[#111111] rounded-[2rem] lg:rounded-[3rem] shadow-[0_30px_60px_rgba(0,0,0,0.6)] overflow-hidden flex flex-col lg:flex-row min-h-[700px] relative">
         
         {/* Left: Store Info */}
-        <div className="flex-1 flex flex-col items-start">
+        <div className="w-full lg:w-[42%] xl:w-[40%] flex flex-col pt-12 pb-12 px-8 md:px-12 lg:pl-16 xl:pl-24 lg:pr-12 lg:pt-16 lg:pb-16 relative z-10">
+          
+          {/* Dot Matrix Decorator */}
+          <div className="flex flex-col gap-[6px] mb-8">
+            {[0, 1, 2].map((row) => (
+              <div key={row} className="flex gap-[6px]">
+                {[0, 1, 2].map((col) => (
+                  <div key={col} className="w-[6px] h-[6px] rounded-full bg-[#FF2400]/40" />
+                ))}
+              </div>
+            ))}
+          </div>
+
+          {/* Section Header */}
           <div className="flex items-center gap-3 mb-6">
-            <span className="text-[#FF2400] font-bold text-[10px] tracking-widest uppercase">03</span>
-            <span className="w-8 h-[1px] bg-[#FF2400]"></span>
-            <span className="font-bold text-[10px] tracking-widest uppercase text-[#F7F5F0]/60">Location</span>
+            <span className="text-[#FF2400] font-bold text-xs tracking-widest uppercase">03</span>
+            <span className="w-12 h-[1px] bg-[#FF2400]"></span>
+            <span className="font-bold text-xs tracking-widest uppercase text-[#111111]">Location</span>
           </div>
           
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.9] mb-12">
-            Visit The<br />Store<span className="text-[#FF2400]">.</span>
+          <h2 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase leading-[0.85] mb-12">
+            Visit Our<br />
+            <span className="text-[#FF2400]">Store<span className="text-[#111111]">.</span></span>
           </h2>
 
-          <div className="flex flex-col gap-8 max-w-sm w-full">
+          {/* Vertical Timeline Info */}
+          <div className="relative pl-6 flex flex-col gap-8 max-w-sm mb-12 border-l border-[#111111]/20">
             
-            <div className="flex items-start gap-4">
-              <MapPin className="w-5 h-5 text-[#FF2400] shrink-0 mt-1" />
-              <div>
-                <h3 className="font-black tracking-widest text-xs uppercase mb-2">Address</h3>
-                <p className="text-sm text-[#F7F5F0]/70 font-semibold leading-relaxed">
-                  1st Floor, KRC Complex,<br />
-                  Mutt St, Opp. to Shankara Mutt,<br />
-                  Swaminatha Nagar, Anna Nagar,<br />
-                  Kumbakonam, Tamil Nadu 612001
-                </p>
+            {/* Address */}
+            <div className="relative">
+              <div className="absolute -left-[37px] top-0 w-7 h-7 rounded-full bg-[#111111] flex items-center justify-center">
+                <MapPin className="w-3.5 h-3.5 text-[#FF2400]" />
               </div>
+              <h3 className="font-black tracking-widest text-[13px] uppercase mb-2">Address</h3>
+              <p className="text-[15px] text-[#111111]/70 font-semibold leading-relaxed">
+                1st Floor, KRC Complex,<br />
+                Mutt St, Opp. to Shankara Mutt,<br />
+                Swaminatha Nagar, Anna Nagar,<br />
+                Kumbakonam, Tamil Nadu 612001
+              </p>
             </div>
 
-            <div className="flex items-start gap-4">
-              <Clock className="w-5 h-5 text-[#FF2400] shrink-0 mt-1" />
-              <div>
-                <h3 className="font-black tracking-widest text-xs uppercase mb-2">Store Hours</h3>
-                <p className="text-sm text-[#F7F5F0]/70 font-semibold leading-relaxed">
-                  Open Everyday<br />
-                  9:30 AM – 10:00 PM
-                </p>
+            {/* Store Hours */}
+            <div className="relative">
+              <div className="absolute -left-[37px] top-0 w-7 h-7 rounded-full bg-[#111111] flex items-center justify-center">
+                <Clock className="w-3.5 h-3.5 text-[#FF2400]" />
               </div>
+              <h3 className="font-black tracking-widest text-[13px] uppercase mb-2">Store Hours</h3>
+              <p className="text-[15px] text-[#111111]/70 font-semibold leading-relaxed">
+                Open Everyday<br />
+                9:30 AM – 10:00 PM
+              </p>
             </div>
 
-            <div className="flex items-start gap-4">
-              <Phone className="w-5 h-5 text-[#FF2400] shrink-0 mt-1" />
-              <div>
-                <h3 className="font-black tracking-widest text-xs uppercase mb-2">Contact</h3>
-                <a href="tel:+919677031312" className="text-sm text-[#F7F5F0]/70 hover:text-[#FF2400] font-semibold leading-relaxed transition-colors block">
-                  +91 96770 31312
-                </a>
+            {/* Contact */}
+            <div className="relative">
+              <div className="absolute -left-[37px] top-0 w-7 h-7 rounded-full bg-[#111111] flex items-center justify-center">
+                <Phone className="w-3.5 h-3.5 text-[#FF2400]" />
               </div>
+              <h3 className="font-black tracking-widest text-[13px] uppercase mb-2">Contact</h3>
+              <a href="tel:+919677031312" className="text-[15px] text-[#111111]/70 hover:text-[#FF2400] font-semibold leading-relaxed transition-colors block">
+                +91 96770 31312
+              </a>
             </div>
 
           </div>
           
-          <div className="mt-12 flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-auto">
             <a 
-              href="https://www.google.com/maps/search/?api=1&query=Next+Generation,+1st+Floor,+KRC+Complex,+Mutt+St,+Opp.+to+Shankara+Mutt,+Swaminatha+Nagar,+Anna+Nagar,+Kumbakonam,+Tamil+Nadu+612001"
+              href="https://www.google.com/maps/place/Next+Generation/@10.966852,79.3752883,17z/data=!3m1!4b1!4m6!3m5!1s0x3baacd5301ee53cb:0x6fb159d8ad45dd76!8m2!3d10.966852!4d79.3778632!16s%2Fg%2F11f3vl7s4s?entry=ttu&g_ep=EgoyMDI2MDgyMy4wIKXMDSoASAFQAw%3D%3D"
               target="_blank" 
               rel="noreferrer"
-              className="bg-[#F7F5F0] text-[#111111] px-8 py-4 rounded-[10px] font-bold text-xs tracking-widest uppercase hover:bg-[#FF2400] hover:text-[#F7F5F0] transition-colors text-center"
+              className="blob-btn inline-block whitespace-nowrap px-8 py-3.5 rounded-xl font-bold text-xs tracking-widest uppercase text-[#FF2400] text-center"
             >
-              Get Directions
+              <span className="relative z-10 flex items-center justify-center gap-4">
+                <span>Get Directions</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </span>
+              <span className="blob-btn__inner">
+                <span className="blob-btn__blobs">
+                  <span className="blob-btn__blob"></span>
+                  <span className="blob-btn__blob"></span>
+                  <span className="blob-btn__blob"></span>
+                  <span className="blob-btn__blob"></span>
+                </span>
+              </span>
             </a>
-            <WhatsAppButton 
-              className="bg-[#111111] border-[1.5px] border-[#F7F5F0]/20 text-[#F7F5F0] px-8 py-4 rounded-[10px] font-bold text-xs tracking-widest uppercase hover:border-[#FF2400] hover:text-[#FF2400] transition-colors text-center" 
-              label="Message Us"
-            />
+            
+            <a 
+              href="https://wa.me/919677031312?text=Hi%20Next%20Generation,%20I'd%20like%20to%20know%20more%20about%20the%20latest%20men's%20fashion%20collections%20available%20at%20your%20Kumbakonam%20store."
+              target="_blank"
+              rel="noreferrer"
+              className="blob-btn inline-block whitespace-nowrap px-8 py-3.5 rounded-xl shadow-xl shadow-black/10 font-bold text-xs tracking-widest uppercase text-[#111111] text-center"
+            >
+              <span className="relative z-10 flex items-center justify-center gap-4">
+                <span>Message Us</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </span>
+              <span className="blob-btn__inner">
+                <span className="blob-btn__blobs">
+                  <span className="blob-btn__blob"></span>
+                  <span className="blob-btn__blob"></span>
+                  <span className="blob-btn__blob"></span>
+                  <span className="blob-btn__blob"></span>
+                </span>
+              </span>
+            </a>
           </div>
         </div>
 
-        {/* Right: Premium Location Text Visual */}
-        <div className="flex-1 w-full min-h-[400px] lg:min-h-[500px] bg-[#111111] border border-[#F7F5F0]/10 flex flex-col items-center justify-center relative p-8 md:p-12 overflow-hidden group">
-          {/* Decorative background grid/lines */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(247,245,240,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(247,245,240,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
+        {/* Right: Map Area */}
+        <div className="w-full h-[600px] lg:h-auto lg:absolute lg:top-0 lg:right-0 lg:bottom-0 lg:w-[58%] xl:w-[60%] z-0 relative lg:overflow-hidden">
           
-          <div className="relative z-10 text-center flex flex-col items-center gap-6">
-            <div className="w-16 h-16 rounded-full border border-[#FF2400]/30 flex items-center justify-center bg-[#FF2400]/10 group-hover:scale-110 transition-transform duration-500">
-              <MapPin className="w-6 h-6 text-[#FF2400]" />
-            </div>
-            
-            <h3 className="text-3xl md:text-5xl font-black tracking-tighter uppercase leading-[0.9] text-[#F7F5F0]">
-              Kumbakonam<span className="text-[#FF2400]">.</span>
-            </h3>
-            
-            <p className="text-xs tracking-widest uppercase font-bold text-[#F7F5F0]/40 max-w-[250px] leading-relaxed">
-              Premium men's streetwear and everyday fashion in the heart of the city.
-            </p>
+          {/* Mobile Diagonal Cut Map */}
+          {/* Black line effect layer */}
+          <div 
+            className="lg:hidden absolute inset-0 bg-[#111111] w-full h-full"
+            style={{ clipPath: 'polygon(0 40px, 100% 0, 100% 100%, 0% 100%)' }}
+          ></div>
+          {/* Orange border layer */}
+          <div 
+            className="lg:hidden absolute inset-0 bg-[#FF2400] w-full h-full mt-[4px]"
+            style={{ clipPath: 'polygon(0 40px, 100% 0, 100% 100%, 0% 100%)' }}
+          ></div>
+          {/* Actual map layer */}
+          <div 
+            className="lg:hidden absolute inset-0 w-full h-full bg-[#111111] mt-[10px]"
+            style={{ clipPath: 'polygon(0 40px, 100% 0, 100% 100%, 0% 100%)' }}
+          >
+             <iframe 
+                src="https://maps.google.com/maps?q=10.966852,79.3778632&t=k&z=17&output=embed" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen={true} 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full mix-blend-normal opacity-90 scale-105"
+              ></iframe>
+              <div className="absolute inset-0 bg-[#111111]/10 pointer-events-none"></div>
           </div>
+
+          {/* Desktop Diagonal Cut Map */}
+          {/* Background Black layer for the black line effect */}
+          <div 
+            className="hidden lg:block absolute inset-0 bg-[#111111] w-full h-full"
+            style={{
+              clipPath: 'polygon(25% 0, 100% 0, 100% 100%, 5% 100%, 25% 50%, 10% 30%)'
+            }}
+          ></div>
+
+          {/* Background Orange layer for the border effect */}
+          <div 
+            className="hidden lg:block absolute inset-0 bg-[#FF2400] w-full h-full ml-[4px]"
+            style={{
+              clipPath: 'polygon(25% 0, 100% 0, 100% 100%, 5% 100%, 25% 50%, 10% 30%)'
+            }}
+          ></div>
+          
+          {/* Actual Map layer, shifted slightly right to reveal borders */}
+          <div 
+            className="hidden lg:block absolute inset-0 w-full h-full bg-[#111111] ml-[10px]"
+            style={{
+              clipPath: 'polygon(25% 0, 100% 0, 100% 100%, 5% 100%, 25% 50%, 10% 30%)'
+            }}
+          >
+              <iframe 
+                src="https://maps.google.com/maps?q=10.966852,79.3778632&t=k&z=18&output=embed" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen={true} 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full absolute inset-0 mix-blend-normal opacity-90 scale-105"
+              ></iframe>
+              {/* Optional: Slight dark overlay for editorial feel */}
+              <div className="absolute inset-0 bg-[#111111]/10 pointer-events-none"></div>
+          </div>
+          
         </div>
         
       </div>
