@@ -169,7 +169,7 @@ export default function TrousersLookbook() {
           <div className="w-full lg:w-[60%] flex flex-col relative order-1 lg:order-2">
             
             {/* Top: Active Image Stage */}
-            <div className="w-full flex-1 relative min-h-[500px] md:min-h-[600px] lg:min-h-0">
+            <div className="w-full flex-1 relative min-h-[500px] md:min-h-[600px] lg:min-h-0 flex items-center justify-center p-4 lg:p-8">
               {/* The subtle visual treatment - a large typography watermark in background */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden select-none opacity-[0.04]">
                 <span className="text-[25vw] lg:text-[20vw] font-black tracking-tighter uppercase leading-none whitespace-nowrap">
@@ -177,13 +177,13 @@ export default function TrousersLookbook() {
                 </span>
               </div>
               
-              <div className={cn("absolute inset-0 w-full h-full transition-all duration-700", isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100")}>
+              <div className={cn("relative w-full h-full transition-all duration-700", isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100")}>
                 <Image
                   src={activeTrouser.image}
                   alt={activeTrouser.title}
                   fill
                   priority
-                  className="object-contain object-bottom drop-shadow-2xl"
+                  className="object-contain object-center drop-shadow-2xl"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   onLoadingComplete={() => setImageLoaded(true)}
                 />

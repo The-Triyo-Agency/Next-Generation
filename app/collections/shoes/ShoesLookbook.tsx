@@ -178,7 +178,7 @@ export default function ShoesLookbook() {
           <div className="w-full lg:w-[60%] flex flex-col relative order-1 lg:order-2">
             
             {/* Top: Active Image Stage */}
-            <div className="w-full flex-1 relative min-h-[400px] md:min-h-[500px] lg:min-h-0 flex items-center justify-center">
+            <div className="w-full flex-1 relative min-h-[400px] md:min-h-[500px] lg:min-h-0 flex items-center justify-center p-4 lg:p-8">
               {/* The subtle visual treatment - a large typography watermark in background */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden select-none opacity-[0.04]">
                 <span className="text-[25vw] lg:text-[20vw] font-black tracking-tighter uppercase leading-none whitespace-nowrap">
@@ -186,19 +186,16 @@ export default function ShoesLookbook() {
                 </span>
               </div>
               
-              <div className={cn("absolute inset-0 w-full h-full transition-all duration-700 flex items-center justify-center", isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100")}>
-                {/* STAGE: Bulletproof strict container with hardcoded heights to absolutely guarantee the image cannot blow up */}
-                <div className="relative w-full max-w-[280px] md:max-w-[400px] xl:max-w-[480px] h-[280px] md:h-[400px] xl:h-[480px] flex items-center justify-center">
-                  <Image
-                    src={activeShoe.image}
-                    alt={activeShoe.title}
-                    fill
-                    priority
-                    className={cn("object-contain drop-shadow-2xl transition-transform duration-700 ease-out", activeShoe.imageStyle)}
-                    sizes="(max-width: 768px) 280px, (max-width: 1280px) 400px, 480px"
-                    onLoadingComplete={() => setImageLoaded(true)}
-                  />
-                </div>
+              <div className={cn("relative w-full h-full transition-all duration-700", isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100")}>
+                <Image
+                  src={activeShoe.image}
+                  alt={activeShoe.title}
+                  fill
+                  priority
+                  className={cn("object-contain object-center drop-shadow-2xl transition-transform duration-700 ease-out", activeShoe.imageStyle)}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  onLoadingComplete={() => setImageLoaded(true)}
+                />
               </div>
             </div>
 
