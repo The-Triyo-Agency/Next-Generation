@@ -39,6 +39,7 @@ export default function CollectionCard({
   return (
     <Link
       href={href}
+      onClick={() => sessionStorage.setItem("scrollToSection", "collections")}
       className={cn(
         "relative block rounded-[14px] md:rounded-[18px] bg-[#F4F1EB] border border-black/5 group",
         "transition-all duration-500 hover:shadow-sm cursor-pointer",
