@@ -75,6 +75,30 @@ export default function ShirtsLookbook() {
     handleIndexChange((activeIndex - 1 + shirtsData.length) % shirtsData.length);
   };
 
+  // Swipe gesture handlers
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (!touchStart) return;
+    const currentTouch = e.changedTouches[0].clientX;
+    const distance = touchStart - currentTouch;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    
+    if (isLeftSwipe) {
+      nextShirt();
+    } else if (isRightSwipe) {
+      prevShirt();
+    }
+  };
+
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -92,7 +116,7 @@ export default function ShirtsLookbook() {
   }, [imageLoaded]);
 
   return (
-    <main data-navbar-theme="light" className="min-h-screen bg-[#F7F5F0] pt-24 md:pt-32 lg:pt-36 xl:pt-44 pb-12 overflow-hidden flex flex-col">
+    <main data-navbar-theme="light" className="min-h-screen bg-[#F7F5F0] pt-24 md:pt-32 lg:pt-36 xl:pt-44 pb-12 overflow-x-hidden lg:overflow-hidden flex flex-col">
       
       {/* Container */}
       <div className="max-w-[1700px] mx-auto w-full px-6 md:px-12 flex flex-col flex-1 relative">
@@ -164,7 +188,11 @@ export default function ShirtsLookbook() {
           <div className="w-full lg:w-[60%] flex flex-col relative order-1 lg:order-2">
             
             {/* Top: Active Image Stage */}
-            <div className="w-full flex-1 relative min-h-[500px] md:min-h-[600px] lg:min-h-0 flex items-center justify-center p-4 lg:p-8">
+            <div 
+              className="w-full flex-1 relative min-h-[450px] md:min-h-[500px] lg:min-h-0"
+              onTouchStart={onTouchStart}
+              onTouchEnd={onTouchEnd}
+            >
               {/* The subtle visual treatment - a large typography watermark in background */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden select-none opacity-[0.04]">
                 <span className="text-[25vw] lg:text-[20vw] font-black tracking-tighter uppercase leading-none whitespace-nowrap">
@@ -172,7 +200,7 @@ export default function ShirtsLookbook() {
                 </span>
               </div>
               
-              <div className={cn("relative w-full h-full transition-all duration-700", isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100")}>
+              <div className={cn("absolute inset-4 md:inset-8 lg:inset-12 transition-all duration-700", isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100")}>
                 <Image
                   src={activeShirt.image}
                   alt={activeShirt.title}
