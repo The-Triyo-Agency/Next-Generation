@@ -26,7 +26,12 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-  }
+  },
+  icons: {
+    icon: "/images/logo.svg",
+    shortcut: "/images/logo.svg",
+    apple: "/images/logo.svg",
+  },
 };
 
 import Navbar from "@/components/layout/Navbar";

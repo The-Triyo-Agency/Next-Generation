@@ -206,7 +206,7 @@ export default function BagsLookbook() {
                 </span>
               </div>
               
-              <div className={cn("absolute inset-4 md:inset-8 lg:inset-12 transition-all duration-700", isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100")}>
+              <div className={cn("absolute inset-2 md:inset-4 lg:inset-2 lg:-top-2 transition-all duration-700", isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100")}>
                 <Image
                   src={activeBag.image}
                   alt={activeBag.title}
@@ -220,7 +220,7 @@ export default function BagsLookbook() {
             </div>
 
             {/* Bottom: Horizontal Thumbnails */}
-            <div className="w-full flex items-center lg:justify-center gap-3 lg:gap-4 overflow-x-auto pb-6 pt-4 no-scrollbar z-20 mt-2 lg:mt-4 px-6 lg:px-0">
+            <div className="w-full flex items-center lg:justify-center gap-2.5 lg:gap-3 overflow-x-auto pb-4 pt-2 no-scrollbar z-20 mt-1 lg:mt-2 px-6 lg:px-0">
               {bagsData.map((bag, idx) => {
                 const isActive = idx === activeIndex;
                 return (
@@ -229,7 +229,7 @@ export default function BagsLookbook() {
                     onClick={() => handleIndexChange(idx)}
                     aria-label={`View ${bag.title}`}
                     className={cn(
-                      "relative w-20 h-28 lg:w-24 lg:h-32 xl:w-28 xl:h-36 flex-shrink-0 overflow-hidden transition-all duration-300 rounded-lg group border-2",
+                      "relative w-16 h-24 sm:w-18 sm:h-26 lg:w-20 lg:h-28 xl:w-24 xl:h-32 flex-shrink-0 overflow-hidden transition-all duration-300 rounded-lg group border-2",
                       isActive ? "border-[#FF2400] scale-105 shadow-md lg:shadow-lg" : "border-transparent opacity-60 lg:opacity-50 hover:opacity-100 hover:scale-105"
                     )}
                   >
