@@ -12,12 +12,31 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function ParallaxHero() {
   const container = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLHeadingElement>(null);
   const characterRef = useRef<HTMLDivElement>(null);
   const mobileTextRef = useRef<HTMLDivElement>(null);
   const mobileCharacterRef = useRef<HTMLDivElement>(null);
   const mobileGraphicRef = useRef<HTMLDivElement>(null);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  const handleExploreClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const element = document.getElementById("collections");
+    if (element) {
+      const navHeight = 100; // Offset for the fixed navbar
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - navHeight;
+
+      if ((window as any).lenis && typeof (window as any).lenis.scrollTo === 'function') {
+        (window as any).lenis.scrollTo(offsetPosition, { duration: 1.2 });
+      } else {
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
+    }
+  };
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -41,6 +60,9 @@ export default function ParallaxHero() {
       gestureOrientation: "vertical",
       smoothWheel: true,
     });
+    
+    // Expose lenis globally so Navbar and other components can trigger smooth scrolls
+    (window as any).lenis = lenis;
 
     lenis.on("scroll", ScrollTrigger.update);
 
@@ -69,6 +91,7 @@ export default function ParallaxHero() {
       mm.revert();
       gsap.ticker.remove(updateLenis);
       lenis.destroy();
+      delete (window as any).lenis;
     };
   }, [prefersReducedMotion]);
 
@@ -183,7 +206,8 @@ export default function ParallaxHero() {
             {/* CTA Row - Restored to parallel row, pushed safely underneath the sneaker's vertical position */}
             <div className="flex flex-row flex-wrap items-center gap-4 pointer-events-auto">
               <Link 
-                href="/collections" 
+                href="/#collections" 
+                onClick={handleExploreClick}
                 className="bg-[#F7F5F0] text-[#111111] rounded-full px-8 py-3.5 font-bold text-[10px] sm:text-[11px] tracking-widest uppercase hover:bg-[#FF2400] hover:text-[#F7F5F0] transition-colors flex items-center justify-center min-w-[140px] shadow-lg shadow-black/40"
               >
                 Explore →
@@ -250,7 +274,8 @@ export default function ParallaxHero() {
           {/* Desktop CTA */}
           <div className="flex pointer-events-auto">
             <Link 
-              href="/collections" 
+              href="/#collections" 
+              onClick={handleExploreClick}
               className="blob-btn px-9 py-4 rounded-xl font-bold text-xs tracking-widest uppercase text-[#FF2400] shadow-xl"
             >
               <span className="relative z-10">Explore Collections</span>

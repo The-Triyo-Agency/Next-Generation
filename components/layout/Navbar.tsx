@@ -17,6 +17,13 @@ export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
 
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, section: string) => {
     e.preventDefault();
     setActiveSection(section);
@@ -36,10 +43,14 @@ export default function Navbar() {
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - navHeight;
   
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
+      if ((window as any).lenis && typeof (window as any).lenis.scrollTo === 'function') {
+        (window as any).lenis.scrollTo(offsetPosition, { duration: 1.2 });
+      } else {
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
     }
 
     setTimeout(() => {
@@ -60,10 +71,14 @@ export default function Navbar() {
           const elementPosition = element.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.scrollY - navHeight;
       
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth"
-          });
+          if ((window as any).lenis && typeof (window as any).lenis.scrollTo === 'function') {
+            (window as any).lenis.scrollTo(offsetPosition, { duration: 1.2 });
+          } else {
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth"
+            });
+          }
           
           if (!isNavigating.current) {
             setActiveSection(section);
@@ -156,13 +171,13 @@ export default function Navbar() {
       <nav className={`fixed top-0 left-0 w-full z-[100] flex items-center justify-between px-4 md:px-6 lg:px-8 xl:px-12 pointer-events-auto transition-all duration-300 ease-in-out ${navBgClass}`}>
         
         {/* Mobile Logo */}
-        <Link href="/" className="min-[1400px]:hidden flex items-center gap-3 group flex-shrink-0">
+        <Link href="/" onClick={handleLogoClick} className="min-[1400px]:hidden flex items-center gap-3 group flex-shrink-0">
           <Image src="/images/logo.svg" alt="Next Generation Logo" width={80} height={80} className="w-[40px] min-[400px]:w-[50px] md:w-[60px] lg:w-[80px] h-[40px] min-[400px]:h-[50px] md:h-[60px] lg:h-[80px] object-contain flex-shrink-0" />
           <Image src="/images/text-logo.svg" alt="Next Generation" width={240} height={80} className={`w-auto h-[24px] min-[400px]:h-[30px] md:h-[36px] lg:h-[48px] object-contain transition-[filter] duration-300 ${isDark ? 'invert' : ''}`} />
         </Link>
 
         {/* Desktop Logo */}
-        <Link href="/" className="hidden min-[1400px]:flex items-center gap-2 2xl:gap-3 group flex-shrink-0">
+        <Link href="/" onClick={handleLogoClick} className="hidden min-[1400px]:flex items-center gap-2 2xl:gap-3 group flex-shrink-0">
           <Image src="/images/logo.svg" alt="Next Generation Logo" width={76} height={76} className="w-[65px] 2xl:w-[76px] h-[65px] 2xl:h-[76px] object-contain flex-shrink-0" />
           <Image src="/images/text-logo.svg" alt="Next Generation" width={230} height={76} className={`w-auto h-[38px] 2xl:h-[46px] object-contain transition-[filter] duration-300 ${isDark ? 'invert' : ''}`} />
         </Link>
