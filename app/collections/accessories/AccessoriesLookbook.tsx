@@ -97,14 +97,19 @@ export default function AccessoriesLookbook() {
   }, [imageLoaded]);
 
   return (
-    <main data-navbar-theme="light" className="min-h-screen bg-[#F7F5F0] pt-24 md:pt-32 pb-12 overflow-hidden flex flex-col">
+    <main data-navbar-theme="light" className="min-h-screen bg-[#F7F5F0] pt-24 md:pt-32 lg:pt-36 xl:pt-44 pb-12 overflow-hidden flex flex-col">
       
       {/* Container */}
       <div className="max-w-[1700px] mx-auto w-full px-6 md:px-12 flex flex-col flex-1 relative">
         
         {/* Navigation / Counter */}
-        <div className="flex items-center justify-end mb-8 z-20 relative w-full">
-          <div className="hidden lg:flex items-center gap-4 text-[#111111] font-bold text-sm tracking-widest">
+        <div className="flex items-center justify-between mb-8 z-20 relative w-full">
+          {/* Back to Collections */}
+          <Link href="/#collections" className="flex items-center gap-2 text-[#111111]/60 hover:text-[#FF2400] transition-colors text-xs font-bold tracking-widest uppercase group">
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" />
+            <span className="hidden sm:inline">Collections</span>
+          </Link>
+          <div className="flex items-center gap-4 text-[#111111] font-bold text-sm tracking-widest">
             <button aria-label="Previous accessory" onClick={prevAccessory} className="hover:text-[#FF2400] transition-colors w-10 h-10 flex items-center justify-center border border-[#111111]/10 rounded-full hover:border-[#FF2400]"><ArrowLeft className="w-4 h-4" /></button>
             <span className="min-w-[60px] text-center">{activeAccessory.id} <span className="text-[#111111]/30">/ 05</span></span>
             <button aria-label="Next accessory" onClick={nextAccessory} className="hover:text-[#FF2400] transition-colors w-10 h-10 flex items-center justify-center border border-[#111111]/10 rounded-full hover:border-[#FF2400]"><ArrowRight className="w-4 h-4" /></button>
