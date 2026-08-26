@@ -61,33 +61,41 @@ export default function Navbar() {
   useEffect(() => {
     if (pathname === "/" && window.location.hash) {
       const section = window.location.hash.substring(1);
-      const element = document.getElementById(section);
-      
-      if (element) {
-        // Small delay to ensure the page layout is ready after navigation
-        setTimeout(() => {
+
+      // Retry polling: on production, the page may not be fully rendered when this
+      // runs, so we keep retrying every 150ms until the element is found (max 20 tries = 3s).
+      let attempts = 0;
+      const maxAttempts = 20;
+
+      const scrollToSection = () => {
+        const element = document.getElementById(section);
+
+        if (element) {
           const navHeight = 100;
           const elementPosition = element.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.scrollY - navHeight;
-      
+
           if ((window as any).lenis && typeof (window as any).lenis.scrollTo === 'function') {
             (window as any).lenis.scrollTo(offsetPosition, { duration: 1.2 });
           } else {
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: "smooth"
-            });
+            window.scrollTo({ top: offsetPosition, behavior: "smooth" });
           }
-          
+
           if (!isNavigating.current) {
             setActiveSection(section);
           }
-          
+
           setTimeout(() => {
             isNavigating.current = false;
           }, 1000);
-        }, 100);
-      }
+        } else if (attempts < maxAttempts) {
+          attempts++;
+          setTimeout(scrollToSection, 150);
+        }
+      };
+
+      // Small initial delay to let React start rendering, then begin polling
+      setTimeout(scrollToSection, 150);
     }
   }, [pathname]);
 
