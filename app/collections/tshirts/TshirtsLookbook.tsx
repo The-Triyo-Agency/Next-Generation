@@ -11,41 +11,41 @@ import { cn } from "@/lib/utils";
 const tshirtsData = [
   {
     id: "01",
-    title: "ESSENTIAL OVERSIZED T-SHIRT",
-    description: "A relaxed, drop-shoulder fit designed for absolute comfort. The perfect foundation for an elevated everyday street look.",
-    highlights: ["Oversized Fit", "Premium Cotton", "Everyday Comfort"],
+    title: "CLASSIC STRIPED T-SHIRT",
+    description: "A timeless striped pattern for a clean, maritime-inspired look. Perfectly weighted for all-day comfort and effortless styling.",
+    highlights: ["Classic Stripes", "Breathable Fabric", "Timeless Appeal"],
     image: "/images/lookbook/tshirt1.png",
     whatsappMsg: "Hi, I'm interested in men's T-shirts. Could you please share the currently available styles, sizes, colours and prices?"
   },
   {
     id: "02",
-    title: "SIGNATURE GRAPHIC T-SHIRT",
-    description: "Bold graphics on a premium blank. Designed to make a statement while maintaining an effortless, relaxed silhouette.",
-    highlights: ["Statement Graphic", "Relaxed Silhouette", "Standout Style"],
+    title: "ESSENTIAL OVERSIZED T-SHIRT",
+    description: "A relaxed, drop-shoulder fit designed for absolute comfort. The perfect foundation for an elevated everyday street look.",
+    highlights: ["Oversized Fit", "Premium Cotton", "Everyday Comfort"],
     image: "/images/lookbook/tshirt2.png",
     whatsappMsg: "Hi, I'm interested in men's T-shirts. Could you please share the currently available styles, sizes, colours and prices?"
   },
   {
     id: "03",
-    title: "RELAXED EVERYDAY T-SHIRT",
-    description: "Your new go-to layer. A timeless crewneck with a comfortable drape, easy to style alone or under a jacket.",
-    highlights: ["Classic Crewneck", "Comfortable Drape", "Versatile Layer"],
+    title: "SIGNATURE GRAPHIC T-SHIRT",
+    description: "Bold, expressive graphics on a premium blank. Designed to make a statement while maintaining an effortless, relaxed silhouette.",
+    highlights: ["Statement Graphic", "High-Quality Print", "Standout Style"],
     image: "/images/lookbook/tshirt3.png",
     whatsappMsg: "Hi, I'm interested in men's T-shirts. Could you please share the currently available styles, sizes, colours and prices?"
   },
   {
     id: "04",
-    title: "PREMIUM HEAVYWEIGHT T-SHIRT",
-    description: "Built with structure and durability in mind. A thick, high-quality fabric that holds its shape beautifully over time.",
-    highlights: ["Heavyweight Fabric", "Structured Fit", "Built To Last"],
+    title: "MODERN POLO T-SHIRT",
+    description: "A refined take on the classic polo. Featuring a structured collar and premium knit for a sharp, sophisticated look that transitions from day to night.",
+    highlights: ["Structured Collar", "Premium Knit", "Smart Casual"],
     image: "/images/lookbook/tshirt4.png",
     whatsappMsg: "Hi, I'm interested in men's T-shirts. Could you please share the currently available styles, sizes, colours and prices?"
   },
   {
     id: "05",
-    title: "STATEMENT VINTAGE T-SHIRT",
-    description: "A washed, lived-in aesthetic with a soft handfeel. Brings instant character and effortless cool to your rotation.",
-    highlights: ["Vintage Wash", "Soft Handfeel", "Effortless Cool"],
+    title: "PREMIUM TEXTURED T-SHIRT",
+    description: "Crafted from a unique textured fabric that adds depth and character to your outfit. A subtle upgrade to the basic tee with a soft, tactile feel.",
+    highlights: ["Textured Fabric", "Tactile Feel", "Elevated Basic"],
     image: "/images/lookbook/tshirt5.png",
     whatsappMsg: "Hi, I'm interested in men's T-shirts. Could you please share the currently available styles, sizes, colours and prices?"
   }
@@ -99,7 +99,7 @@ export default function TshirtsLookbook() {
         
         {/* Navigation / Counter */}
         <div className="flex items-center justify-end mb-8 z-20 relative w-full">
-          <div className="hidden lg:flex items-center gap-4 text-[#111111] font-bold text-sm tracking-widest">
+          <div className="hidden md:flex items-center gap-4 text-[#111111] font-bold text-sm tracking-widest">
             <button onClick={prevShirt} className="hover:text-[#FF2400] transition-colors w-10 h-10 flex items-center justify-center border border-[#111111]/10 rounded-full hover:border-[#FF2400]"><ArrowLeft className="w-4 h-4" /></button>
             <span className="min-w-[60px] text-center">{activeShirt.id} <span className="text-[#111111]/30">/ 05</span></span>
             <button onClick={nextShirt} className="hover:text-[#FF2400] transition-colors w-10 h-10 flex items-center justify-center border border-[#111111]/10 rounded-full hover:border-[#FF2400]"><ArrowRight className="w-4 h-4" /></button>
@@ -107,10 +107,10 @@ export default function TshirtsLookbook() {
         </div>
 
         {/* Layout Grid */}
-        <div className="flex-1 flex flex-col lg:flex-row relative z-10 w-full h-full">
+        <div className="flex-1 flex flex-col md:flex-row relative z-10 w-full h-full">
           
           {/* LEFT: Content */}
-          <div className="w-full lg:w-[40%] flex flex-col justify-center order-2 lg:order-1 lg:pr-12 pt-8 lg:pt-0 z-20">
+          <div className="w-full md:w-[45%] lg:w-[40%] flex flex-col justify-center order-2 md:order-1 md:pr-8 lg:pr-12 pt-8 md:pt-0 z-20">
             <div className={cn("transition-all duration-500", isTransitioning ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0")}>
               
               <div className="flex items-center gap-4 mb-6">
@@ -118,7 +118,7 @@ export default function TshirtsLookbook() {
                 <span className="w-12 h-[1px] bg-gradient-to-r from-[#FF2400] to-[#111111]/10"></span>
               </div>
               
-              <h1 className="text-4xl sm:text-5xl lg:text-[65px] xl:text-[80px] font-black tracking-tighter uppercase leading-[0.85] text-[#111111] mb-8">
+              <h1 className="text-4xl sm:text-5xl md:text-[50px] lg:text-[65px] xl:text-[80px] font-black tracking-tighter uppercase leading-[0.85] text-[#111111] mb-8">
                 {activeShirt.title.split(' ').map((word, i, arr) => (
                   <span key={i} className="block">
                     {i === arr.length - 1 ? <span className="text-[#FF2400]">{word}.</span> : word}
@@ -142,7 +142,7 @@ export default function TshirtsLookbook() {
               <Link 
                 href={generateWhatsAppLink(activeShirt.whatsappMsg)}
                 target="_blank"
-                className="blob-btn inline-block whitespace-nowrap px-8 lg:px-10 py-4 rounded-xl font-bold text-xs tracking-widest uppercase text-[#FF2400] text-center shadow-xl shadow-black/10 w-fit"
+                className="blob-btn inline-block whitespace-nowrap px-8 md:px-10 py-4 rounded-xl font-bold text-xs tracking-widest uppercase text-[#FF2400] text-center shadow-xl shadow-black/10 w-fit"
               >
                 <span className="relative z-10 flex items-center justify-center gap-4">
                   <span>Enquire on WhatsApp</span>
@@ -161,13 +161,13 @@ export default function TshirtsLookbook() {
           </div>
 
           {/* RIGHT: Image & Horizontal Thumbnails */}
-          <div className="w-full lg:w-[60%] flex flex-col relative order-1 lg:order-2">
+          <div className="w-full md:w-[55%] lg:w-[60%] flex flex-col relative order-1 md:order-2">
             
             {/* Top: Active Image Stage */}
-            <div className="w-full flex-1 relative min-h-[500px] md:min-h-[600px] lg:min-h-0">
+            <div className="w-full flex-1 relative min-h-[500px] md:min-h-0">
               {/* The subtle visual treatment - a large typography watermark in background */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden select-none opacity-[0.04]">
-                <span className="text-[25vw] lg:text-[20vw] font-black tracking-tighter uppercase leading-none whitespace-nowrap">
+                <span className="text-[25vw] md:text-[20vw] font-black tracking-tighter uppercase leading-none whitespace-nowrap">
                   NO {activeIndex + 1}
                 </span>
               </div>
@@ -186,7 +186,7 @@ export default function TshirtsLookbook() {
             </div>
 
             {/* Bottom: Horizontal Thumbnails */}
-            <div className="w-full flex items-center lg:justify-center gap-3 lg:gap-4 overflow-x-auto pb-6 pt-4 no-scrollbar z-20 mt-2 lg:mt-4 px-6 lg:px-0">
+            <div className="w-full flex items-center md:justify-center gap-3 md:gap-4 overflow-x-auto pb-6 pt-4 no-scrollbar z-20 mt-2 md:mt-4 px-6 md:px-0">
               {tshirtsData.map((shirt, idx) => {
                 const isActive = idx === activeIndex;
                 return (
@@ -194,8 +194,8 @@ export default function TshirtsLookbook() {
                     key={shirt.id}
                     onClick={() => handleIndexChange(idx)}
                     className={cn(
-                      "relative w-20 h-28 lg:w-24 lg:h-32 xl:w-28 xl:h-36 flex-shrink-0 overflow-hidden transition-all duration-300 rounded-lg group border-2",
-                      isActive ? "border-[#FF2400] scale-105 shadow-md lg:shadow-lg" : "border-transparent opacity-60 lg:opacity-50 hover:opacity-100 hover:scale-105"
+                      "relative w-20 h-28 md:w-24 md:h-32 xl:w-28 xl:h-36 flex-shrink-0 overflow-hidden transition-all duration-300 rounded-lg group border-2",
+                      isActive ? "border-[#FF2400] scale-105 shadow-md md:shadow-lg" : "border-transparent opacity-60 md:opacity-50 hover:opacity-100 hover:scale-105"
                     )}
                   >
                     <Image
@@ -203,9 +203,9 @@ export default function TshirtsLookbook() {
                       alt={`Thumbnail of ${shirt.title}`}
                       fill
                       className="object-cover object-top bg-[#111111]/5"
-                      sizes="(max-width: 1024px) 100px, 150px"
+                      sizes="(max-width: 768px) 100px, 150px"
                     />
-                    <div className={cn("absolute inset-0 bg-black/20 transition-opacity hidden lg:block", isActive ? "opacity-0" : "group-hover:opacity-10")} />
+                    <div className={cn("absolute inset-0 bg-black/20 transition-opacity hidden md:block", isActive ? "opacity-0" : "group-hover:opacity-10")} />
                   </button>
                 );
               })}

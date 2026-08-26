@@ -4,11 +4,10 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Home, Grid, MessageCircle, Store, Phone } from "lucide-react";
 import { generateWhatsAppLink } from "@/lib/whatsapp";
 
 export default function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("hero");
@@ -224,69 +223,43 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile Hamburger */}
-        <button 
-          className={`min-[1400px]:hidden p-2 -mr-2 ${textColorClass} hover:text-[#FF2400] transition-colors`}
-          onClick={() => setMobileMenuOpen(true)}
-          aria-label="Open menu"
-        >
-          <Menu className="w-6 h-6 md:w-10 md:h-10 lg:w-12 lg:h-12" />
-        </button>
       </nav>
 
-      {/* Mobile Menu Overlay */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 z-[110] bg-[#F7F5F0] overflow-y-auto pointer-events-auto">
-          <div className="flex flex-col min-h-full w-full">
-            <div className="flex items-center justify-between pt-5 lg:pt-8 px-4 md:px-8 lg:px-12 w-full flex-shrink-0">
-              <Link href="#hero" className="flex items-center gap-2 md:gap-3 group" onClick={() => setMobileMenuOpen(false)}>
-              <Image src="/images/logo.svg" alt="Next Generation Logo" width={90} height={90} className="w-[40px] min-[400px]:w-[55px] md:w-[75px] lg:w-[90px] h-[40px] min-[400px]:h-[55px] md:h-[75px] lg:h-[90px] object-contain flex-shrink-0" />
-              <Image src="/images/text-logo.svg" alt="Next Generation" width={220} height={90} className="w-auto max-w-[140px] min-[400px]:max-w-[180px] sm:max-w-none h-[24px] min-[400px]:h-[30px] md:h-[40px] lg:h-[50px] object-contain" />
-            </Link>
-            <button 
-              className="p-2 -mr-2 text-[#111111] hover:text-[#FF2400] transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-              aria-label="Close menu"
+      {/* Mobile Floating Bottom Bar */}
+      <div className={`min-[1400px]:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-[110] w-[92%] max-w-[420px] h-[68px] flex items-center justify-between px-2 sm:px-4 rounded-[34px] shadow-[0_8px_32px_rgba(0,0,0,0.12)] border bg-[#F7F5F0]/95 border-[#111111]/10 backdrop-blur-xl`}>
+        {[
+          { id: 'hero', label: 'Home', icon: Home, href: '/#hero' },
+          { id: 'collections', label: 'Collect', icon: Grid, href: '/#collections' },
+          { id: 'whatsapp', label: 'WhatsApp', icon: MessageCircle, href: generateWhatsAppLink("Hi Next Generation, I'd like to know more about the latest men's fashion collections available at your Kumbakonam store.") },
+          { id: 'store', label: 'Store', icon: Store, href: '/#store' },
+          { id: 'contact', label: 'Contact', icon: Phone, href: '/#contact' },
+        ].map((item) => {
+          const isActive = activeSection === item.id;
+          return (
+            <Link 
+              key={item.id}
+              href={item.href}
+              onClick={(e) => {
+                if (item.id !== 'whatsapp') handleNavClick(e, item.id);
+              }}
+              className="relative flex flex-1 flex-col items-center justify-start pt-2.5 h-full"
             >
-              <X className="w-7 h-7 min-[400px]:w-9 min-[400px]:h-9 md:w-12 md:h-12 lg:w-16 lg:h-16" />
-            </button>
-          </div>
-          
-          <div className="flex flex-col flex-grow w-full items-start px-6 md:px-12 lg:px-20 pt-10 md:pt-16 lg:pt-20 pb-20 gap-8 md:gap-12 lg:gap-16 text-2xl md:text-5xl lg:text-7xl font-black tracking-tighter uppercase text-[#111111]">
-            <Link href="/#hero" onClick={(e) => { setMobileMenuOpen(false); handleNavClick(e, 'hero'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4 flex-shrink-0 cursor-pointer">
-              Home
-              {activeSection === 'hero' && <span className="w-2 h-2 rounded-full bg-[#FF2400]"></span>}
+              <div className={`transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] z-10 flex items-center justify-center ${
+                isActive 
+                  ? `-translate-y-7 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#FF2400] text-white shadow-[0_8px_16px_rgba(255,36,0,0.4)] border-[4px] border-[#F7F5F0]` 
+                  : `w-8 h-8 rounded-full bg-transparent border-4 border-transparent text-[#111111]`
+              }`}>
+                <item.icon className={isActive ? "w-6 h-6 sm:w-7 sm:h-7" : "w-5 h-5 sm:w-6 sm:h-6"} />
+              </div>
+              <span className={`absolute bottom-2 text-[8px] sm:text-[9px] font-bold uppercase tracking-wider transition-all duration-300 ease-in-out ${
+                isActive ? 'opacity-100 text-[#FF2400]' : `opacity-70 hover:opacity-100 text-[#111111]`
+              }`}>
+                {item.label}
+              </span>
             </Link>
-            <Link href="/#about" onClick={(e) => { setMobileMenuOpen(false); handleNavClick(e, 'about'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4 flex-shrink-0 cursor-pointer">
-              About
-              {activeSection === 'about' && <span className="w-2 h-2 rounded-full bg-[#FF2400]"></span>}
-            </Link>
-            <Link href="/#collections" onClick={(e) => { setMobileMenuOpen(false); handleNavClick(e, 'collections'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4 flex-shrink-0 cursor-pointer">
-              Collections
-              {activeSection === 'collections' && <span className="w-2 h-2 rounded-full bg-[#FF2400]"></span>}
-            </Link>
-            <Link href="/#store" onClick={(e) => { setMobileMenuOpen(false); handleNavClick(e, 'store'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4 flex-shrink-0 cursor-pointer">
-              Store
-              {activeSection === 'store' && <span className="w-2 h-2 rounded-full bg-[#FF2400]"></span>}
-            </Link>
-            <Link href="/#contact" onClick={(e) => { setMobileMenuOpen(false); handleNavClick(e, 'contact'); }} className="hover:text-[#FF2400] transition-colors flex items-center gap-4 flex-shrink-0 cursor-pointer">
-              Contact
-              {activeSection === 'contact' && <span className="w-2 h-2 rounded-full bg-[#FF2400]"></span>}
-            </Link>
-            
-            <div className="mt-4 md:mt-8 pt-6 md:pt-8 border-t border-[#111111]/10 w-full flex-shrink-0">
-              <Link 
-                href={generateWhatsAppLink("Hi Next Generation, I'd like to know more about the latest men's fashion collections available at your Kumbakonam store.")} 
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-2 hover:text-[#FF2400] transition-colors"
-              >
-                WhatsApp
-              </Link>
-            </div>
-          </div>
-          </div>
-        </div>
-      )}
+          );
+        })}
+      </div>
     </>
   );
 }

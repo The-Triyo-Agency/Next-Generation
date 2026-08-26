@@ -7,6 +7,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import { generateWhatsAppLink } from "@/lib/whatsapp";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -169,7 +170,7 @@ export default function ParallaxHero() {
           className="absolute bottom-[12%] right-[-5vw] w-[90vw] max-w-[400px] h-[75%] z-60 pointer-events-none"
         >
           <Image
-            id="hero-image-mobile"
+            id="main-model-mobile"
             src="/images/hero/hero1.png"
             alt="Next Generation Men's Fashion Model"
             fill
@@ -208,15 +209,15 @@ export default function ParallaxHero() {
               <Link 
                 href="/#collections" 
                 onClick={handleExploreClick}
-                className="bg-[#F7F5F0] text-[#111111] rounded-full px-8 py-3.5 font-bold text-[10px] sm:text-[11px] tracking-widest uppercase hover:bg-[#FF2400] hover:text-[#F7F5F0] transition-colors flex items-center justify-center min-w-[140px] shadow-lg shadow-black/40"
+                className="bg-[#F7F5F0] text-[#111111] rounded-full px-8 py-3.5 font-bold text-[10px] sm:text-[11px] tracking-widest uppercase hover:bg-[#FF2400] hover:text-[#F7F5F0] transition-colors flex items-center justify-center gap-2 min-w-[140px] shadow-lg shadow-black/40"
               >
-                Explore →
+                Explore <ArrowRight className="w-3.5 h-3.5" />
               </Link>
               <Link 
                 href={generateWhatsAppLink("Hi Next Generation!")} 
                 className="text-[#FF2400] border border-[#FF2400] rounded-full px-6 py-3 font-bold text-[10px] sm:text-[11px] tracking-widest uppercase flex items-center justify-center gap-2 hover:bg-[#FF2400]/10 transition-colors shadow-lg shadow-[#FF2400]/15"
               >
-                WhatsApp <span className="font-black text-[13px]">↗</span>
+                WhatsApp <ArrowUpRight className="w-3.5 h-3.5 stroke-[3]" />
               </Link>
             </div>
           </div>
@@ -248,10 +249,10 @@ export default function ParallaxHero() {
           ref={characterRef}
           className="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-20 
           w-[60vw] lg:w-[45vw] xl:w-[40vw] max-w-[700px] 
-          h-[80%] min-h-[400px] lg:h-[85%] lg:min-h-[500px] pointer-events-none"
+          h-[73%] min-h-[400px] lg:h-[78%] lg:min-h-[500px] pointer-events-none"
         >
           <Image 
-            id="hero-image-desktop"
+            id="main-model-desktop"
             src="/images/hero/hero1.png" 
             alt="Next Generation Men's Fashion Model" 
             fill

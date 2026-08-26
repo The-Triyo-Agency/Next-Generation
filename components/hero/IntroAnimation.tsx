@@ -56,7 +56,7 @@ export default function IntroAnimation() {
     // 5. Hero Image Scale Reveal
     // Target both mobile and desktop hero images
     tl.to(
-      "#hero-image-desktop, #hero-image-mobile",
+      "#main-model-desktop, #main-model-mobile",
       {
         scale: 1,
         duration: 1.5,
