@@ -29,9 +29,10 @@ export default function Navbar() {
     isNavigating.current = true;
     
     if (pathname !== "/") {
-      // If we are not on the home page, navigate to home and prevent the default jump.
-      // The useEffect below will catch the hash and handle the smooth scroll once mounted.
-      router.push("/#" + section, { scroll: false });
+      // If we are not on the home page, store the section in sessionStorage and navigate home.
+      // The useEffect below reads sessionStorage, which is more reliable than hash on Vercel.
+      sessionStorage.setItem("scrollToSection", section);
+      router.push("/", { scroll: false });
       return;
     }
 
@@ -59,43 +60,48 @@ export default function Navbar() {
 
   // Handle cross-page hash navigation and initial load with hash
   useEffect(() => {
-    if (pathname === "/" && window.location.hash) {
-      const section = window.location.hash.substring(1);
+    if (pathname === "/") {
+      // Support both hash-based and sessionStorage-based navigation.
+      // sessionStorage is used for cross-page back navigation (reliable on Vercel production).
+      const hashSection = window.location.hash ? window.location.hash.substring(1) : null;
+      const storedSection = sessionStorage.getItem("scrollToSection");
+      const section = hashSection || storedSection;
 
-      // Retry polling: on production, the page may not be fully rendered when this
-      // runs, so we keep retrying every 150ms until the element is found (max 20 tries = 3s).
-      let attempts = 0;
-      const maxAttempts = 20;
+      if (section) {
+        if (storedSection) sessionStorage.removeItem("scrollToSection");
 
-      const scrollToSection = () => {
-        const element = document.getElementById(section);
+        let attempts = 0;
+        const maxAttempts = 25;
 
-        if (element) {
-          const navHeight = 100;
-          const elementPosition = element.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.scrollY - navHeight;
+        const scrollToSection = () => {
+          const element = document.getElementById(section);
 
-          if ((window as any).lenis && typeof (window as any).lenis.scrollTo === 'function') {
-            (window as any).lenis.scrollTo(offsetPosition, { duration: 1.2 });
-          } else {
-            window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+          if (element) {
+            const navHeight = 100;
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.scrollY - navHeight;
+
+            if ((window as any).lenis && typeof (window as any).lenis.scrollTo === 'function') {
+              (window as any).lenis.scrollTo(offsetPosition, { duration: 1.2 });
+            } else {
+              window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+            }
+
+            if (!isNavigating.current) {
+              setActiveSection(section);
+            }
+
+            setTimeout(() => {
+              isNavigating.current = false;
+            }, 1000);
+          } else if (attempts < maxAttempts) {
+            attempts++;
+            setTimeout(scrollToSection, 200);
           }
+        };
 
-          if (!isNavigating.current) {
-            setActiveSection(section);
-          }
-
-          setTimeout(() => {
-            isNavigating.current = false;
-          }, 1000);
-        } else if (attempts < maxAttempts) {
-          attempts++;
-          setTimeout(scrollToSection, 150);
-        }
-      };
-
-      // Small initial delay to let React start rendering, then begin polling
-      setTimeout(scrollToSection, 150);
+        setTimeout(scrollToSection, 200);
+      }
     }
   }, [pathname]);
 
