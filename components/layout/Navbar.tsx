@@ -226,7 +226,7 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile Floating Bottom Bar */}
-      <div className={`min-[1400px]:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-[110] w-[92%] max-w-[420px] h-[68px] flex items-center justify-between px-2 sm:px-4 rounded-[34px] shadow-[0_8px_32px_rgba(0,0,0,0.12)] border bg-[#F7F5F0]/95 border-[#111111]/10 backdrop-blur-xl`}>
+      <div className={`min-[1400px]:hidden fixed bottom-4 sm:bottom-5 md:bottom-8 lg:bottom-10 left-1/2 -translate-x-1/2 z-[110] w-[90%] max-w-[320px] sm:max-w-[400px] md:max-w-[700px] lg:max-w-[840px] h-[56px] sm:h-[64px] md:h-[90px] lg:h-[104px] flex items-center justify-between px-2 sm:px-3 md:px-8 lg:px-12 rounded-[28px] sm:rounded-[32px] md:rounded-[45px] lg:rounded-[52px] shadow-[0_8px_32px_rgba(0,0,0,0.12)] border bg-[#F7F5F0]/95 border-[#111111]/10 backdrop-blur-xl`}>
         {[
           { id: 'hero', label: 'Home', icon: Home, href: '/#hero' },
           { id: 'collections', label: 'Collect', icon: Grid, href: '/#collections' },
@@ -242,16 +242,16 @@ export default function Navbar() {
               onClick={(e) => {
                 if (item.id !== 'whatsapp') handleNavClick(e, item.id);
               }}
-              className="relative flex flex-1 flex-col items-center justify-start pt-2.5 h-full"
+              className="relative flex flex-1 flex-col items-center justify-start pt-2 sm:pt-2.5 md:pt-3.5 lg:pt-4 h-full"
             >
               <div className={`transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] z-10 flex items-center justify-center ${
                 isActive 
-                  ? `-translate-y-7 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#FF2400] text-white shadow-[0_8px_16px_rgba(255,36,0,0.4)] border-[4px] border-[#F7F5F0]` 
-                  : `w-8 h-8 rounded-full bg-transparent border-4 border-transparent text-[#111111]`
+                  ? `-translate-y-5 sm:-translate-y-6 md:-translate-y-10 lg:-translate-y-12 w-10 h-10 sm:w-12 sm:h-12 md:w-[80px] md:h-[80px] lg:w-[92px] lg:h-[92px] rounded-full bg-[#FF2400] text-white shadow-[0_8px_16px_rgba(255,36,0,0.4)] border-[3px] sm:border-[4px] md:border-[6px] lg:border-[8px] border-[#F7F5F0]` 
+                  : `w-6 h-6 sm:w-7 sm:h-7 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-full bg-transparent border-0 md:border-[6px] lg:border-[8px] border-transparent text-[#111111]`
               }`}>
-                <item.icon className={isActive ? "w-6 h-6 sm:w-7 sm:h-7" : "w-5 h-5 sm:w-6 sm:h-6"} />
+                <item.icon className={isActive ? "w-4 h-4 sm:w-5 sm:h-5 md:w-9 md:h-9 lg:w-10 lg:h-10" : "w-4 h-4 sm:w-5 sm:h-5 md:w-8 md:h-8 lg:w-9 lg:h-9"} />
               </div>
-              <span className={`absolute bottom-2 text-[8px] sm:text-[9px] font-bold uppercase tracking-wider transition-all duration-300 ease-in-out ${
+              <span className={`absolute bottom-1.5 sm:bottom-2 md:bottom-3 lg:bottom-3.5 text-[7px] sm:text-[8px] md:text-[12px] lg:text-[14px] font-bold uppercase tracking-wider transition-all duration-300 ease-in-out ${
                 isActive ? 'opacity-100 text-[#FF2400]' : `opacity-70 hover:opacity-100 text-[#111111]`
               }`}>
                 {item.label}
