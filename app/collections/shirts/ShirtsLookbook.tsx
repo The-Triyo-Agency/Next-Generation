@@ -14,7 +14,7 @@ const shirtsData = [
     title: "ESSENTIAL PLAIN SHIRT",
     description: "A clean everyday essential designed for effortless styling. Comfortable, versatile and easy to wear from casual days to elevated looks.",
     highlights: ["Clean Everyday Fit", "Comfortable Fabric", "Easy To Style"],
-    image: "/images/lookbook/shirt1.png",
+    image: "/images/lookbook/shirt1.webp",
     whatsappMsg: "Hi, I'm interested in men's shirts. Could you please share the currently available styles, sizes, colours and prices?"
   },
   {
@@ -22,7 +22,7 @@ const shirtsData = [
     title: "SIGNATURE STRIPED SHIRT",
     description: "Classic stripes with a modern relaxed feel. Designed to bring an effortless smart-casual edge to everyday dressing.",
     highlights: ["Modern Stripe Detail", "Relaxed Comfort", "Smart-Casual Style"],
-    image: "/images/lookbook/shirt2.png",
+    image: "/images/lookbook/shirt2.webp",
     whatsappMsg: "Hi, I'm interested in men's shirts. Could you please share the currently available styles, sizes, colours and prices?"
   },
   {
@@ -30,7 +30,7 @@ const shirtsData = [
     title: "EVERYDAY DENIM SHIRT",
     description: "A timeless denim layer built for everyday versatility. Easy to pair, easy to wear and made for effortless street-ready looks.",
     highlights: ["Durable Denim", "Versatile Layer", "Everyday Style"],
-    image: "/images/lookbook/shirt3.png",
+    image: "/images/lookbook/shirt3.webp",
     whatsappMsg: "Hi, I'm interested in men's shirts. Could you please share the currently available styles, sizes, colours and prices?"
   },
   {
@@ -38,7 +38,7 @@ const shirtsData = [
     title: "PREMIUM LINEN SHIRT",
     description: "Light, breathable and refined. A relaxed linen essential made for warm days and effortless everyday style.",
     highlights: ["Breathable Fabric", "Lightweight Feel", "Relaxed Fit"],
-    image: "/images/lookbook/shirt4.png",
+    image: "/images/lookbook/shirt4.webp",
     whatsappMsg: "Hi, I'm interested in men's shirts. Could you please share the currently available styles, sizes, colours and prices?"
   },
   {
@@ -46,25 +46,19 @@ const shirtsData = [
     title: "STATEMENT PRINTED SHIRT",
     description: "Bold prints designed to make everyday dressing stand out. A confident statement piece for modern casual style.",
     highlights: ["Statement Print", "Relaxed Silhouette", "Standout Style"],
-    image: "/images/lookbook/shirt5.png",
+    image: "/images/lookbook/shirt5.webp",
     whatsappMsg: "Hi, I'm interested in men's shirts. Could you please share the currently available styles, sizes, colours and prices?"
   }
 ];
 
 export default function ShirtsLookbook() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
 
   const activeShirt = shirtsData[activeIndex];
 
   const handleIndexChange = (newIndex: number) => {
-    if (newIndex === activeIndex || isTransitioning) return;
-    setIsTransitioning(true);
-    setImageLoaded(false);
-    setTimeout(() => {
-      setActiveIndex(newIndex);
-    }, 300); // Wait for fade out
+    if (newIndex === activeIndex) return;
+    setActiveIndex(newIndex);
   };
 
   const nextShirt = () => {
@@ -77,11 +71,9 @@ export default function ShirtsLookbook() {
 
   // Swipe gesture handlers
   const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const minSwipeDistance = 50;
 
   const onTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
   };
 
@@ -107,13 +99,7 @@ export default function ShirtsLookbook() {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [activeIndex, isTransitioning]);
-
-  useEffect(() => {
-    if (imageLoaded) {
-      setIsTransitioning(false);
-    }
-  }, [imageLoaded]);
+  }, [activeIndex]);
 
   return (
     <main data-navbar-theme="light" className="min-h-screen bg-[#F7F5F0] pt-24 md:pt-32 lg:pt-36 xl:pt-44 pb-12 overflow-x-hidden lg:overflow-hidden flex flex-col">
@@ -135,7 +121,7 @@ export default function ShirtsLookbook() {
           
           {/* LEFT: Content */}
           <div className="w-full lg:w-[40%] flex flex-col justify-center order-2 lg:order-1 lg:pr-12 pt-8 lg:pt-0 z-20">
-            <div className={cn("transition-all duration-500", isTransitioning ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0")}>
+            <div key={activeShirt.id} className="transition-opacity duration-300">
               
               <div className="flex items-center gap-4 mb-6">
                 <span className="text-[#FF2400] font-black text-sm tracking-[0.2em]">{activeShirt.id}</span>
@@ -200,17 +186,27 @@ export default function ShirtsLookbook() {
                 </span>
               </div>
               
-              <div className={cn("absolute inset-2 md:inset-4 lg:inset-0 lg:-top-4 lg:-bottom-2 transition-all duration-700", isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100")}>
-                <Image
-                  src={activeShirt.image}
-                  alt={activeShirt.title}
-                  fill
-                  priority
-                  className="object-contain object-bottom drop-shadow-2xl"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  onLoadingComplete={() => setImageLoaded(true)}
-                />
-              </div>
+              {shirtsData.map((shirt, idx) => {
+                const isSelected = idx === activeIndex;
+                return (
+                  <div
+                    key={shirt.id}
+                    className={cn(
+                      "absolute inset-2 md:inset-4 lg:inset-0 lg:-top-4 lg:-bottom-2 transition-opacity duration-300 ease-out",
+                      isSelected ? "opacity-100 z-10 pointer-events-auto" : "opacity-0 z-0 pointer-events-none"
+                    )}
+                  >
+                    <Image
+                      src={shirt.image}
+                      alt={shirt.title}
+                      fill
+                      priority={idx === 0 || idx === 1}
+                      className="object-contain object-bottom drop-shadow-2xl"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                  </div>
+                );
+              })}
             </div>
 
             {/* Bottom: Horizontal Thumbnails */}

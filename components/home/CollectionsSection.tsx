@@ -50,10 +50,10 @@ export default function CollectionsSection() {
             {/* Gradient Overlay for Text Readability */}
             <div className="absolute left-0 top-0 h-full w-[85%] md:w-[75%] lg:w-[60%] xl:w-[55%] bg-gradient-to-r from-[#F4F1EB] via-[#F4F1EB]/80 to-transparent z-[15] pointer-events-none" />
 
-            {/* Hero Image - Curated.png */}
+            {/* Hero Image - Curated.webp */}
             <div className="absolute right-[-15%] sm:right-[-10%] md:right-[2%] lg:right-[15%] xl:right-[-3%] top-0 md:top-[5%] lg:top-[-2%] xl:top-[-2%] h-full md:h-[85%] lg:h-[85%] xl:h-[85%] w-[85%] md:w-[85%] lg:w-[50%] pointer-events-none z-10 flex justify-end">
               <img 
-                src="/images/collections/curated.png" 
+                src="/images/collections/curated.webp" 
                 alt="Curated For You" 
                 className="h-full w-auto max-w-none object-contain object-right md:object-right-bottom transition-transform duration-700 ease-out group-hover:scale-[1.01]"
               />
@@ -70,7 +70,7 @@ export default function CollectionsSection() {
             number="01" 
             title="T-SHIRTS" 
             subtitle="OVERSIZED • ESSENTIAL • GRAPHIC" 
-            imageSrc="/images/collections/tshirt.png"
+            imageSrc="/images/collections/tshirt.webp"
             href="/collections/tshirts"
             className="md:col-span-1 xl:col-span-2 relative h-[450px] md:h-[500px] bg-[linear-gradient(to_right,#FFFFFF_45%,#EBE8E0_45%)]"
             textOverlayGradient="from-white via-white/75 to-transparent"
@@ -82,7 +82,7 @@ export default function CollectionsSection() {
             number="02" 
             title="SHIRTS" 
             subtitle="CASUAL • FORMAL • TEXTURED" 
-            imageSrc="/images/collections/shirt.png"
+            imageSrc="/images/collections/shirt.webp"
             href="/collections/shirts"
             dark={true}
             className="md:col-span-1 xl:col-span-2 relative h-[450px] md:h-[500px]"
@@ -94,7 +94,7 @@ export default function CollectionsSection() {
             number="03" 
             title="TROUSERS" 
             subtitle="CARGO • RELAXED • STRAIGHT" 
-            imageSrc="/images/collections/bottom-wear.png"
+            imageSrc="/images/collections/bottom-wear.webp"
             href="/collections/trousers"
             alignRight={true}
             className="md:col-span-2 xl:col-span-2 relative h-[450px] md:h-[500px] bg-[#F4F1EB]"
@@ -106,7 +106,7 @@ export default function CollectionsSection() {
             number="04" 
             title="FOOTWEAR" 
             subtitle="SNEAKERS • CASUAL • EVERYDAY" 
-            imageSrc="/images/collections/foot-wear.png"
+            imageSrc="/images/collections/foot-wear.webp"
             href="/collections/shoes"
             className="md:col-span-1 xl:col-span-2 relative h-[450px] md:h-[500px] bg-[#EBE8E0]"
             textOverlayGradient="none"
@@ -120,7 +120,7 @@ export default function CollectionsSection() {
               number="05" 
               title="ACCESSORIES" 
               subtitle="STYLISH • MINIMAL • BOLD" 
-              imageSrc="/images/collections/accessories.png"
+              imageSrc="/images/collections/accessories.webp"
               href="/collections/accessories"
               className="flex-1 min-h-[250px] bg-[#EBE8E0]"
               gradientWidthClass="w-[95%] md:w-[90%] xl:w-[85%]"
@@ -131,7 +131,7 @@ export default function CollectionsSection() {
               number="06" 
               title="BAGS" 
               subtitle="BACKPACKS • SLING • TOTES" 
-              imageSrc="/images/collections/bags.png"
+              imageSrc="/images/collections/bags.webp"
               href="/collections/bags"
               className="flex-1 min-h-[250px] bg-[#F4F1EB]"
               imageClass="w-[90%] xl:w-[70%] h-full object-cover object-right bottom-0 right-0 pointer-events-none"

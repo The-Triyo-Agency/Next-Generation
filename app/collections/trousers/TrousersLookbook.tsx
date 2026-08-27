@@ -14,7 +14,7 @@ const trousersData = [
     title: "BAGGY JEANS",
     description: "Relaxed denim designed for a loose contemporary silhouette and effortless everyday styling.",
     highlights: ["Relaxed Silhouette", "Comfortable Denim", "Easy Everyday Style"],
-    image: "/images/lookbook/trousers_baggy.png",
+    image: "/images/lookbook/trousers_baggy.webp",
     whatsappMsg: "Hi, I'm interested in men's trousers and jeans. Could you please share the currently available styles, sizes, colours and prices?"
   },
   {
@@ -22,7 +22,7 @@ const trousersData = [
     title: "CARGO PANTS",
     description: "Utility-inspired pants designed for a relaxed fit with practical details and modern streetwear appeal.",
     highlights: ["Functional Cargo Pockets", "Relaxed Fit", "Utility-Inspired Style"],
-    image: "/images/lookbook/trousers_cargo.png",
+    image: "/images/lookbook/trousers_cargo.webp",
     whatsappMsg: "Hi, I'm interested in men's trousers and jeans. Could you please share the currently available styles, sizes, colours and prices?"
   },
   {
@@ -30,7 +30,7 @@ const trousersData = [
     title: "MOM FIT PANTS",
     description: "A comfortable everyday silhouette with a relaxed upper fit and clean casual structure.",
     highlights: ["Comfortable Fit", "Relaxed Silhouette", "Easy To Style"],
-    image: "/images/lookbook/trousers_mom.png",
+    image: "/images/lookbook/trousers_mom.webp",
     whatsappMsg: "Hi, I'm interested in men's trousers and jeans. Could you please share the currently available styles, sizes, colours and prices?"
   },
   {
@@ -38,7 +38,7 @@ const trousersData = [
     title: "STRAIGHT-FIT JEANS",
     description: "A timeless straight-leg silhouette designed for clean everyday outfits and versatile styling.",
     highlights: ["Classic Straight Fit", "Everyday Denim", "Versatile Style"],
-    image: "/images/lookbook/pant4.png",
+    image: "/images/lookbook/pant4.webp",
     whatsappMsg: "Hi, I'm interested in men's trousers and jeans. Could you please share the currently available styles, sizes, colours and prices?"
   },
   {
@@ -46,25 +46,19 @@ const trousersData = [
     title: "KOREAN PANTS",
     description: "Minimal Korean-inspired trousers combining a relaxed silhouette with a refined contemporary look.",
     highlights: ["Relaxed Tailored Fit", "Clean Silhouette", "Modern Minimal Style"],
-    image: "/images/lookbook/pant5.png",
+    image: "/images/lookbook/pant5.webp",
     whatsappMsg: "Hi, I'm interested in men's trousers and jeans. Could you please share the currently available styles, sizes, colours and prices?"
   }
 ];
 
 export default function TrousersLookbook() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
 
   const activeTrouser = trousersData[activeIndex];
 
   const handleIndexChange = (newIndex: number) => {
-    if (newIndex === activeIndex || isTransitioning) return;
-    setIsTransitioning(true);
-    setImageLoaded(false);
-    setTimeout(() => {
-      setActiveIndex(newIndex);
-    }, 300); // Wait for fade out
+    if (newIndex === activeIndex) return;
+    setActiveIndex(newIndex);
   };
 
   const nextTrouser = () => {
@@ -77,11 +71,9 @@ export default function TrousersLookbook() {
 
   // Swipe gesture handlers
   const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const minSwipeDistance = 50;
 
   const onTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
   };
 
@@ -107,13 +99,7 @@ export default function TrousersLookbook() {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [activeIndex, isTransitioning]);
-
-  useEffect(() => {
-    if (imageLoaded) {
-      setIsTransitioning(false);
-    }
-  }, [imageLoaded]);
+  }, [activeIndex]);
 
   return (
     <main data-navbar-theme="light" className="min-h-screen bg-[#F7F5F0] pt-24 md:pt-32 lg:pt-36 xl:pt-44 pb-12 overflow-x-hidden lg:overflow-hidden flex flex-col">
@@ -135,7 +121,7 @@ export default function TrousersLookbook() {
           
           {/* LEFT: Content */}
           <div className="w-full lg:w-[40%] flex flex-col justify-center order-2 lg:order-1 lg:pr-12 pt-8 lg:pt-0 z-20">
-            <div className={cn("transition-all duration-500", isTransitioning ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0")}>
+            <div key={activeTrouser.id} className="transition-opacity duration-300">
               
               <div className="flex items-center gap-4 mb-6">
                 <span className="text-[#FF2400] font-black text-sm tracking-[0.2em]">{activeTrouser.id}</span>
@@ -200,17 +186,27 @@ export default function TrousersLookbook() {
                 </span>
               </div>
               
-              <div className={cn("absolute inset-2 md:inset-4 lg:inset-0 lg:-top-4 lg:-bottom-2 transition-all duration-700", isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100")}>
-                <Image
-                  src={activeTrouser.image}
-                  alt={activeTrouser.title}
-                  fill
-                  priority
-                  className="object-contain object-bottom drop-shadow-2xl"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  onLoadingComplete={() => setImageLoaded(true)}
-                />
-              </div>
+              {trousersData.map((trouser, idx) => {
+                const isSelected = idx === activeIndex;
+                return (
+                  <div
+                    key={trouser.id}
+                    className={cn(
+                      "absolute inset-2 md:inset-4 lg:inset-0 lg:-top-4 lg:-bottom-2 transition-opacity duration-300 ease-out",
+                      isSelected ? "opacity-100 z-10 pointer-events-auto" : "opacity-0 z-0 pointer-events-none"
+                    )}
+                  >
+                    <Image
+                      src={trouser.image}
+                      alt={trouser.title}
+                      fill
+                      priority={idx === 0 || idx === 1}
+                      className="object-contain object-bottom drop-shadow-2xl"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                  </div>
+                );
+              })}
             </div>
 
             {/* Bottom: Horizontal Thumbnails */}

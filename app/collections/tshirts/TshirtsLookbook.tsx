@@ -14,7 +14,7 @@ const tshirtsData = [
     title: "CLASSIC STRIPED T-SHIRT",
     description: "A timeless striped pattern for a clean, maritime-inspired look. Perfectly weighted for all-day comfort and effortless styling.",
     highlights: ["Classic Stripes", "Breathable Fabric", "Timeless Appeal"],
-    image: "/images/lookbook/tshirt1.png",
+    image: "/images/lookbook/tshirt1.webp",
     whatsappMsg: "Hi, I'm interested in men's T-shirts. Could you please share the currently available styles, sizes, colours and prices?"
   },
   {
@@ -22,7 +22,7 @@ const tshirtsData = [
     title: "ESSENTIAL OVERSIZED T-SHIRT",
     description: "A relaxed, drop-shoulder fit designed for absolute comfort. The perfect foundation for an elevated everyday street look.",
     highlights: ["Oversized Fit", "Premium Cotton", "Everyday Comfort"],
-    image: "/images/lookbook/tshirt2.png",
+    image: "/images/lookbook/tshirt2.webp",
     whatsappMsg: "Hi, I'm interested in men's T-shirts. Could you please share the currently available styles, sizes, colours and prices?"
   },
   {
@@ -30,7 +30,7 @@ const tshirtsData = [
     title: "SIGNATURE GRAPHIC T-SHIRT",
     description: "Bold, expressive graphics on a premium blank. Designed to make a statement while maintaining an effortless, relaxed silhouette.",
     highlights: ["Statement Graphic", "High-Quality Print", "Standout Style"],
-    image: "/images/lookbook/tshirt3.png",
+    image: "/images/lookbook/tshirt3.webp",
     whatsappMsg: "Hi, I'm interested in men's T-shirts. Could you please share the currently available styles, sizes, colours and prices?"
   },
   {
@@ -38,7 +38,7 @@ const tshirtsData = [
     title: "MODERN POLO T-SHIRT",
     description: "A refined take on the classic polo. Featuring a structured collar and premium knit for a sharp, sophisticated look that transitions from day to night.",
     highlights: ["Structured Collar", "Premium Knit", "Smart Casual"],
-    image: "/images/lookbook/tshirt4.png",
+    image: "/images/lookbook/tshirt4.webp",
     whatsappMsg: "Hi, I'm interested in men's T-shirts. Could you please share the currently available styles, sizes, colours and prices?"
   },
   {
@@ -46,25 +46,19 @@ const tshirtsData = [
     title: "PREMIUM TEXTURED T-SHIRT",
     description: "Crafted from a unique textured fabric that adds depth and character to your outfit. A subtle upgrade to the basic tee with a soft, tactile feel.",
     highlights: ["Textured Fabric", "Tactile Feel", "Elevated Basic"],
-    image: "/images/lookbook/tshirt5.png",
+    image: "/images/lookbook/tshirt5.webp",
     whatsappMsg: "Hi, I'm interested in men's T-shirts. Could you please share the currently available styles, sizes, colours and prices?"
   }
 ];
 
 export default function TshirtsLookbook() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
 
   const activeShirt = tshirtsData[activeIndex];
 
   const handleIndexChange = (newIndex: number) => {
-    if (newIndex === activeIndex || isTransitioning) return;
-    setIsTransitioning(true);
-    setImageLoaded(false);
-    setTimeout(() => {
-      setActiveIndex(newIndex);
-    }, 300); // Wait for fade out
+    if (newIndex === activeIndex) return;
+    setActiveIndex(newIndex);
   };
 
   const nextShirt = () => {
@@ -77,11 +71,9 @@ export default function TshirtsLookbook() {
 
   // Swipe gesture handlers
   const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const minSwipeDistance = 50;
 
   const onTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
   };
 
@@ -107,13 +99,7 @@ export default function TshirtsLookbook() {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [activeIndex, isTransitioning]);
-
-  useEffect(() => {
-    if (imageLoaded) {
-      setIsTransitioning(false);
-    }
-  }, [imageLoaded]);
+  }, [activeIndex]);
 
   return (
     <main data-navbar-theme="light" className="min-h-screen bg-[#F7F5F0] pt-24 md:pt-32 lg:pt-36 xl:pt-44 pb-12 overflow-x-hidden lg:overflow-hidden flex flex-col">
@@ -134,8 +120,8 @@ export default function TshirtsLookbook() {
         <div className="flex-1 flex flex-col md:flex-row relative z-10 w-full h-full">
           
           {/* LEFT: Content */}
-          <div className="w-full md:w-[45%] lg:w-[40%] flex flex-col justify-center order-2 md:order-1 md:pr-8 lg:pr-12 pt-8 md:pt-0 z-20">
-            <div className={cn("transition-all duration-500", isTransitioning ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0")}>
+          <div className="w-full lg:w-[40%] flex flex-col justify-center order-2 lg:order-1 lg:pr-12 pt-8 lg:pt-0 z-20">
+            <div key={activeShirt.id} className="transition-opacity duration-300">
               
               <div className="flex items-center gap-4 mb-6">
                 <span className="text-[#FF2400] font-black text-sm tracking-[0.2em]">{activeShirt.id}</span>
@@ -200,17 +186,27 @@ export default function TshirtsLookbook() {
                 </span>
               </div>
               
-              <div className={cn("absolute inset-2 md:inset-4 lg:inset-0 lg:-top-4 lg:-bottom-2 transition-all duration-700", isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100")}>
-                <Image
-                  src={activeShirt.image}
-                  alt={activeShirt.title}
-                  fill
-                  priority
-                  className="object-contain object-bottom drop-shadow-2xl"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  onLoadingComplete={() => setImageLoaded(true)}
-                />
-              </div>
+              {tshirtsData.map((shirt, idx) => {
+                const isSelected = idx === activeIndex;
+                return (
+                  <div
+                    key={shirt.id}
+                    className={cn(
+                      "absolute inset-2 md:inset-4 lg:inset-0 lg:-top-4 lg:-bottom-2 transition-opacity duration-300 ease-out",
+                      isSelected ? "opacity-100 z-10 pointer-events-auto" : "opacity-0 z-0 pointer-events-none"
+                    )}
+                  >
+                    <Image
+                      src={shirt.image}
+                      alt={shirt.title}
+                      fill
+                      priority={idx === 0 || idx === 1}
+                      className="object-contain object-bottom drop-shadow-2xl"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                  </div>
+                );
+              })}
             </div>
 
             {/* Bottom: Horizontal Thumbnails */}

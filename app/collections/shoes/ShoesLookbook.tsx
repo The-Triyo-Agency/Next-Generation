@@ -14,7 +14,7 @@ const shoesData = [
     title: "BAGGY SHOES",
     description: "Chunky everyday footwear designed with a bold oversized silhouette and contemporary streetwear appeal.",
     highlights: ["Bold Chunky Silhouette", "Comfortable Everyday Fit", "Streetwear-Ready Style"],
-    image: "/images/lookbook/shoe1.png",
+    image: "/images/lookbook/shoe1.webp",
     // Boots/Baggy shoes are taller, so they need to be scaled down more to match horizontal shoes visually
     imageStyle: "scale-90 md:scale-95 translate-y-2",
     whatsappMsg: "Hi, I'm interested in men's shoes. Could you please share the currently available styles, sizes, colours and prices?"
@@ -24,7 +24,7 @@ const shoesData = [
     title: "SNEAKERS",
     description: "Versatile everyday sneakers combining a clean sporty profile with effortless casual styling.",
     highlights: ["Everyday Comfort", "Versatile Casual Style", "Clean Sporty Profile"],
-    image: "/images/lookbook/shoe2.png",
+    image: "/images/lookbook/shoe2.webp",
     imageStyle: "scale-100 md:scale-105",
     whatsappMsg: "Hi, I'm interested in men's shoes. Could you please share the currently available styles, sizes, colours and prices?"
   },
@@ -33,7 +33,7 @@ const shoesData = [
     title: "LOAFERS",
     description: "A refined slip-on silhouette designed to bring a polished finish to smart and contemporary outfits.",
     highlights: ["Refined Silhouette", "Easy Slip-On Style", "Smart Everyday Look"],
-    image: "/images/lookbook/shoe3.png",
+    image: "/images/lookbook/shoe3.webp",
     imageStyle: "scale-[1.05] md:scale-110",
     whatsappMsg: "Hi, I'm interested in men's shoes. Could you please share the currently available styles, sizes, colours and prices?"
   },
@@ -42,7 +42,7 @@ const shoesData = [
     title: "BOOTS",
     description: "A structured boot silhouette designed to add a bold, confident finish to modern casual and streetwear outfits.",
     highlights: ["Structured Design", "Durable Outsole", "Bold Everyday Style"],
-    image: "/images/lookbook/shoe4.png",
+    image: "/images/lookbook/shoe4.webp",
     // Tallest shoe, needs the most reduction
     imageStyle: "scale-75 md:scale-[0.8]",
     whatsappMsg: "Hi, I'm interested in men's shoes. Could you please share the currently available styles, sizes, colours and prices?"
@@ -52,7 +52,7 @@ const shoesData = [
     title: "SLIDERS",
     description: "Easy everyday slides designed for relaxed comfort and effortless casual wear.",
     highlights: ["Easy Slip-On Design", "Lightweight Comfort", "Relaxed Everyday Style"],
-    image: "/images/lookbook/shoe5.png",
+    image: "/images/lookbook/shoe5.webp",
     // Widest/flattest shoe, needs horizontal control
     imageStyle: "scale-[1.15] md:scale-[1.25] -translate-y-2",
     whatsappMsg: "Hi, I'm interested in men's shoes. Could you please share the currently available styles, sizes, colours and prices?"
@@ -61,18 +61,12 @@ const shoesData = [
 
 export default function ShoesLookbook() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
 
   const activeShoe = shoesData[activeIndex];
 
   const handleIndexChange = (newIndex: number) => {
-    if (newIndex === activeIndex || isTransitioning) return;
-    setIsTransitioning(true);
-    setImageLoaded(false);
-    setTimeout(() => {
-      setActiveIndex(newIndex);
-    }, 300); // Wait for fade out
+    if (newIndex === activeIndex) return;
+    setActiveIndex(newIndex);
   };
 
   const nextShoe = () => {
@@ -85,11 +79,9 @@ export default function ShoesLookbook() {
 
   // Swipe gesture handlers
   const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const minSwipeDistance = 50;
 
   const onTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
   };
 
@@ -115,13 +107,7 @@ export default function ShoesLookbook() {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [activeIndex, isTransitioning]);
-
-  useEffect(() => {
-    if (imageLoaded) {
-      setIsTransitioning(false);
-    }
-  }, [imageLoaded]);
+  }, [activeIndex]);
 
   return (
     <main data-navbar-theme="light" className="min-h-screen bg-[#F7F5F0] pt-24 md:pt-32 lg:pt-36 xl:pt-44 pb-12 overflow-x-hidden lg:overflow-hidden flex flex-col">
@@ -143,7 +129,7 @@ export default function ShoesLookbook() {
           
           {/* LEFT: Content */}
           <div className="w-full lg:w-[40%] flex flex-col justify-center order-2 lg:order-1 lg:pr-12 pt-8 lg:pt-0 z-20">
-            <div className={cn("transition-all duration-500", isTransitioning ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0")}>
+            <div key={activeShoe.id} className="transition-opacity duration-300">
               
               <div className="flex items-center gap-4 mb-6">
                 <span className="text-[#FF2400] font-black text-sm tracking-[0.2em]">{activeShoe.id}</span>
@@ -209,17 +195,27 @@ export default function ShoesLookbook() {
                 </span>
               </div>
               
-              <div className={cn("absolute inset-2 md:inset-4 lg:inset-2 lg:-top-2 transition-all duration-700", isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100")}>
-                <Image
-                  src={activeShoe.image}
-                  alt={activeShoe.title}
-                  fill
-                  priority
-                  className={cn("object-contain object-center drop-shadow-2xl transition-transform duration-700 ease-out", activeShoe.imageStyle)}
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  onLoadingComplete={() => setImageLoaded(true)}
-                />
-              </div>
+              {shoesData.map((shoe, idx) => {
+                const isSelected = idx === activeIndex;
+                return (
+                  <div
+                    key={shoe.id}
+                    className={cn(
+                      "absolute inset-2 md:inset-4 lg:inset-2 lg:-top-2 transition-opacity duration-300 ease-out",
+                      isSelected ? "opacity-100 z-10 pointer-events-auto" : "opacity-0 z-0 pointer-events-none"
+                    )}
+                  >
+                    <Image
+                      src={shoe.image}
+                      alt={shoe.title}
+                      fill
+                      priority={idx === 0 || idx === 1}
+                      className={cn("object-contain object-center drop-shadow-2xl", shoe.imageStyle)}
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                  </div>
+                );
+              })}
             </div>
 
             {/* Bottom: Horizontal Thumbnails */}
