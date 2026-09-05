@@ -200,7 +200,7 @@ export default function ParallaxHero() {
           <div className="w-[40vw] h-[1px] bg-[#111111]/20 mt-5 mb-5" />
 
           {/* Description (directly below the line) */}
-          <p className="text-[11px] sm:text-[12px] font-semibold leading-[1.6] text-[#111111]/90 max-w-[180px] pointer-events-auto">
+          <p className="text-[11px] sm:text-[12px] font-semibold leading-[1.6] text-[#111111] max-w-[180px] pointer-events-auto">
             Men&apos;s fashion,<br />footwear & accessories<br /><span className="text-[#C82000] font-bold">— Kumbakonam.</span>
           </p>
 
@@ -271,7 +271,7 @@ export default function ParallaxHero() {
           
           {/* Desktop Supporting Copy */}
           <div className="block max-w-[220px] pointer-events-auto">
-            <p className="text-sm font-semibold leading-relaxed text-[#111111]/90">
+            <p className="text-sm font-semibold leading-relaxed text-[#111111]">
               Men&apos;s fashion, footwear & accessories <br /><span className="text-[#C82000] font-bold">— Kumbakonam.</span>
             </p>
           </div>

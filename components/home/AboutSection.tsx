@@ -68,16 +68,16 @@ export default function AboutSection() {
               <div className="flex items-center gap-4 mb-3">
                 <span className="text-[#C82000] font-black text-xs md:text-sm tracking-[0.2em]">01</span>
                 <span className="w-8 md:w-12 h-[1px] bg-gradient-to-r from-[#C82000] to-[#111111]/20" aria-hidden="true"></span>
-                <h2 className="font-bold text-[10px] md:text-xs lg:text-sm tracking-[0.2em] uppercase text-[#111111]/85 m-0" id="about-heading">
+                <h2 className="font-bold text-[10px] md:text-xs lg:text-sm tracking-[0.2em] uppercase text-[#111111] m-0" id="about-heading">
                   Why Next Generation
                 </h2>
               </div>
               
-              <div className="text-[10px] md:text-xs tracking-[0.2em] uppercase text-[#111111]/80 mb-8 font-bold">
+              <div className="text-[10px] md:text-xs tracking-[0.2em] uppercase text-[#111111] mb-8 font-bold">
                 Kumbakonam, TN
               </div>
 
-              <p className="text-base md:text-lg font-medium leading-[1.6] max-w-[26rem] text-[#111111]/90 mb-10 md:mb-12">
+              <p className="text-base md:text-lg font-medium leading-[1.6] max-w-[26rem] text-[#111111] mb-10 md:mb-12">
                 Born in Kumbakonam, Next Generation fuses contemporary menswear with streetwear energy. We curate everyday essentials, premium footwear, and accessories for a generation that dresses with its own point of view.
               </p>
               
@@ -102,7 +102,7 @@ export default function AboutSection() {
               <h3 className="font-black text-sm md:text-base lg:text-lg tracking-tight uppercase text-[#F7F5F0]">
                 {item.title}
               </h3>
-              <p className="text-xs md:text-sm text-[#F7F5F0]/85 leading-relaxed font-medium group-hover:text-[#F7F5F0] transition-colors duration-300">
+              <p className="text-xs md:text-sm text-[#F7F5F0] leading-relaxed font-medium group-hover:text-[#F7F5F0] transition-colors duration-300">
                 {item.description}
               </p>
             </div>
@@ -119,7 +119,7 @@ export default function AboutSection() {
               <span className="text-[#111111] font-bold text-sm md:text-base lg:text-lg tracking-[0.15em] uppercase mx-8 md:mx-12">
                 {hook}
               </span>
-              <span className="w-2 h-2 rotate-45 bg-[#FF2400]" aria-hidden="true"></span>
+              <span className="w-2 h-2 rotate-45 bg-[#C82000]" aria-hidden="true"></span>
             </div>
           ))}
         </div>
@@ -129,7 +129,7 @@ export default function AboutSection() {
               <span className="text-[#111111] font-bold text-sm md:text-base lg:text-lg tracking-[0.15em] uppercase mx-8 md:mx-12">
                 {hook}
               </span>
-              <span className="w-2 h-2 rotate-45 bg-[#FF2400]"></span>
+              <span className="w-2 h-2 rotate-45 bg-[#C82000]" aria-hidden="true"></span>
             </div>
           ))}
         </div>
