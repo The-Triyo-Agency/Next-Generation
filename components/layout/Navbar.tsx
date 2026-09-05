@@ -173,8 +173,6 @@ export default function Navbar() {
     : "bg-transparent py-5 md:py-6 lg:py-8 border-b-transparent";
 
   const textColorClass = isDark ? "text-[#F7F5F0]" : "text-[#111111]";
-  const borderColorClass = isDark ? "border-[#F7F5F0]" : "border-[#111111]";
-  const menuBgClass = isDark ? "bg-[#111111]/5" : "bg-[#F7F5F0]";
   
   // Mobile overlay always uses light theme colors to maintain readability if opened over dark backgrounds,
   // or we can make it inherit the theme. Let's make the mobile overlay solid off-white for simplicity and premium feel.
@@ -184,38 +182,38 @@ export default function Navbar() {
       <nav className={`fixed top-0 left-0 w-full z-[100] flex items-center justify-between px-4 md:px-6 lg:px-8 xl:px-12 pointer-events-auto transition-all duration-300 ease-in-out ${navBgClass}`}>
         
         {/* Mobile Logo */}
-        <Link href="/" onClick={handleLogoClick} className="min-[1400px]:hidden flex items-center gap-3 group flex-shrink-0">
+        <Link href="/" onClick={handleLogoClick} aria-label="Next Generation Home" className="min-[1400px]:hidden flex items-center gap-3 group flex-shrink-0">
           <Image src="/images/logo.svg" alt="Next Generation Logo" width={80} height={80} className="w-[40px] min-[400px]:w-[50px] md:w-[60px] lg:w-[80px] h-[40px] min-[400px]:h-[50px] md:h-[60px] lg:h-[80px] object-contain flex-shrink-0" />
           <Image src="/images/text-logo.svg" alt="Next Generation" width={240} height={80} className={`w-auto h-[24px] min-[400px]:h-[30px] md:h-[36px] lg:h-[48px] object-contain transition-[filter] duration-300 ${isDark ? 'invert' : ''}`} />
         </Link>
 
         {/* Desktop Logo */}
-        <Link href="/" onClick={handleLogoClick} className="hidden min-[1400px]:flex items-center gap-2 2xl:gap-3 group flex-shrink-0">
+        <Link href="/" onClick={handleLogoClick} aria-label="Next Generation Home" className="hidden min-[1400px]:flex items-center gap-2 2xl:gap-3 group flex-shrink-0">
           <Image src="/images/logo.svg" alt="Next Generation Logo" width={76} height={76} className="w-[65px] 2xl:w-[76px] h-[65px] 2xl:h-[76px] object-contain flex-shrink-0" />
           <Image src="/images/text-logo.svg" alt="Next Generation" width={230} height={76} className={`w-auto h-[38px] 2xl:h-[46px] object-contain transition-[filter] duration-300 ${isDark ? 'invert' : ''}`} />
         </Link>
         
         {/* Desktop Links */}
         <div className={`hidden min-[1400px]:flex gap-12 2xl:gap-16 text-[15px] 2xl:text-[18px] font-bold tracking-widest uppercase whitespace-nowrap flex-shrink-0 ${textColorClass} transition-colors`}>
-          <Link href="/#hero" onClick={(e) => handleNavClick(e, 'hero')} className="hover:text-[#FF2400] transition-colors relative group py-1 cursor-pointer">
+          <Link href="/#hero" onClick={(e) => handleNavClick(e, 'hero')} aria-label="Navigate to Home section" className="hover:text-[#FF2400] transition-colors relative group py-1 cursor-pointer">
             Home
-            <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#FF2400] transition-transform duration-300 origin-left ${activeSection === 'hero' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+            <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#FF2400] transition-transform duration-300 origin-left ${activeSection === 'hero' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} aria-hidden="true"></span>
           </Link>
-          <Link href="/#about" onClick={(e) => handleNavClick(e, 'about')} className="hover:text-[#FF2400] transition-colors relative group py-1 cursor-pointer">
+          <Link href="/#about" onClick={(e) => handleNavClick(e, 'about')} aria-label="Navigate to About section" className="hover:text-[#FF2400] transition-colors relative group py-1 cursor-pointer">
             About
-            <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#FF2400] transition-transform duration-300 origin-left ${activeSection === 'about' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+            <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#FF2400] transition-transform duration-300 origin-left ${activeSection === 'about' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} aria-hidden="true"></span>
           </Link>
-          <Link href="/#collections" onClick={(e) => handleNavClick(e, 'collections')} className="hover:text-[#FF2400] transition-colors relative group py-1 cursor-pointer">
+          <Link href="/#collections" onClick={(e) => handleNavClick(e, 'collections')} aria-label="Navigate to Collections section" className="hover:text-[#FF2400] transition-colors relative group py-1 cursor-pointer">
             Collections
-            <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#FF2400] transition-transform duration-300 origin-left ${activeSection === 'collections' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+            <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#FF2400] transition-transform duration-300 origin-left ${activeSection === 'collections' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} aria-hidden="true"></span>
           </Link>
-          <Link href="/#store" onClick={(e) => handleNavClick(e, 'store')} className="hover:text-[#FF2400] transition-colors relative group py-1 cursor-pointer">
+          <Link href="/#store" onClick={(e) => handleNavClick(e, 'store')} aria-label="Navigate to Store section" className="hover:text-[#FF2400] transition-colors relative group py-1 cursor-pointer">
             Store
-            <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#FF2400] transition-transform duration-300 origin-left ${activeSection === 'store' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+            <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#FF2400] transition-transform duration-300 origin-left ${activeSection === 'store' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} aria-hidden="true"></span>
           </Link>
-          <Link href="/#contact" onClick={(e) => handleNavClick(e, 'contact')} className="hover:text-[#FF2400] transition-colors relative group py-1 cursor-pointer">
+          <Link href="/#contact" onClick={(e) => handleNavClick(e, 'contact')} aria-label="Navigate to Contact section" className="hover:text-[#FF2400] transition-colors relative group py-1 cursor-pointer">
             Contact
-            <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#FF2400] transition-transform duration-300 origin-left ${activeSection === 'contact' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+            <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#FF2400] transition-transform duration-300 origin-left ${activeSection === 'contact' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} aria-hidden="true"></span>
           </Link>
         </div>
         
@@ -223,6 +221,7 @@ export default function Navbar() {
         <div className="hidden min-[1400px]:block flex-shrink-0">
           <Link 
             href={generateWhatsAppLink("Hi Next Generation, I'd like to know more about the latest men's fashion collections available at your Kumbakonam store.")} 
+            aria-label="Contact Next Generation on WhatsApp"
             className={`blob-btn inline-block whitespace-nowrap px-6 2xl:px-8 py-2.5 2xl:py-3 rounded-xl font-bold text-[13px] 2xl:text-[15px] tracking-widest uppercase text-[#FF2400] ${isDark ? 'blob-btn-dark-hover' : ''}`}
           >
             <span className="relative z-10">WhatsApp</span>
@@ -240,7 +239,7 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile Floating Bottom Bar */}
-      <div className={`min-[1400px]:hidden fixed bottom-4 sm:bottom-5 md:bottom-8 lg:bottom-10 left-1/2 -translate-x-1/2 z-[110] w-[90%] max-w-[320px] sm:max-w-[400px] md:max-w-[700px] lg:max-w-[840px] h-[56px] sm:h-[64px] md:h-[90px] lg:h-[104px] flex items-center justify-between px-2 sm:px-3 md:px-8 lg:px-12 rounded-[28px] sm:rounded-[32px] md:rounded-[45px] lg:rounded-[52px] shadow-[0_8px_32px_rgba(0,0,0,0.12)] border bg-[#F7F5F0]/95 border-[#111111]/10 backdrop-blur-xl`}>
+      <nav aria-label="Mobile Navigation" className={`min-[1400px]:hidden fixed bottom-4 sm:bottom-5 md:bottom-8 lg:bottom-10 left-1/2 -translate-x-1/2 z-[110] w-[90%] max-w-[320px] sm:max-w-[400px] md:max-w-[700px] lg:max-w-[840px] h-[56px] sm:h-[64px] md:h-[90px] lg:h-[104px] flex items-center justify-between px-2 sm:px-3 md:px-8 lg:px-12 rounded-[28px] sm:rounded-[32px] md:rounded-[45px] lg:rounded-[52px] shadow-[0_8px_32px_rgba(0,0,0,0.12)] border bg-[#F7F5F0]/95 border-[#111111]/10 backdrop-blur-xl`}>
         {[
           { id: 'hero', label: 'Home', icon: Home, href: '/#hero' },
           { id: 'collections', label: 'Collect', icon: Grid, href: '/#collections' },
@@ -253,6 +252,7 @@ export default function Navbar() {
             <Link 
               key={item.id}
               href={item.href}
+              aria-label={item.label}
               onClick={(e) => {
                 if (item.id !== 'whatsapp') handleNavClick(e, item.id);
               }}
@@ -263,17 +263,17 @@ export default function Navbar() {
                   ? `-translate-y-5 sm:-translate-y-6 md:-translate-y-10 lg:-translate-y-12 w-10 h-10 sm:w-12 sm:h-12 md:w-[80px] md:h-[80px] lg:w-[92px] lg:h-[92px] rounded-full bg-[#FF2400] text-white shadow-[0_8px_16px_rgba(255,36,0,0.4)] border-[3px] sm:border-[4px] md:border-[6px] lg:border-[8px] border-[#F7F5F0]` 
                   : `w-6 h-6 sm:w-7 sm:h-7 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-full bg-transparent border-0 md:border-[6px] lg:border-[8px] border-transparent text-[#111111]`
               }`}>
-                <item.icon className={isActive ? "w-4 h-4 sm:w-5 sm:h-5 md:w-9 md:h-9 lg:w-10 lg:h-10" : "w-4 h-4 sm:w-5 sm:h-5 md:w-8 md:h-8 lg:w-9 lg:h-9"} />
+                <item.icon className={isActive ? "w-4 h-4 sm:w-5 sm:h-5 md:w-9 md:h-9 lg:w-10 lg:h-10" : "w-4 h-4 sm:w-5 sm:h-5 md:w-8 md:h-8 lg:w-9 lg:h-9"} aria-hidden="true" />
               </div>
               <span className={`absolute bottom-1.5 sm:bottom-2 md:bottom-3 lg:bottom-3.5 text-[7px] sm:text-[8px] md:text-[12px] lg:text-[14px] font-bold uppercase tracking-wider transition-all duration-300 ease-in-out ${
-                isActive ? 'opacity-100 text-[#FF2400]' : `opacity-70 hover:opacity-100 text-[#111111]`
+                isActive ? 'opacity-100 text-[#FF2400]' : `opacity-80 hover:opacity-100 text-[#111111]`
               }`}>
                 {item.label}
               </span>
             </Link>
           );
         })}
-      </div>
+      </nav>
     </>
   );
 }

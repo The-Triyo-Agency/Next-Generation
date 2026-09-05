@@ -75,7 +75,7 @@ export default function IntroAnimation() {
 
   return (
     <>
-      <svg style={{ position: "absolute", width: 0, height: 0, pointerEvents: "none" }}>
+      <svg style={{ position: "absolute", width: 0, height: 0, pointerEvents: "none" }} aria-hidden="true">
         <clipPath id="intro-clip" clipPathUnits="objectBoundingBox">
           <path ref={pathRef} d="M 0 0 L 1 0 L 1 1 Q 0.5 1 0 1 Z" />
         </clipPath>

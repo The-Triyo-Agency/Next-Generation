@@ -9,7 +9,7 @@ export default function Footer() {
         
         {/* Brand & Description */}
         <div className="flex flex-col gap-6 max-w-sm">
-          <Link href="/" className="inline-block relative">
+          <Link href="/" aria-label="Next Generation Home" className="inline-block relative">
             <Image 
               src="/images/text-logo.svg" 
               alt="Next Generation" 
@@ -18,8 +18,8 @@ export default function Footer() {
               className="w-auto h-[24px] md:h-[32px] lg:h-[40px] object-contain invert" 
             />
           </Link>
-          <p className="text-sm text-[#F7F5F0]/70 font-semibold leading-relaxed">
-            Everyday men's fashion, streetwear-inspired styles, footwear and accessories for the next generation of Kumbakonam.
+          <p className="text-sm text-[#F7F5F0]/85 font-semibold leading-relaxed">
+            Everyday men&apos;s fashion, streetwear-inspired styles, footwear and accessories for the next generation of Kumbakonam.
           </p>
         </div>
 
@@ -27,7 +27,7 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row gap-12 sm:gap-24">
           
           <div className="flex flex-col gap-4">
-            <span className="text-[10px] font-bold tracking-widest uppercase text-[#F7F5F0]/50 mb-2">Navigation</span>
+            <span className="text-[10px] font-bold tracking-widest uppercase text-[#F7F5F0]/75 mb-2">Navigation</span>
             <Link href="/#about" className="text-xs font-bold tracking-widest uppercase hover:text-[#FF2400] transition-colors">About</Link>
             <Link href="/#collections" className="text-xs font-bold tracking-widest uppercase hover:text-[#FF2400] transition-colors">Collections</Link>
             <Link href="/#store" className="text-xs font-bold tracking-widest uppercase hover:text-[#FF2400] transition-colors">Store</Link>
@@ -35,21 +35,22 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <span className="text-[10px] font-bold tracking-widest uppercase text-[#F7F5F0]/50 mb-2">Connect</span>
-            <a href="tel:+919677031312" className="text-xs font-bold tracking-widest uppercase hover:text-[#FF2400] transition-colors">Phone</a>
+            <span className="text-[10px] font-bold tracking-widest uppercase text-[#F7F5F0]/75 mb-2">Connect</span>
+            <a href="tel:+919677031312" aria-label="Call Next Generation" className="text-xs font-bold tracking-widest uppercase hover:text-[#FF2400] transition-colors">Phone</a>
             <Link 
               href={generateWhatsAppLink("Hi Next Generation, I'd like to know more about the latest men's fashion collections available at your Kumbakonam store.")} 
+              aria-label="Chat with Next Generation on WhatsApp"
               className="text-xs font-bold tracking-widest uppercase hover:text-[#FF2400] transition-colors"
             >
               WhatsApp
             </Link>
-            <a href="https://instagram.com/nextgenerationkmu" target="_blank" rel="noreferrer" className="text-xs font-bold tracking-widest uppercase hover:text-[#FF2400] transition-colors">Instagram</a>
+            <a href="https://instagram.com/nextgenerationkmu" target="_blank" rel="noreferrer" aria-label="Visit Next Generation Instagram profile" className="text-xs font-bold tracking-widest uppercase hover:text-[#FF2400] transition-colors">Instagram</a>
           </div>
 
         </div>
       </div>
 
-      <div className="max-w-[1600px] mx-auto mt-16 pt-8 border-t border-[#F7F5F0]/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] font-bold tracking-widest uppercase text-[#F7F5F0]/40">
+      <div className="max-w-[1600px] mx-auto mt-16 pt-8 border-t border-[#F7F5F0]/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] font-bold tracking-widest uppercase text-[#F7F5F0]/70">
         <p>&copy; {new Date().getFullYear()} Next Generation. All rights reserved.</p>
         <p>Kumbakonam, Tamil Nadu</p>
       </div>

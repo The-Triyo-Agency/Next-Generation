@@ -117,6 +117,7 @@ export default function ParallaxHero() {
             viewBox="0 0 390 844" 
             preserveAspectRatio="xMaxYMid slice" 
             className="w-full h-full absolute right-0"
+            aria-hidden="true"
           >
             {/* The Solid 3-Legged X Shape (Top-Right, Bottom-Right, Bottom-Left) */}
             <polygon 
@@ -160,6 +161,7 @@ export default function ParallaxHero() {
         <div 
           className="absolute -bottom-[2px] left-0 w-full h-[22%] bg-[#111111] z-30 origin-bottom pointer-events-none"
           style={{ clipPath: 'polygon(0 15%, 100% 0, 100% 100%, 0% 100%)' }}
+          aria-hidden="true"
         >
         </div>
 
@@ -171,7 +173,7 @@ export default function ParallaxHero() {
         >
           <Image
             id="main-model-mobile"
-            src="/images/hero/hero1.png"
+            src="/images/hero/hero1.webp"
             alt="Next Generation Men's Fashion Model"
             fill
             className="object-contain object-right-bottom scale-[0.8]"
@@ -198,8 +200,8 @@ export default function ParallaxHero() {
           <div className="w-[40vw] h-[1px] bg-[#111111]/20 mt-5 mb-5" />
 
           {/* Description (directly below the line) */}
-          <p className="text-[11px] sm:text-[12px] font-semibold leading-[1.6] text-[#111111]/85 max-w-[180px] pointer-events-auto">
-            Men's fashion,<br />footwear & accessories<br /><span className="text-[#FF2400]">— Kumbakonam.</span>
+          <p className="text-[11px] sm:text-[12px] font-semibold leading-[1.6] text-[#111111]/90 max-w-[180px] pointer-events-auto">
+            Men&apos;s fashion,<br />footwear & accessories<br /><span className="text-[#FF2400]">— Kumbakonam.</span>
           </p>
 
           {/* CTAs pushed into the black layer */}
@@ -209,15 +211,17 @@ export default function ParallaxHero() {
               <Link 
                 href="/#collections" 
                 onClick={handleExploreClick}
+                aria-label="Explore collections"
                 className="bg-[#F7F5F0] text-[#111111] rounded-full px-8 py-3.5 font-bold text-[10px] sm:text-[11px] tracking-widest uppercase hover:bg-[#FF2400] hover:text-[#F7F5F0] transition-colors flex items-center justify-center gap-2 min-w-[140px] shadow-lg shadow-black/40"
               >
-                Explore <ArrowRight className="w-3.5 h-3.5" />
+                Explore <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
               </Link>
               <Link 
                 href={generateWhatsAppLink("Hi Next Generation!")} 
+                aria-label="Contact Next Generation on WhatsApp"
                 className="text-[#FF2400] border border-[#FF2400] rounded-full px-6 py-3 font-bold text-[10px] sm:text-[11px] tracking-widest uppercase flex items-center justify-center gap-2 hover:bg-[#FF2400]/10 transition-colors shadow-lg shadow-[#FF2400]/15"
               >
-                WhatsApp <ArrowUpRight className="w-3.5 h-3.5 stroke-[3]" />
+                WhatsApp <ArrowUpRight className="w-3.5 h-3.5 stroke-[3]" aria-hidden="true" />
               </Link>
             </div>
           </div>
@@ -253,10 +257,10 @@ export default function ParallaxHero() {
         >
           <Image 
             id="main-model-desktop"
-            src="/images/hero/hero1.png" 
+            src="/images/hero/hero1.webp" 
             alt="Next Generation Men's Fashion Model" 
             fill
-            loading="eager"
+            priority
             className="object-contain object-bottom drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)] scale-[0.8]"
             sizes="(max-width: 1024px) 60vw, 40vw"
           />
@@ -267,8 +271,8 @@ export default function ParallaxHero() {
           
           {/* Desktop Supporting Copy */}
           <div className="block max-w-[220px] pointer-events-auto">
-            <p className="text-sm font-semibold leading-relaxed text-[#111111]/80">
-              Men's fashion, footwear & accessories <br /><span className="text-[#FF2400]">— Kumbakonam.</span>
+            <p className="text-sm font-semibold leading-relaxed text-[#111111]/90">
+              Men&apos;s fashion, footwear & accessories <br /><span className="text-[#FF2400]">— Kumbakonam.</span>
             </p>
           </div>
 

@@ -46,12 +46,12 @@ export default function AboutSection() {
           <div className="absolute top-0 left-0 w-full h-[420px] md:h-full md:w-[50%] lg:w-[52%] xl:w-[48%] pointer-events-none z-10">
             <div className="relative w-full h-full">
               <Image 
-                src="/images/hero/about-hero2.png" 
+                src="/images/hero/about-hero2.webp" 
                 alt="Next Generation menswear model wearing contemporary streetwear in Kumbakonam"
                 fill
                 className="object-contain object-bottom md:object-right-bottom scale-[1.05] md:scale-[1.15] lg:scale-[1.10] xl:scale-[1.05] origin-bottom md:-translate-x-6 lg:-translate-x-6 xl:translate-x-3 md:translate-y-8 lg:translate-y-10"
                 sizes="(max-width: 768px) 100vw, 50vw"
-                priority
+                loading="lazy"
               />
             </div>
           </div>
@@ -67,17 +67,17 @@ export default function AboutSection() {
               
               <div className="flex items-center gap-4 mb-3">
                 <span className="text-[#FF2400] font-black text-xs md:text-sm tracking-[0.2em]">01</span>
-                <span className="w-8 md:w-12 h-[1px] bg-gradient-to-r from-[#FF2400] to-[#111111]/10"></span>
-                <h2 className="font-bold text-[10px] md:text-xs lg:text-sm tracking-[0.2em] uppercase text-[#111111]/70 m-0" id="about-heading">
+                <span className="w-8 md:w-12 h-[1px] bg-gradient-to-r from-[#FF2400] to-[#111111]/20" aria-hidden="true"></span>
+                <h2 className="font-bold text-[10px] md:text-xs lg:text-sm tracking-[0.2em] uppercase text-[#111111]/85 m-0" id="about-heading">
                   Why Next Generation
                 </h2>
               </div>
               
-              <div className="text-[10px] md:text-xs tracking-[0.2em] uppercase text-[#111111]/50 mb-8 font-bold">
+              <div className="text-[10px] md:text-xs tracking-[0.2em] uppercase text-[#111111]/80 mb-8 font-bold">
                 Kumbakonam, TN
               </div>
 
-              <p className="text-base md:text-lg font-medium leading-[1.6] max-w-[26rem] text-[#111111]/80 mb-10 md:mb-12">
+              <p className="text-base md:text-lg font-medium leading-[1.6] max-w-[26rem] text-[#111111]/90 mb-10 md:mb-12">
                 Born in Kumbakonam, Next Generation fuses contemporary menswear with streetwear energy. We curate everyday essentials, premium footwear, and accessories for a generation that dresses with its own point of view.
               </p>
               
@@ -95,14 +95,14 @@ export default function AboutSection() {
         <div className="w-full max-w-[1300px] grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 md:gap-x-12 mb-16 md:mb-20">
           {differentiators.map((item, i) => (
             <div key={i} className="group flex flex-col gap-3 relative pt-4 border-t border-[rgba(247,245,240,0.14)]">
-              <div className="absolute top-[-1px] left-0 w-0 h-[1px] bg-[#FF2400] transition-all duration-500 ease-out group-hover:w-full"></div>
+              <div className="absolute top-[-1px] left-0 w-0 h-[1px] bg-[#FF2400] transition-all duration-500 ease-out group-hover:w-full" aria-hidden="true"></div>
               <span className="text-[#FF2400] font-bold text-[10px] tracking-[0.2em]">
                 0{i + 1}
               </span>
               <h3 className="font-black text-sm md:text-base lg:text-lg tracking-tight uppercase text-[#F7F5F0]">
                 {item.title}
               </h3>
-              <p className="text-xs md:text-sm text-[#F7F5F0]/50 leading-relaxed font-medium group-hover:text-[#F7F5F0]/80 transition-colors duration-300">
+              <p className="text-xs md:text-sm text-[#F7F5F0]/80 leading-relaxed font-medium group-hover:text-[#F7F5F0] transition-colors duration-300">
                 {item.description}
               </p>
             </div>
@@ -119,7 +119,7 @@ export default function AboutSection() {
               <span className="text-[#111111] font-bold text-sm md:text-base lg:text-lg tracking-[0.15em] uppercase mx-8 md:mx-12">
                 {hook}
               </span>
-              <span className="w-2 h-2 rotate-45 bg-[#FF2400]"></span>
+              <span className="w-2 h-2 rotate-45 bg-[#FF2400]" aria-hidden="true"></span>
             </div>
           ))}
         </div>

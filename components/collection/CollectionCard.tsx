@@ -42,6 +42,7 @@ export default function CollectionCard({
     <Link
       href={href}
       onClick={() => sessionStorage.setItem("scrollToSection", "collections")}
+      aria-label={`Explore ${title} collection`}
       className={cn(
         "relative block rounded-[14px] md:rounded-[18px] bg-[#F4F1EB] border border-black/5 group",
         "transition-all duration-500 hover:shadow-sm cursor-pointer",
@@ -55,6 +56,8 @@ export default function CollectionCard({
         <img
           src={imageSrc}
           alt={title}
+          loading="lazy"
+          decoding="async"
           className={cn(
             "absolute transition-transform duration-700 ease-out group-hover:scale-[1.03]",
             imageClass
@@ -82,19 +85,19 @@ export default function CollectionCard({
           <span className="text-[#C8321F] font-oswald text-xl md:text-2xl font-bold tracking-wide">
             {number}
           </span>
-          <div className={cn("h-[1px] w-8 md:w-10", dark ? "bg-white/30" : "bg-black/30")} />
+          <div className={cn("h-[1px] w-8 md:w-10", dark ? "bg-white/30" : "bg-black/30")} aria-hidden="true" />
         </div>
         
-        <h2 className={cn(
+        <h3 className={cn(
           "font-oswald font-bold text-[45px] md:text-[55px] lg:text-[65px] uppercase leading-[0.85] tracking-[-0.02em] mb-3 group-hover:scale-[1.01] transition-transform duration-500 origin-left scale-y-[1.25]",
           dark ? "text-[#F4F1EB]" : "text-[#111111]"
         )}>
           {title}
-        </h2>
+        </h3>
         
         <p className={cn(
           "text-[9px] md:text-[10px] lg:text-[11px] font-bold tracking-[0.2em] uppercase mt-4",
-          dark ? "text-[#F4F1EB]/70" : "text-[#111111]/70"
+          dark ? "text-[#F4F1EB]/85" : "text-[#111111]/85"
         )}>
           {subtitle}
         </p>
@@ -108,7 +111,7 @@ export default function CollectionCard({
           >
             EXPLORE COLLECTION
             <span className="text-[#C8321F] transition-transform duration-300 group-hover/link:translate-x-2">
-              <svg width="24" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="24" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M4 12h16" />
                 <path d="m13 5 7 7-7 7" />
               </svg>

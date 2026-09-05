@@ -15,12 +15,13 @@ interface HeroGraphicProps {
  */
 export default function HeroGraphic({ className = "" }: HeroGraphicProps) {
     return (
-        <div className={`relative ${className}`}>
+        <div className={`relative ${className}`} aria-hidden="true">
             <svg 
                 viewBox="0 0 400 560" 
                 preserveAspectRatio="xMidYMid meet" 
                 className="w-full h-full"
                 xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
             >
                 {/* 
                   Main Orange Editorial Form 
