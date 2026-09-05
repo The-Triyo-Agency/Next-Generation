@@ -54,6 +54,8 @@ export default function CollectionsSection() {
               <img 
                 src="/images/collections/curated.webp" 
                 alt="Curated menswear and footwear" 
+                width={700}
+                height={700}
                 loading="lazy"
                 decoding="async"
                 className="h-full w-auto max-w-none object-contain object-right md:object-right-bottom transition-transform duration-700 ease-out group-hover:scale-[1.01]"

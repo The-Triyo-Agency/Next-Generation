@@ -222,7 +222,7 @@ export default function Navbar() {
           <Link 
             href={generateWhatsAppLink("Hi Next Generation, I'd like to know more about the latest men's fashion collections available at your Kumbakonam store.")} 
             aria-label="Contact Next Generation on WhatsApp"
-            className={`blob-btn inline-block whitespace-nowrap px-6 2xl:px-8 py-2.5 2xl:py-3 rounded-xl font-bold text-[13px] 2xl:text-[15px] tracking-widest uppercase text-[#FF2400] ${isDark ? 'blob-btn-dark-hover' : ''}`}
+            className={`blob-btn inline-block whitespace-nowrap px-6 2xl:px-8 py-2.5 2xl:py-3 rounded-xl font-bold text-[13px] 2xl:text-[15px] tracking-widest uppercase text-[#C82000] ${isDark ? 'blob-btn-dark-hover' : ''}`}
           >
             <span className="relative z-10">WhatsApp</span>
             <span className="blob-btn__inner">
@@ -260,13 +260,13 @@ export default function Navbar() {
             >
               <div className={`transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] z-10 flex items-center justify-center ${
                 isActive 
-                  ? `-translate-y-5 sm:-translate-y-6 md:-translate-y-10 lg:-translate-y-12 w-10 h-10 sm:w-12 sm:h-12 md:w-[80px] md:h-[80px] lg:w-[92px] lg:h-[92px] rounded-full bg-[#FF2400] text-white shadow-[0_8px_16px_rgba(255,36,0,0.4)] border-[3px] sm:border-[4px] md:border-[6px] lg:border-[8px] border-[#F7F5F0]` 
+                  ? `-translate-y-5 sm:-translate-y-6 md:-translate-y-10 lg:-translate-y-12 w-10 h-10 sm:w-12 sm:h-12 md:w-[80px] md:h-[80px] lg:w-[92px] lg:h-[92px] rounded-full bg-[#C82000] text-white shadow-[0_8px_16px_rgba(200,32,0,0.4)] border-[3px] sm:border-[4px] md:border-[6px] lg:border-[8px] border-[#F7F5F0]` 
                   : `w-6 h-6 sm:w-7 sm:h-7 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-full bg-transparent border-0 md:border-[6px] lg:border-[8px] border-transparent text-[#111111]`
               }`}>
                 <item.icon className={isActive ? "w-4 h-4 sm:w-5 sm:h-5 md:w-9 md:h-9 lg:w-10 lg:h-10" : "w-4 h-4 sm:w-5 sm:h-5 md:w-8 md:h-8 lg:w-9 lg:h-9"} aria-hidden="true" />
               </div>
               <span className={`absolute bottom-1.5 sm:bottom-2 md:bottom-3 lg:bottom-3.5 text-[7px] sm:text-[8px] md:text-[12px] lg:text-[14px] font-bold uppercase tracking-wider transition-all duration-300 ease-in-out ${
-                isActive ? 'opacity-100 text-[#FF2400]' : `opacity-80 hover:opacity-100 text-[#111111]`
+                isActive ? 'opacity-100 text-[#C82000]' : `opacity-90 hover:opacity-100 text-[#111111]`
               }`}>
                 {item.label}
               </span>

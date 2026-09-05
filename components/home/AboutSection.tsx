@@ -66,8 +66,8 @@ export default function AboutSection() {
             <div className="w-full md:w-[55%] px-6 pb-12 pt-28 md:px-10 md:pt-16 md:pb-16 lg:p-20 flex flex-col justify-center">
               
               <div className="flex items-center gap-4 mb-3">
-                <span className="text-[#FF2400] font-black text-xs md:text-sm tracking-[0.2em]">01</span>
-                <span className="w-8 md:w-12 h-[1px] bg-gradient-to-r from-[#FF2400] to-[#111111]/20" aria-hidden="true"></span>
+                <span className="text-[#C82000] font-black text-xs md:text-sm tracking-[0.2em]">01</span>
+                <span className="w-8 md:w-12 h-[1px] bg-gradient-to-r from-[#C82000] to-[#111111]/20" aria-hidden="true"></span>
                 <h2 className="font-bold text-[10px] md:text-xs lg:text-sm tracking-[0.2em] uppercase text-[#111111]/85 m-0" id="about-heading">
                   Why Next Generation
                 </h2>
@@ -84,7 +84,7 @@ export default function AboutSection() {
               <div className="text-[clamp(3.25rem,6.5vw,6rem)] font-black tracking-[-0.03em] uppercase leading-[0.85] mb-2 break-words text-[#111111]">
                 BUILT<br />
                 FOR THE<br />
-                NEXT<span className="text-[#FF2400]">.</span>
+                NEXT<span className="text-[#C82000]">.</span>
               </div>
               
             </div>
@@ -95,14 +95,14 @@ export default function AboutSection() {
         <div className="w-full max-w-[1300px] grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 md:gap-x-12 mb-16 md:mb-20">
           {differentiators.map((item, i) => (
             <div key={i} className="group flex flex-col gap-3 relative pt-4 border-t border-[rgba(247,245,240,0.14)]">
-              <div className="absolute top-[-1px] left-0 w-0 h-[1px] bg-[#FF2400] transition-all duration-500 ease-out group-hover:w-full" aria-hidden="true"></div>
-              <span className="text-[#FF2400] font-bold text-[10px] tracking-[0.2em]">
+              <div className="absolute top-[-1px] left-0 w-0 h-[1px] bg-[#FF5533] transition-all duration-500 ease-out group-hover:w-full" aria-hidden="true"></div>
+              <span className="text-[#FF5533] font-bold text-[10px] tracking-[0.2em]">
                 0{i + 1}
               </span>
               <h3 className="font-black text-sm md:text-base lg:text-lg tracking-tight uppercase text-[#F7F5F0]">
                 {item.title}
               </h3>
-              <p className="text-xs md:text-sm text-[#F7F5F0]/80 leading-relaxed font-medium group-hover:text-[#F7F5F0] transition-colors duration-300">
+              <p className="text-xs md:text-sm text-[#F7F5F0]/85 leading-relaxed font-medium group-hover:text-[#F7F5F0] transition-colors duration-300">
                 {item.description}
               </p>
             </div>

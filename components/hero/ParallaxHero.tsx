@@ -201,7 +201,7 @@ export default function ParallaxHero() {
 
           {/* Description (directly below the line) */}
           <p className="text-[11px] sm:text-[12px] font-semibold leading-[1.6] text-[#111111]/90 max-w-[180px] pointer-events-auto">
-            Men&apos;s fashion,<br />footwear & accessories<br /><span className="text-[#FF2400]">— Kumbakonam.</span>
+            Men&apos;s fashion,<br />footwear & accessories<br /><span className="text-[#C82000] font-bold">— Kumbakonam.</span>
           </p>
 
           {/* CTAs pushed into the black layer */}
@@ -219,7 +219,7 @@ export default function ParallaxHero() {
               <Link 
                 href={generateWhatsAppLink("Hi Next Generation!")} 
                 aria-label="Contact Next Generation on WhatsApp"
-                className="text-[#FF2400] border border-[#FF2400] rounded-full px-6 py-3 font-bold text-[10px] sm:text-[11px] tracking-widest uppercase flex items-center justify-center gap-2 hover:bg-[#FF2400]/10 transition-colors shadow-lg shadow-[#FF2400]/15"
+                className="text-[#C82000] border border-[#C82000] rounded-full px-6 py-3 font-bold text-[10px] sm:text-[11px] tracking-widest uppercase flex items-center justify-center gap-2 hover:bg-[#FF2400]/10 transition-colors shadow-lg shadow-[#FF2400]/15"
               >
                 WhatsApp <ArrowUpRight className="w-3.5 h-3.5 stroke-[3]" aria-hidden="true" />
               </Link>
@@ -272,7 +272,7 @@ export default function ParallaxHero() {
           {/* Desktop Supporting Copy */}
           <div className="block max-w-[220px] pointer-events-auto">
             <p className="text-sm font-semibold leading-relaxed text-[#111111]/90">
-              Men&apos;s fashion, footwear & accessories <br /><span className="text-[#FF2400]">— Kumbakonam.</span>
+              Men&apos;s fashion, footwear & accessories <br /><span className="text-[#C82000] font-bold">— Kumbakonam.</span>
             </p>
           </div>
 
@@ -281,7 +281,8 @@ export default function ParallaxHero() {
             <Link 
               href="/#collections" 
               onClick={handleExploreClick}
-              className="blob-btn px-9 py-4 rounded-xl font-bold text-xs tracking-widest uppercase text-[#FF2400] shadow-xl"
+              aria-label="Explore Collections"
+              className="blob-btn px-9 py-4 rounded-xl font-bold text-xs tracking-widest uppercase text-[#C82000] shadow-xl"
             >
               <span className="relative z-10">Explore Collections</span>
               <span className="blob-btn__inner">

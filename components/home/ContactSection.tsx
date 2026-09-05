@@ -11,24 +11,24 @@ export default function ContactSection() {
         {/* Mobile: Content First */}
         <div className="md:hidden w-full px-6 pt-24 pb-4 flex flex-col justify-center relative z-20">
           <div className="flex items-center gap-4 mb-6">
-            <span className="text-[#FF2400] font-black text-xs tracking-[0.2em]">04</span>
-            <span className="w-8 h-[1px] bg-gradient-to-r from-[#FF2400] to-[#111111]/20" aria-hidden="true"></span>
+            <span className="text-[#C82000] font-black text-xs tracking-[0.2em]">04</span>
+            <span className="w-8 h-[1px] bg-gradient-to-r from-[#C82000] to-[#111111]/20" aria-hidden="true"></span>
             <span className="font-bold text-[10px] tracking-[0.2em] uppercase text-[#111111]/85 m-0">Contact</span>
           </div>
           
           <h2 className="text-6xl font-black tracking-tighter uppercase leading-[0.85] mb-6">
             Have a<br />
-            <span className="text-[#FF2400]">Question?</span>
+            <span className="text-[#C82000]">Question?</span>
           </h2>
           
-          <p className="text-sm font-semibold leading-relaxed max-w-sm text-[#111111]/85 mb-10">
+          <p className="text-sm font-semibold leading-relaxed max-w-sm text-[#111111]/90 mb-10">
             Looking for a specific style, size, or just want to know what&apos;s new? Message us directly on WhatsApp.
           </p>
 
           <Link 
             href={generateWhatsAppLink("Hi Next Generation, I have a question regarding your collections.")}
             aria-label="Chat with Next Generation on WhatsApp"
-            className="blob-btn inline-block whitespace-nowrap px-8 py-3.5 rounded-xl font-bold text-xs tracking-widest uppercase text-[#FF2400] text-center shadow-xl shadow-black/10 w-fit"
+            className="blob-btn inline-block whitespace-nowrap px-8 py-3.5 rounded-xl font-bold text-xs tracking-widest uppercase text-[#C82000] text-center shadow-xl shadow-black/10 w-fit"
           >
             <span className="relative z-10 flex items-center justify-center gap-4">
               <span>Chat with us</span>
@@ -61,14 +61,14 @@ export default function ContactSection() {
         <div className="hidden md:flex md:w-[55%] lg:w-[50%] px-12 lg:px-20 py-24 flex-col justify-center z-20 relative">
           
           <div className="flex items-center gap-4 mb-8">
-            <span className="text-[#FF2400] font-black text-sm tracking-[0.2em]">04</span>
-            <span className="w-12 h-[1px] bg-gradient-to-r from-[#FF2400] to-[#111111]/20" aria-hidden="true"></span>
+            <span className="text-[#C82000] font-black text-sm tracking-[0.2em]">04</span>
+            <span className="w-12 h-[1px] bg-gradient-to-r from-[#C82000] to-[#111111]/20" aria-hidden="true"></span>
             <span className="font-bold text-xs lg:text-sm tracking-[0.2em] uppercase text-[#111111]/85 m-0">Contact</span>
           </div>
           
           <h2 className="text-7xl lg:text-[100px] font-black tracking-tighter uppercase leading-[0.85] mb-10">
             Have a<br />
-            <span className="text-[#FF2400]">Question?</span>
+            <span className="text-[#C82000]">Question?</span>
           </h2>
           
           <p className="text-base lg:text-lg font-medium leading-relaxed max-w-md text-[#111111]/90 mb-12">
@@ -78,7 +78,7 @@ export default function ContactSection() {
           <Link 
             href={generateWhatsAppLink("Hi Next Generation, I have a question regarding your collections.")}
             aria-label="Chat with Next Generation on WhatsApp"
-            className="blob-btn inline-block whitespace-nowrap px-10 py-4 rounded-xl font-bold text-xs lg:text-sm tracking-widest uppercase text-[#FF2400] text-center shadow-xl shadow-black/10 w-fit"
+            className="blob-btn inline-block whitespace-nowrap px-10 py-4 rounded-xl font-bold text-xs lg:text-sm tracking-widest uppercase text-[#C82000] text-center shadow-xl shadow-black/10 w-fit"
           >
             <span className="relative z-10 flex items-center justify-center gap-4">
               <span>Chat with us</span>

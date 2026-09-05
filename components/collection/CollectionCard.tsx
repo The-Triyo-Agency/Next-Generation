@@ -56,6 +56,8 @@ export default function CollectionCard({
         <img
           src={imageSrc}
           alt={title}
+          width={600}
+          height={600}
           loading="lazy"
           decoding="async"
           className={cn(

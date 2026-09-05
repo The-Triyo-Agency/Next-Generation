@@ -50,14 +50,14 @@ export default function StoreSection() {
 
           {/* Section Header */}
           <div className="flex items-center gap-3 mb-6">
-            <span className="text-[#FF2400] font-bold text-xs tracking-widest uppercase">03</span>
-            <span className="w-12 h-[1px] bg-[#FF2400]" aria-hidden="true"></span>
+            <span className="text-[#C82000] font-bold text-xs tracking-widest uppercase">03</span>
+            <span className="w-12 h-[1px] bg-[#C82000]" aria-hidden="true"></span>
             <span className="font-bold text-xs tracking-widest uppercase text-[#111111]">Location</span>
           </div>
           
           <h2 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase leading-[0.85] mb-12">
             Visit Our<br />
-            <span className="text-[#FF2400]">Store<span className="text-[#111111]">.</span></span>
+            <span className="text-[#C82000]">Store<span className="text-[#111111]">.</span></span>
           </h2>
 
           {/* Vertical Timeline Info */}
@@ -66,10 +66,10 @@ export default function StoreSection() {
             {/* Address */}
             <div className="relative">
               <div className="absolute -left-[37px] top-0 w-7 h-7 rounded-full bg-[#111111] flex items-center justify-center" aria-hidden="true">
-                <MapPin className="w-3.5 h-3.5 text-[#FF2400]" />
+                <MapPin className="w-3.5 h-3.5 text-[#FF5533]" />
               </div>
               <h3 className="font-black tracking-widest text-[13px] uppercase mb-2">Address</h3>
-              <p className="text-[15px] text-[#111111]/85 font-semibold leading-relaxed">
+              <p className="text-[15px] text-[#111111]/90 font-semibold leading-relaxed">
                 1st Floor, KRC Complex,<br />
                 Mutt St, Opp. to Shankara Mutt,<br />
                 Swaminatha Nagar, Anna Nagar,<br />
@@ -80,10 +80,10 @@ export default function StoreSection() {
             {/* Store Hours */}
             <div className="relative">
               <div className="absolute -left-[37px] top-0 w-7 h-7 rounded-full bg-[#111111] flex items-center justify-center" aria-hidden="true">
-                <Clock className="w-3.5 h-3.5 text-[#FF2400]" />
+                <Clock className="w-3.5 h-3.5 text-[#FF5533]" />
               </div>
               <h3 className="font-black tracking-widest text-[13px] uppercase mb-2">Store Hours</h3>
-              <p className="text-[15px] text-[#111111]/85 font-semibold leading-relaxed">
+              <p className="text-[15px] text-[#111111]/90 font-semibold leading-relaxed">
                 Open Everyday<br />
                 9:30 AM – 10:00 PM
               </p>
@@ -92,13 +92,13 @@ export default function StoreSection() {
             {/* Contact */}
             <div className="relative">
               <div className="absolute -left-[37px] top-0 w-7 h-7 rounded-full bg-[#111111] flex items-center justify-center" aria-hidden="true">
-                <Phone className="w-3.5 h-3.5 text-[#FF2400]" />
+                <Phone className="w-3.5 h-3.5 text-[#FF5533]" />
               </div>
               <h3 className="font-black tracking-widest text-[13px] uppercase mb-2">Contact</h3>
               <a 
                 href="tel:+919677031312" 
                 aria-label="Call Next Generation at +91 96770 31312"
-                className="text-[15px] text-[#111111]/85 hover:text-[#FF2400] font-semibold leading-relaxed transition-colors block"
+                className="text-[15px] text-[#111111]/90 hover:text-[#C82000] font-semibold leading-relaxed transition-colors block"
               >
                 +91 96770 31312
               </a>
@@ -113,7 +113,7 @@ export default function StoreSection() {
               target="_blank" 
               rel="noreferrer"
               aria-label="Get Directions to Next Generation Kumbakonam on Google Maps"
-              className="blob-btn inline-block whitespace-nowrap px-8 py-3.5 rounded-xl font-bold text-xs tracking-widest uppercase text-[#FF2400] text-center"
+              className="blob-btn inline-block whitespace-nowrap px-8 py-3.5 rounded-xl font-bold text-xs tracking-widest uppercase text-[#C82000] text-center"
             >
               <span className="relative z-10 flex items-center justify-center gap-4">
                 <span>Get Directions</span>
