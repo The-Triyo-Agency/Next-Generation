@@ -18,40 +18,59 @@ export default function IntroAnimation() {
       return;
     }
 
-    // Snappy, cinematic intro that completes quickly to protect LCP & Speed Index
+    // Disable scrolling during intro
+    document.body.style.overflow = "hidden";
+    window.scrollTo(0, 0);
+
     const tl = gsap.timeline({
       onComplete: () => {
+        document.body.style.overflow = "";
         setIsComplete(true);
       }
     });
 
-    // 1. Logo fades in
+    // 1. Logo fades and scales in
     tl.fromTo(
       logoWrapperRef.current,
-      { opacity: 0, scale: 0.9 },
-      { opacity: 1, scale: 1, duration: 0.35, ease: "power2.out" }
+      { opacity: 0, scale: 0.8 },
+      { opacity: 1, scale: 1, duration: 0.8, ease: "power3.out", delay: 0.1 }
     );
 
-    // 2. Logo fades out and moves up slightly
+    // 2. Hold for a moment
+    tl.to({}, { duration: 0.3 });
+
+    // 3. Logo moves up slightly before wipe
     tl.to(logoWrapperRef.current, {
-      y: -40,
+      y: -60,
       opacity: 0,
-      duration: 0.25,
+      duration: 0.4,
       ease: "power2.in"
     });
 
-    // 3. Curved Mask Wipe Reveal
+    // 4. Curved Mask Wipe Reveal
     tl.to(
       pathRef.current,
       {
         attr: { d: "M 0 0 L 1 0 L 1 0 Q 0.5 -0.3 0 0 Z" },
-        duration: 0.5,
-        ease: "power3.inOut"
+        duration: 1.0,
+        ease: "power4.inOut"
       },
-      "-=0.1"
+      "-=0.2"
+    );
+
+    // 5. Hero Image Scale Reveal
+    tl.to(
+      "#main-model-desktop, #main-model-mobile",
+      {
+        scale: 1,
+        duration: 1.5,
+        ease: "power3.out"
+      },
+      "-=0.6"
     );
 
     return () => {
+      document.body.style.overflow = "";
       tl.kill();
     };
   }, []);

@@ -70,7 +70,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col font-sans">
         {/* SVG Filter for Gooey Effects */}
-        <svg style={{ visibility: 'hidden', position: 'absolute' }} width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" version="1.1">
           <defs>
             <filter id="goo">
               <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>

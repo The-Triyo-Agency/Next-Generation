@@ -78,14 +78,66 @@ export default function ParallaxHero() {
 
     // Apply desktop parallax
     mm.add("(min-width: 768px)", () => {
-      // Currently no active parallax animations on desktop
-      // (Text and character are static as requested)
+      gsap.to(textRef.current, {
+        yPercent: 30,
+        ease: "none",
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+
+      gsap.to(characterRef.current, {
+        yPercent: -15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
     });
 
     // Apply mobile cinematic depth parallax
     mm.add("(max-width: 767px)", () => {
-      // Currently no active parallax animations on mobile
-      // (Text and character are static as requested)
+      // Typography moves slightly slower (upward)
+      gsap.to(mobileTextRef.current, {
+        y: -25,
+        ease: "none",
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+
+      // Graphic moves slightly slower than model
+      gsap.to(mobileGraphicRef.current, {
+        y: -30,
+        ease: "none",
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+
+      // Character moves significantly faster (upward) to create foreground depth
+      gsap.to(mobileCharacterRef.current, {
+        y: -80,
+        ease: "none",
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
     });
 
     return () => {
