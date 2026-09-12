@@ -32,6 +32,9 @@ export const metadata: Metadata = {
     shortcut: "/images/logo.svg",
     apple: "/images/logo.svg",
   },
+  verification: {
+    google: "VYiW6fbWxUBsFg8n05uK-uWI-Bv3U1VG9LMJ1kmo2K8",
+  },
 };
 
 import Navbar from "@/components/layout/Navbar";
